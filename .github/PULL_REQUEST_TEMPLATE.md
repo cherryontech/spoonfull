@@ -34,13 +34,15 @@ https://docs.github.com/en/free-pro-team@latest/github/managing-your-work-on-git
 - [ ] 📜 README.md
 - [ ] 📜 CONTRIBUTING.md
 - [ ] 📜 PULL_REQUEST_TEMPLATE.md
-- [ ] 🙅 no documentation needed
+- [ ] ✖️ no documentation needed
 
 ## Added tests?
 
-- [ ] 👍 yes
-- [ ] 🙅 no, because they aren't needed
-- [ ] 🙋 no, because I need help
+- [ ] ✔️ yes
+- [ ] ✖️ no, testing will be added later
+- [ ] ✖️ no, because they aren't needed
+- [ ] ❓ no, because I need help
+
 
 ## How to test...
 
