@@ -53,8 +53,6 @@ Ex:
 1. Click on magic button
 1. See coolest cat
 
-<!-- note: PRs with deleted sections will be marked invalid -->
-
 <!--
   For Work In Progress Pull Requests, please use the Draft PR feature,
   see https://github.blog/2019-02-14-introducing-draft-pull-requests/ for further details.
