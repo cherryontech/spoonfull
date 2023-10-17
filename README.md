@@ -1,8 +1,25 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Tech Stack :
 
-Currently, two official plugins are available:
+#### React + Vite
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+### Installation:
+
+1. Clone or download the repository.
+   ```bash
+    git clone git@github.com:cherryontech/kiwi-kick-project.git
+    ```
+
+#### Set up front-end
+
+2. Install dependencies.
+   Run `npm install` from inside the kiwi-kick-project directory.
+   ```bash    
+   $ cd kiwi-kick-project
+   $ npm install
+   ```
+3. Start the React app:
+    ```bash
+    $ npm run dev
+    ```
