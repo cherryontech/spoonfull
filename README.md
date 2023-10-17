@@ -6,9 +6,7 @@
 
 ### Installation:
 
-You will need to install node, npm and MySQL before starting a project.
-
-1. Clone or download both of repositories.
+1. Clone or download the repository.
    ```bash
     git clone git@github.com:cherryontech/kiwi-kick-project.git
     ```
@@ -16,7 +14,7 @@ You will need to install node, npm and MySQL before starting a project.
 #### Set up front-end
 
 2. Install dependencies.
-   Run `npm install` from inside the client directory.
+   Run `npm install` from inside the kiwi-kick-project directory.
    ```bash    
    $ cd kiwi-kick-project
    $ npm install
