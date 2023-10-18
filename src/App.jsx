@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import AddTaskModal from './components/AddTaskModal';
+import AddTaskModal from './components/AddTaskModal/AddTaskModal';
 import "@fontsource/lato";
 
 function App() {
