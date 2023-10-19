@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .btn-modal {
+      @apply text-button-text disabled:text-disabled py-2.5 px-3 enabled:hover:bg-onhover-btn hover:rounded-full
+    }
+  }
