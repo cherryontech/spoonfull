@@ -20,7 +20,7 @@ const AddTaskModal = () => {
       };
 
     return (
-        <section className=" bg-modal-background w-[100vw] h-[100vh] flex justify-center items-center">
+        <section className=" bg-modal-background w-[100vw] h-[100vh] flex justify-center items-center fixed inset-0">
             <article className="bg-background w-[328px] h-[221px] p-6 rounded-4xl">
                 <form>
                     <h4 className="text-header4 mt-0 mb-2">Add Task</h4>
