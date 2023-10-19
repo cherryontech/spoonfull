@@ -9,10 +9,10 @@ const TasksPage = () => {
                     <path d="M10 18H14V16H10V18ZM3 6V8H21V6H3ZM6 13H18V11H6V13Z" fill="#0F0129"/>
                 </svg>  
             </div>
-            <div className="h-[100%] flex flex-col justify-center items-center">
+            <div className="h-[100%] flex flex-col justify-center items-center gap-4">
                 <img src={heroImg} alt="a graphic with a girl standing next to big phone, managing tasks" className="w-[200px]"/>
                 <h5 className="text-subtitle">Start adding your tasks!</h5>
-                <p className="text-caption">Plan your day by adding tasks and allocating your energy among them.</p>
+                <p className="text-caption text-light-text text-center w-[200px]">Plan your day by adding tasks and allocating your energy among them.</p>
             </div>
         </section>
     )

@@ -14,7 +14,8 @@ export default {
       'modal-background':'rgba(0, 0, 0, 0.70)',
       'disabled': "rgba(15, 1, 41, 0.25)",
       'onhover-btn': 'rgba(189, 242, 213, 0.25)',
-      'divider': '#BBBBBB'
+      'divider': '#BBBBBB',
+      'light-text': 'rgba(15, 1, 41, 0.50)',
     },
     fontFamily: {
       sans: ['Lato', 'sans-serif'],
