@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@fontsource/lato": "^5.0.15",
+    "idb": "^7.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.17.0",

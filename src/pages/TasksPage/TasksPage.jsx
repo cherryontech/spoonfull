@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import AddTaskModal from "../../components/AddTaskModal/AddTaskModal";
 
+
 const TasksPage = () => {
     const [showModal, setShowModal] = useState(false);
     const [taskList, setTaskList] = useState([]);
@@ -12,7 +13,10 @@ const TasksPage = () => {
         setShowModal(true)
     }
 
-    // useEffect()
+    useEffect(() => {
+       const data = window.localStorage.getItem('TASK');
+       setTaskList(JSON.parse(data))
+    }, []);
 
 
     return (
@@ -24,7 +28,7 @@ const TasksPage = () => {
                 </svg>  
             </div>
             <div className={
-                taskList[0]?
+                taskList?
                  "h-[650px] flex flex-col justify-center items-center gap-4 hidden" 
                  : 
                  "h-[650px] flex flex-col justify-center items-center gap-4"
@@ -34,7 +38,7 @@ const TasksPage = () => {
                 <p className="text-caption text-light-text text-center w-[200px]">Plan your day by adding tasks and allocating your energy among them.</p>
             </div>
             <div className={
-                !taskList[0]? 
+                !taskList? 
                 "h-[650px] hidden" 
                 : 
                 "h-[650px]"
