@@ -9,7 +9,7 @@ const navigation = [
   { name: 'Calendar', href: '#', current: false },
 ]
 
-function classNames(...classes) {
+function classNames(...classes) {``
     return classes.filter(Boolean).join(' ')
   }
 
@@ -41,6 +41,7 @@ export default function NavBar() {
                   />
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
+                  {/* TODO: update menu options
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
                       <a
@@ -55,13 +56,14 @@ export default function NavBar() {
                         {item.name}
                       </a>
                     ))}
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
           </div>
 
           <Disclosure.Panel className="sm:hidden">
+            {/* TODO: update menu options
             <div className="space-y-1 px-2 pb-3 pt-2">
               {navigation.map((item) => (
                 <Disclosure.Button
@@ -77,7 +79,7 @@ export default function NavBar() {
                   {item.name}
                 </Disclosure.Button>
               ))}
-            </div>
+            </div> */}
           </Disclosure.Panel>
         </>
       )}
