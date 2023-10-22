@@ -16,6 +16,7 @@ export default {
       'onhover-btn': 'rgba(189, 242, 213, 0.25)',
       'divider': '#BBBBBB',
       'light-text': 'rgba(15, 1, 41, 0.50)',
+
     },
     fontFamily: {
       sans: ['Lato', 'sans-serif'],
