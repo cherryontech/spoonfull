@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AddTaskModal from './components/AddTaskModal/AddTaskModal';
-import NavBar from './components/Navbar/Navbar';
+import Navbar from './components/Navbar/Navbar';
 import "@fontsource/lato";
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <BrowserRouter>
      <Routes>
       <Route path="/modal" element={<AddTaskModal />}/>
-      <Route path="/" element={<NavBar />}/>
+      <Route path="/" element={<Navbar />}/>
      </Routes>
     </BrowserRouter>
   )
