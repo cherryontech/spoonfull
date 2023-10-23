@@ -40,12 +40,21 @@ const TasksPage = () => {
                 </div>
                 :
                 <div className="h-[650px]">
-                    <h4>{taskList[0].task}</h4>
+                    {taskList.map(task => {
+                        return (
+                            <h4 key={task.id}>{task.task}</h4>
+                        )
+                    })}
                 </div>
             }
-            <button onClick={openModal}>Open Modal</button>
+            <button className="flex gap-3 fixed bottom-px right-px p-4 m-4 shadow-box-shadow rounded-2xl bg-primary" onClick={openModal}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="#0F0129"/>
+                </svg>
+                <p className="text-button-text">Add Task</p>
+            </button>
             {showModal && createPortal(
-                <AddTaskModal />,
+                <AddTaskModal setShowModal={setShowModal} />,
                 document.body
             )}
         </section>
