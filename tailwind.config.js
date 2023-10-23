@@ -6,15 +6,18 @@ export default {
   ],
   theme: {
     colors: {
-      'primary': '#BDF2D5',
-      'secondary': '#7AD9F5',
+      'primary': '#BBBBBB',
+      'secondary': 'rgba(15, 1, 41, 0.10)',
       'accent': '#5D13E7',
       'text': '#0F0129',
       'background': '#FDFCFC',
       'navbar-background': '#E5E3E7',
       'modal-background':'rgba(0, 0, 0, 0.70)',
       'disabled': "rgba(15, 1, 41, 0.25)",
-      'onhover-btn': 'rgba(189, 242, 213, 0.25)'
+      'onhover-btn': 'rgba(189, 242, 213, 0.25)',
+      'divider': '#BBBBBB',
+      'light-text': 'rgba(15, 1, 41, 0.50)',
+
     },
     fontFamily: {
       sans: ['Lato', 'sans-serif'],
