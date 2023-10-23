@@ -70,6 +70,9 @@ export default {
     extend: {
       borderRadius: {
         '4xl': '1.75rem',
+      },
+      boxShadow: {
+        "box-shadow": '0px 3px 3px 0px rgba(0, 0, 0, 0.14)'
       }
     },
   },
