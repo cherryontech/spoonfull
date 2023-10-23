@@ -40,12 +40,16 @@ const TasksPage = () => {
                 </div>
                 :
                 <div className="h-[650px]">
-                    <h4>{taskList[0].task}</h4>
+                    {taskList.map(task => {
+                        return (
+                            <h4 key={task.id}>{task.task}</h4>
+                        )
+                    })}
                 </div>
             }
             <button onClick={openModal}>Open Modal</button>
             {showModal && createPortal(
-                <AddTaskModal />,
+                <AddTaskModal setShowModal={setShowModal} />,
                 document.body
             )}
         </section>
