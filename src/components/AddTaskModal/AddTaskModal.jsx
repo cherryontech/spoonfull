@@ -26,6 +26,13 @@ const AddTaskModal = ({ setShowModal }) => {
         setActiveButton(true);
     };
 
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+          handleSubmit();
+          window.location.reload()
+        }
+    }
+
     const handleSubmit = (e) => {
         let tasks = localStorage["tasks"];
         tasks = JSON.parse(tasks);
@@ -49,6 +56,7 @@ const AddTaskModal = ({ setShowModal }) => {
                                 placeholder="Type the name of your task"
                                 value={taskName}
                                 onChange={handleChange}
+                                onKeyDown={handleKeyDown}
                             />
                             <div className="absolute top-[25%] right-2">
                             <button onClick={handleClear}>
@@ -60,7 +68,7 @@ const AddTaskModal = ({ setShowModal }) => {
                         </div>
                     </div>
                     <div className="flex justify-end gap-2">
-                        <button className="btn-modal" onClick={() => setShowModal(false)}>Cancel</button>
+                        <button type="submit" className="btn-modal" onClick={() => setShowModal(false)}>Cancel</button>
                         <button disabled={activeButton} className="btn-modal">Add</button>
                     </div>
                 </form>
@@ -68,4 +76,5 @@ const AddTaskModal = ({ setShowModal }) => {
         </section>
     )
 }
+
 export default AddTaskModal;
