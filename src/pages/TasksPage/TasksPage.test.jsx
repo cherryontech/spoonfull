@@ -10,4 +10,16 @@ describe("TasksPage", () => {
         expect(heroImg).toBeVisible;
     })
 
+    it("add task button is not disabled", () => {
+        render(<TasksPage />);
+        const button = screen.getByRole("button");
+        expect(button).not.toBeDisabled();
+    })
+
+    it("add task button is displayed", () => {
+        render(<TasksPage />);
+        const button = screen.getByRole("button");
+        expect(button).toBeVisible();
+    })
+
 })
