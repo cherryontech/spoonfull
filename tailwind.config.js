@@ -11,6 +11,7 @@ export default {
       'accent': '#5D13E7',
       'text': '#0F0129',
       'background': '#FDFCFC',
+      'navbar-background': '#E5E3E7',
       'modal-background':'rgba(0, 0, 0, 0.70)',
       'disabled': "rgba(15, 1, 41, 0.25)",
       'onhover-btn': 'rgba(189, 242, 213, 0.25)',
