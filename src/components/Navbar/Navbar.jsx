@@ -22,7 +22,7 @@ export default function Navbar() {
         <>
           <div className="mx-0 max-w-7xl sm:px-4">
             <div className="relative flex h-16 items-center justify-between">
-              <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
+              <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
                 <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-4 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="absolute -inset-0.5" />

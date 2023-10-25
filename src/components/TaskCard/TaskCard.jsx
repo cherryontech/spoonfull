@@ -9,7 +9,7 @@ const TaskCard = ({ task }) => {
 
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') {
-          handleCheck();
+            handleCheck();
         }
     }
 
@@ -26,12 +26,11 @@ const TaskCard = ({ task }) => {
                     <input
                         className="relative peer appearance-none w-4 h-4 border rounded-sm mt-1 shrink-0 checked:bg-accent checked:border-0"
                         type="checkbox"
-                        id="checkbox" 
+                        id="checkbox"
                         // value={isChecked}
                         onChange={handleCheck}
-                        // value={isChecked}
-                        
-                        />
+                    // value={isChecked}
+                    />
                     <label className="mb-2">{task.task}</label>
                     <svg
                         className="absolute w-4 h-4 mt-1 hidden peer-checked:block"
