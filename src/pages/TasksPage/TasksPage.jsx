@@ -2,6 +2,7 @@ import heroImg from "../../assets/heroImg.png";
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import AddTaskModal from "../../components/AddTaskModal/AddTaskModal";
+import TaskCard from "../../components/TaskCard/TaskCard";
 
 
 const TasksPage = () => {
@@ -39,13 +40,15 @@ const TasksPage = () => {
                     <p className="text-caption text-light-text text-center w-[200px]">Plan your day by adding tasks and allocating your energy among them.</p>
                 </div>
                 :
-                <div className="h-[650px]">
-                    {taskList.map(task => {
-                        return (
-                            <h4 key={task.id}>{task.task}</h4>
-                        )
-                    })}
-                </div>
+                // <div className="h-[650px]">
+                //     {taskList.map(task => {
+                //         return (
+                //             <h4 key={task.id}>{task.task}</h4>
+                //         )
+                //     })}
+                // </div>
+                
+                <div><TaskCard /></div>
             }
             <button className="flex gap-3 fixed bottom-px right-px p-4 m-4 shadow-box-shadow rounded-2xl bg-primary" onClick={openModal}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -57,6 +60,7 @@ const TasksPage = () => {
                 <AddTaskModal setShowModal={setShowModal} />,
                 document.body
             )}
+            
         </section>
     )
 }
