@@ -7,6 +7,7 @@ export default {
   theme: {
     colors: {
       'primary': '#BBBBBB',
+      'primary4': 'rgba(35, 161, 175, 0.10)',
       'secondary': 'rgba(15, 1, 41, 0.10)',
       'accent': '#5D13E7',
       'text': '#0F0129',

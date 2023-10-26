@@ -5,9 +5,12 @@ import AddTaskModal from "../../components/AddTaskModal/AddTaskModal";
 
 
 const TasksPage = () => {
+    const maxSpoons = 12
     const [showModal, setShowModal] = useState(false);
     const [taskList, setTaskList] = useState([]);
+    const [remainingSpoons, setRemainingSpoons] = useState(maxSpoons);
     
+
     const openModal = (e) => {
         e.preventDefault();
         setShowModal(true)
@@ -22,6 +25,21 @@ const TasksPage = () => {
           tasks = JSON.parse(tasks);
           setTaskList(tasks)
     }, []);
+
+    useEffect(() => {
+        const spoonCount = (arr) => {
+            let totalSpoons = 0
+            const spoonArray = [];
+            arr.map(task => {
+                return spoonArray.push(Number(task.spoons));
+            })
+            totalSpoons = spoonArray.reduce((accumulator, currentSpoon) => accumulator + currentSpoon, 0);
+            setRemainingSpoons(maxSpoons - totalSpoons)
+        }
+
+        spoonCount(taskList);
+    }, [taskList])
+    
 
     return (
         <section className="bg-background w-[100vw] h-[100vh] p-4">
@@ -54,7 +72,9 @@ const TasksPage = () => {
                 <p className="text-button-text">Add Task</p>
             </button>
             {showModal && createPortal(
-                <AddTaskModal setShowModal={setShowModal} />,
+                <AddTaskModal 
+                    setShowModal={setShowModal}
+                    remainingSpoons={remainingSpoons} />,
                 document.body
             )}
         </section>
