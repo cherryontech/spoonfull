@@ -12,7 +12,7 @@ const TasksPage = () => {
     const openModal = (e) => {
         e.preventDefault();
         setShowModal(true)
-    }
+    };
 
     useEffect(() => {
         if (!localStorage["tasks"]) {
@@ -23,6 +23,13 @@ const TasksPage = () => {
         tasks = JSON.parse(tasks);
         setTaskList(tasks)
     }, []);
+
+    const removeTask = (id) => {
+        let tasks = taskList;
+        tasks = tasks.filter((task) => task.id !== id);
+        localStorage["tasks"] = JSON.stringify(tasks);
+        setTaskList(tasks)
+    };
 
     return (
         <section className="bg-background w-[100vw] h-[100vh] p-4">
@@ -44,7 +51,7 @@ const TasksPage = () => {
                         <ul>
                             {taskList.map((task) => {
                                 return (
-                                    <li key={task.id}> <TaskCard task={task} /></li>
+                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} /></li>
                                 )
                             })}
                         </ul>
