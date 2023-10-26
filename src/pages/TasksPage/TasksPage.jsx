@@ -25,7 +25,7 @@ const TasksPage = () => {
     }, []);
 
     const removeTask = (id) => {
-        let tasks = taskList;
+        let tasks = JSON.parse(JSON.stringify(taskList));
         tasks = tasks.filter((task) => task.id !== id);
         localStorage["tasks"] = JSON.stringify(tasks);
         setTaskList(tasks)
