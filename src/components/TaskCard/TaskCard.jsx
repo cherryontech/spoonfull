@@ -35,10 +35,11 @@ const TaskCard = ({ task, onRemoveTask }) => {
                         <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
                     <button
-                        className="-mt-3"
-                        onClick={() => onRemoveTask(task.id)}>
+                        className="mt-1 absolute right-10"
+                        onClick={() => onRemoveTask(task.id)}
+                    >
                         <svg
-                            className="w-4 h-4 absolute right-10 shrink-0"
+                            className="w-4 h-4 shrink-0"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
                             viewBox="0 0 24 24"
