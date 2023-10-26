@@ -65,7 +65,7 @@ const TasksPage = () => {
                         <p className="text-caption text-light-text text-center w-[200px]">Plan your day by adding tasks and allocating your energy among them.</p>
                     </div>
                     :
-                    <div>
+                    <div className="py-2">
                         <ul>
                             {taskList.map((task) => {
                                 return (
