@@ -51,13 +51,13 @@ const TasksPage = () => {
             </div>
             {
                 (!taskList[0] || !taskList[0].task)?
-                <div className= "h-[650px] flex flex-col justify-center items-center gap-4">
+                <div className= "h-[600px] flex flex-col justify-center items-center gap-4">
                     <img src={heroImg} alt="a graphic with a girl standing next to big phone, managing tasks" className="w-[200px]"/>
                     <h5 className="text-subtitle">Start adding your tasks!</h5>
                     <p className="text-caption text-light-text text-center w-[200px]">Plan your day by adding tasks and allocating your energy among them.</p>
                 </div>
                 :
-                <div className="h-[650px]">
+                <div className="h-[600px] pb-10">
                     {taskList.map(task => {
                         return (
                             <h4 key={task.id}>{task.task}</h4>

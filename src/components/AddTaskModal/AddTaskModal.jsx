@@ -63,7 +63,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
                                 name="task" 
                                 type="text" 
                                 id="task" 
-                                className="border-solid border border-[#79747E] rounded h-12 text-caption p-4 w-[100%]"
+                                className="border-solid border border-[#79747E] rounded h-12 text-caption p-4 pr-10 w-[100%]"
                                 placeholder="Type the name of your task"
                                 value={taskName}
                                 onChange={handleChangeTask}
