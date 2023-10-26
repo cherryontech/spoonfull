@@ -21,7 +21,7 @@ const TaskCard = ({ task, onRemoveTask }) => {
                         checked={isChecked}
                         onChange={handleCheck}
                     />
-                    <label className="mr-5" htmlFor="checkbox"> {task.task}</label>
+                    <label className="mr-10" htmlFor="checkbox"> {task.task}</label>
                     <svg
                         className="absolute w-4 h-4 mt-1 hidden peer-checked:block pointer-events-none"
                         xmlns="http://www.w3.org/2000/svg"
