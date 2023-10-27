@@ -44,7 +44,7 @@ const TasksPage = () => {
                     <div className="h-[650px] flex flex-col justify-center items-center gap-4">
                         <img src={heroImg} alt="a graphic with a girl standing next to big phone, managing tasks" className="w-[200px]" />
                         <h5 className="text-subtitle">Start adding your tasks!</h5>
-                        <p className="text-caption text-text2 text-center w-[200px]">Plan your day by adding tasks and allocating your energy among them.</p>
+                        <p className="text-caption text-text1 text-center w-[200px]">Plan your day by adding tasks and allocating your energy among them.</p>
                     </div>
                     :
                     <div>

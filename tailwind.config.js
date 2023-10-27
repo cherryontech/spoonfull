@@ -10,6 +10,7 @@ export default {
       'primary1': 'rgba(35, 161, 175, 0.75)',
       'primary2':'rgba(35, 161, 175, 0.50)',
       'primary3':'rgba(35, 161, 175, 0.25)',
+      'primary4': 'rgba(35, 161, 175, 0.10)',
       'accent': '#F7559E',
       'accent1': 'rgba(247, 85, 158, 0.75)',
       'accent2': 'rgba(247, 85, 158, 0.50)',
