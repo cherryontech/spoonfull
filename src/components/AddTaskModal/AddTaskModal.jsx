@@ -6,7 +6,8 @@ const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
     const [activeButton, setActiveButton] = useState(true);
     const [taskName, setTaskName] = useState('');
     const [spoons, setSpoons] = useState(0);
-
+    
+    
     const handleChangeTask = (e) => {
         if(e.target.value !== "") {
             setActiveButton(false)
@@ -44,13 +45,16 @@ const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
     }
 
     const handleSubmit = () => {
+        if(remainingSpoons < spoons) {
+            // alert("You can't assign more spoons than you have available");
+            return;
+        }
         let tasks = localStorage["tasks"];
         tasks = JSON.parse(tasks);
         tasks.push(newTask);
         localStorage["tasks"] = JSON.stringify(tasks);
     }
 
-    
     return (
         <section className=" bg-modal-background w-[100vw] h-[100vh] flex justify-center items-center fixed top-0">
             <article className="bg-background w-[328px] p-6 rounded-4xl">
@@ -100,7 +104,12 @@ const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
                             </div>
                             <div className="flex justify-between gap-2">
                                 <p className="text-body-small">Available Spoons:</p>
-                                <p className="text-body-small">{
+                                <p className={
+                                    ((remainingSpoons - Number(spoons)) > 0)? 
+                                    "text-body-small" 
+                                    : 
+                                    "text-body-small text-alert"
+                                }>{
                                     remainingSpoons - Number(spoons) 
                                 }</p>
                             </div>
