@@ -18,6 +18,12 @@ const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
     }
 
     const handleChangeSpoons = (e) => {
+        if(e.target.value > remainingSpoons) {
+            setActiveButton(true)
+        } else {
+            setActiveButton(false)
+        }
+
         if (e.target.value === "") {
             setSpoons(0)
         } else {
@@ -38,17 +44,13 @@ const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
     };
 
     const handleKeyDown = (e) => {
-        if (e.key === 'Enter' && taskName !== "") {
+        if (e.key === 'Enter' && taskName !== "" && (remainingSpoons - spoons) >= 0) {
           handleSubmit();
           window.location.reload()
         }
     }
 
     const handleSubmit = () => {
-        if(remainingSpoons < spoons) {
-            // alert("You can't assign more spoons than you have available");
-            return;
-        }
         let tasks = localStorage["tasks"];
         tasks = JSON.parse(tasks);
         tasks.push(newTask);
@@ -72,6 +74,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
                                 value={taskName}
                                 onChange={handleChangeTask}
                                 onKeyDown={handleKeyDown}
+                                required
                             />
                             <div className="absolute top-3 right-2">
                                 <button onClick={handleClear}>
