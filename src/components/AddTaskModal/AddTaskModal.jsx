@@ -41,7 +41,7 @@ const AddTaskModal = ({ setShowModal }) => {
     }
 
     return (
-        <section className=" bg-modal-background w-[100vw] h-[100vh] flex justify-center items-center fixed top-0">
+        <section className=" bg-text2 w-[100vw] h-[100vh] flex justify-center items-center fixed top-0">
             <article className="bg-background w-[328px] h-[221px] p-6 rounded-4xl">
                 <form onSubmit={handleSubmit}>
                     <h4 className="text-header4 mt-0 mb-2">Add Task</h4>
@@ -52,7 +52,7 @@ const AddTaskModal = ({ setShowModal }) => {
                                 name="task"
                                 type="text"
                                 id="task"
-                                className="border-solid border border-[#79747E] rounded h-12 text-caption p-4 w-[100%]"
+                                className="border-solid border border-[#79747E] rounded h-12 text-caption p-4 w-[100%] outline-primary"
                                 placeholder="Type the name of your task"
                                 value={taskName}
                                 onChange={handleChange}
@@ -69,7 +69,7 @@ const AddTaskModal = ({ setShowModal }) => {
                     </div>
                     <div className="flex justify-end gap-2">
                         <button type="submit" className="btn-modal" onClick={() => setShowModal(false)}>Cancel</button>
-                        <button disabled={activeButton} className="btn-modal">Add</button>
+                        <button disabled={activeButton} className="btn-modal text-primary">Add</button>
                     </div>
                 </form>
             </article>

@@ -4,6 +4,6 @@
 
 @layer components {
     .btn-modal {
-      @apply text-button-text disabled:text-disabled py-2.5 px-3 enabled:hover:bg-onhover-btn hover:rounded-full
+      @apply text-button-text disabled:text-text3 py-2.5 px-3 enabled:hover:bg-primary3 hover:rounded-full
     }
   }
