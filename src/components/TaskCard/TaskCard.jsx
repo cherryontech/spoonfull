@@ -9,7 +9,7 @@ const TaskCard = ({ task, onRemoveTask }) => {
     };
 
     return (
-        <div className="w-full p-4">
+        <div className="w-full p-1">
             <div className="bg-navbar-background rounded-2xl p-4 flex flex-col">
                 <div className="my-2 flex gap-2">
                     <input
