@@ -96,7 +96,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
                                 <p className="text-caption">x</p>
                                 <input 
                                     name="spoons"
-                                    type="number"
+                                    type="text"
                                     id="spoons"
                                     placeholder="00"
                                     className="text-body w-[52px] h-12 bg-primary4 p-4 rounded-lg text-center"
