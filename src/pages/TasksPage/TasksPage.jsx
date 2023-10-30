@@ -3,11 +3,13 @@ import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import AddTaskModal from "../../components/AddTaskModal/AddTaskModal";
 import TaskCard from "../../components/TaskCard/TaskCard";
+import WelcomePage from "../WelcomePage/WelcomePage";
 
 
 const TasksPage = () => {
     const maxSpoons = 12
     const [showModal, setShowModal] = useState(false);
+    const [showWelcomePage, setShowWelcomePage] = useState(true);
     const [taskList, setTaskList] = useState([]);
     const [remainingSpoons, setRemainingSpoons] = useState(maxSpoons);
     
@@ -47,7 +49,21 @@ const TasksPage = () => {
 
         spoonCount(taskList);
     }, [taskList])
+
+    useEffect(() => {
+        if (!localStorage["tutorial"]) {
+            localStorage["tutorial"] = "true";
+        }
+
+        let tutorial = localStorage["tutorial"];
+        tutorial = JSON.parse(tutorial);
+        setShowWelcomePage(tutorial)
+    },[])
     
+    const handleSkipTutorial = () => {
+        localStorage.setItem("tutorial", "false");
+        window.location.reload();
+    }
 
     return (
         <section className="bg-background w-[100vw] h-[100vh] p-4">
@@ -82,6 +98,10 @@ const TasksPage = () => {
                 <AddTaskModal 
                     setShowModal={setShowModal}
                     remainingSpoons={remainingSpoons} />,
+                document.body
+            )}
+            {showWelcomePage && createPortal(
+                <WelcomePage handleSkipTutorial={handleSkipTutorial}/>,
                 document.body
             )}
 

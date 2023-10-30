@@ -10,7 +10,6 @@ function App() {
     <Navbar />
      <Routes>
       <Route path="/" element={<TasksPage />}/>
-      <Route path="/welcome" element={<WelcomePage/>}/>
      </Routes>
     </BrowserRouter>
   )
