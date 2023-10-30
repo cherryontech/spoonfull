@@ -30,11 +30,18 @@ describe("AddTaskModal", () => {
         expect(inputField.value).toBe("");
     })
 
-    it("should be able to type in input field", () => {
+    it("should be able to type in task input field", () => {
         render(<AddTaskModal />);
         const inputField = screen.getByPlaceholderText("Type the name of your task");
         fireEvent.change(inputField, { target: { value: "New Task"}});
         expect(inputField.value).toBe("New Task");
+    })
+
+    it("should be able to type in spoon input field", () => {
+        render(<AddTaskModal />);
+        const inputField = screen.getByPlaceholderText("00");
+        fireEvent.change(inputField, { target: { value: "12"}});
+        expect(inputField.value).toBe("12");
     })
 })
 

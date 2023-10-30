@@ -6,8 +6,11 @@ import TaskCard from "../../components/TaskCard/TaskCard";
 
 
 const TasksPage = () => {
+    const maxSpoons = 12
     const [showModal, setShowModal] = useState(false);
     const [taskList, setTaskList] = useState([]);
+    const [remainingSpoons, setRemainingSpoons] = useState(maxSpoons);
+    
 
     const openModal = (e) => {
         e.preventDefault();
@@ -31,13 +34,25 @@ const TasksPage = () => {
         setTaskList(tasks)
     };
 
+    useEffect(() => {
+        const spoonCount = (arr) => {
+            let totalSpoons = 0
+            const spoonArray = [];
+            arr.map(task => {
+                return spoonArray.push(Number(task.spoons));
+            })
+            totalSpoons = spoonArray.reduce((accumulator, currentSpoon) => accumulator + currentSpoon, 0);
+            setRemainingSpoons(maxSpoons - totalSpoons)
+        }
+
+        spoonCount(taskList);
+    }, [taskList])
+    
+
     return (
         <section className="bg-background w-[100vw] h-[100vh] p-4">
             <div className="w-[100%] flex justify-between items-center border-b border-text3 pb-2">
                 <h4 className="text-header4">Tasks</h4>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M10 18H14V16H10V18ZM3 6V8H21V6H3ZM6 13H18V11H6V13Z" fill="#0F0129" />
-                </svg>
             </div>
             {
                 (!taskList[0] || !taskList[0].task) ?
@@ -47,7 +62,7 @@ const TasksPage = () => {
                         <p className="text-caption text-text1 text-center w-[200px]">Plan your day by adding tasks and allocating your energy among them.</p>
                     </div>
                     :
-                    <div>
+                    <div className="py-2">
                         <ul>
                             {taskList.map((task) => {
                                 return (
@@ -64,7 +79,9 @@ const TasksPage = () => {
                 <p className="text-button-text">Add Task</p>
             </button>
             {showModal && createPortal(
-                <AddTaskModal setShowModal={setShowModal} />,
+                <AddTaskModal 
+                    setShowModal={setShowModal}
+                    remainingSpoons={remainingSpoons} />,
                 document.body
             )}
 
