@@ -6,6 +6,12 @@
     .btn-modal {
       @apply text-button-text disabled:text-text3 py-2.5 px-3 enabled:hover:bg-primary4 hover:rounded-full
     }
+    .btn-filled{
+      @apply text-button-text bg-accent rounded-full w-[256px] h-[48px]
+    }
+    .btn-outlined{
+      @apply text-button-text rounded-full w-[256px] h-[48px] border-accent border
+    }
   }
 
 @layer base {
