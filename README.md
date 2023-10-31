@@ -1,3 +1,12 @@
+### SpoonFull
+Spoonful is a website that aids in preventing burnout by incorporating a task planner that utilizes spoon theory.
+
+### Website available here:
+
+https://spoonfull-kiwi-kick.netlify.app/
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8716e697-002f-447c-aa13-6f01dd4beae1/deploy-status)](https://app.netlify.com/sites/spoonfull-kiwi-kick/deploys)
+
 
 ### Tech Stack :
 

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 // eslint-disable-next-line react/prop-types
@@ -18,6 +20,10 @@ const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
     }
 
     const handleChangeSpoons = (e) => {
+        if( (remainingSpoons - e.target.value) < 0) {
+            toast.error("You don't have enough spoons available.")
+        }
+
         if(e.target.value > remainingSpoons) {
             setActiveButton(true)
         } else {
@@ -51,15 +57,22 @@ const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
     }
 
     const handleSubmit = () => {
-        let tasks = localStorage["tasks"];
-        tasks = JSON.parse(tasks);
-        tasks.push(newTask);
-        localStorage["tasks"] = JSON.stringify(tasks);
+            let tasks = localStorage["tasks"];
+            tasks = JSON.parse(tasks);
+            tasks.push(newTask);
+            localStorage["tasks"] = JSON.stringify(tasks);
     }
 
     return (
-        <section className=" bg-modal-background w-[100vw] h-[100vh] flex justify-center items-center fixed top-0">
-            <article className="bg-background w-[328px] p-6 rounded-4xl">
+        <section className=" bg-text2 w-[100vw] h-[100vh] flex justify-center items-center fixed top-0" onClick={() => setShowModal(false)}>
+            <ToastContainer 
+                position="top-center" 
+                theme="light" 
+                hideProgressBar={true} 
+                limit={1} 
+                role="alert"
+            />
+            <article className="bg-background w-[328px] p-6 rounded-4xl" onClick={e => e.stopPropagation()}>
                 <form onSubmit={handleSubmit}>
                     <h4 className="text-header4 mt-0 mb-2">Add Task</h4>
                     <div className="w-[100%] flex flex-col flex-start mb-6">
@@ -83,7 +96,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
                                     </svg>
                                 </button>
                             </div>
-                            <p className="text-caption text-disabled ml-4">*Required</p>
+                            <p className="text-caption text-text2 ml-4">*Required</p>
                         </div>
                     </div>
                     <div className="pb-6">
@@ -96,7 +109,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
                                 <p className="text-caption">x</p>
                                 <input 
                                     name="spoons"
-                                    type="text"
+                                    type="number"
                                     id="spoons"
                                     placeholder="00"
                                     className="text-body w-[52px] h-12 bg-primary4 p-4 rounded-lg text-center"
@@ -111,7 +124,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
                                     ((remainingSpoons - Number(spoons)) > 0)? 
                                     "text-body-small" 
                                     : 
-                                    "text-body-small text-alert"
+                                    "text-body-small text-error"
                                 }>{
                                     remainingSpoons - Number(spoons) 
                                 }</p>
@@ -120,7 +133,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
                     </div>
                     <div className="flex justify-end gap-2">
                         <button type="submit" className="btn-modal" onClick={() => setShowModal(false)}>Cancel</button>
-                        <button disabled={activeButton} className="btn-modal">Add</button>
+                        <button disabled={activeButton} className="btn-modal text-primary">Add</button>
                     </div>
                 </form>
             </article>
