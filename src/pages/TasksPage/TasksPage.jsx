@@ -4,12 +4,14 @@ import { createPortal } from "react-dom";
 import AddTaskModal from "../../components/AddTaskModal/AddTaskModal";
 import TaskCard from "../../components/TaskCard/TaskCard";
 import WelcomePage from "../WelcomePage/WelcomePage";
+import TutorialPage from "../TutorialPage/TutorialPage";
 
 
 const TasksPage = () => {
     const maxSpoons = 12
     const [showModal, setShowModal] = useState(false);
     const [showWelcomePage, setShowWelcomePage] = useState(true);
+    const [showTutorialPage, setShowTutorialPage] = useState(false)
     const [taskList, setTaskList] = useState([]);
     const [remainingSpoons, setRemainingSpoons] = useState(maxSpoons);
     
@@ -101,10 +103,18 @@ const TasksPage = () => {
                 document.body
             )}
             {showWelcomePage && createPortal(
-                <WelcomePage handleSkipTutorial={handleSkipTutorial}/>,
+                <WelcomePage 
+                    handleSkipTutorial={handleSkipTutorial}
+                    setShowTutorialPage={setShowTutorialPage}
+                />,
                 document.body
             )}
-
+            {showTutorialPage && createPortal(
+                <TutorialPage 
+                    handleSkipTutorial={handleSkipTutorial}
+                />,
+                document.body
+            )}
         </section>
     )
 }
