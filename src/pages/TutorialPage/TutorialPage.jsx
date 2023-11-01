@@ -1,5 +1,5 @@
 import tutorialImg1 from "../../assets/tutorial-img1.png";
-import gif from "../../assets/giphy 2.png";
+import gif from "../../assets/giphy.gif";
 import { useNavigate } from "react-router";
 
 
@@ -19,9 +19,9 @@ const TutorialPage = ({handleSkipTutorial}) => {
                 <div className="center-column w-[256px]">
                     <h4 className="text-header4 mb-6">Add Tasks</h4>
                     <p className="text-body text-text1 text-center mb-4">You can add tasks on your mind to visualize the plan for your day</p>
-                    <p className="text-body text-text1 text-center mb-4">That can be done by clicking on the floating “Add task” button on the Home Screen </p>
+                    <p className="text-body text-text1 text-center">That can be done by clicking on the floating “Add task” button on the Home Screen </p>
                 </div>
-                <img src={gif} alt="an animation of a finger clicking the button"/>
+                <img src={gif} alt="an animation of a finger clicking the button" className="w-[60%]"/>
             </div>
             <div className="flex justify-between p-4">
                 <button className="btn-modal" onClick={skipTutorial}>Skip</button>
