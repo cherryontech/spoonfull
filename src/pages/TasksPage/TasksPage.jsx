@@ -4,14 +4,18 @@ import { createPortal } from "react-dom";
 import AddTaskModal from "../../components/AddTaskModal/AddTaskModal";
 import TaskCard from "../../components/TaskCard/TaskCard";
 import WelcomePage from "../WelcomePage/WelcomePage";
+import SpoonsModal from "../../components/SpoonsModal/SpoonsModal";
 
 
 const TasksPage = () => {
     const maxSpoons = 12
     const [showModal, setShowModal] = useState(false);
     const [showWelcomePage, setShowWelcomePage] = useState(true);
+    const [showSpoonsModal, setShowSpoonsModal] = useState(false)
     const [taskList, setTaskList] = useState([]);
     const [remainingSpoons, setRemainingSpoons] = useState(maxSpoons);
+    const [usedSpoons, setUsedSpoons] = useState(0);
+    const [plannedSpoons, setPlannedSpoons] = useState(0);
     
 
     const openModal = (e) => {
@@ -38,17 +42,31 @@ const TasksPage = () => {
 
     useEffect(() => {
         const spoonCount = (arr) => {
-            let totalSpoons = 0
+
+            const checkedArray = [];
+            arr.map(task => {
+                if(task.checked === true) {
+                    return checkedArray.push(Number(task.spoons))
+                }
+            })
+            const used = checkedArray.reduce((accumulator, spoon) => accumulator + spoon, 0);
+
             const spoonArray = [];
             arr.map(task => {
                 return spoonArray.push(Number(task.spoons));
             })
-            totalSpoons = spoonArray.reduce((accumulator, currentSpoon) => accumulator + currentSpoon, 0);
+            const totalSpoons = spoonArray.reduce((accumulator, currentSpoon) => accumulator + currentSpoon, 0);
+           
+            setUsedSpoons(used)
+            setPlannedSpoons(totalSpoons - used)
             setRemainingSpoons(maxSpoons - totalSpoons)
         }
 
         spoonCount(taskList);
+
     }, [taskList])
+
+    console.log(remainingSpoons, plannedSpoons)
 
     useEffect(() => {
         if (!localStorage["tutorial"]) {
@@ -69,6 +87,7 @@ const TasksPage = () => {
         <section className="bg-background w-[100vw] h-[100vh] p-4">
             <div className="w-[100%] flex justify-between items-center border-b border-text3 pb-2">
                 <h4 className="text-header4">Tasks</h4>
+                <button className="btn-modal" onClick={() => setShowSpoonsModal(true)}>Spoons</button>
             </div>
             {
                 (!taskList[0] || !taskList[0].task) ?
@@ -104,7 +123,15 @@ const TasksPage = () => {
                 <WelcomePage handleSkipTutorial={handleSkipTutorial}/>,
                 document.body
             )}
-
+            {showSpoonsModal && createPortal(
+                <SpoonsModal 
+                    setShowSpoonsModal={setShowSpoonsModal}
+                    remainingSpoons={remainingSpoons} 
+                    usedSpoons={usedSpoons}
+                    plannedSpoons={plannedSpoons}   
+                />,
+                document.body
+            )}
         </section>
     )
 }
