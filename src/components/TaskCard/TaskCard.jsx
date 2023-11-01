@@ -10,7 +10,7 @@ const TaskCard = ({ task, onRemoveTask }) => {
 
     return (
         <div className="w-full p-1">
-            <div className="bg-background rounded-2xl p-4 flex flex-col">
+            <div className="bg-background shadow-card-shadow rounded-lg p-4 flex flex-col">
                 <div className="my-2 flex gap-2">
                     <input
                         className="relative peer appearance-none w-4 h-4 border rounded-sm mr-5 mt-1 shrink-0 checked:bg-accent checked:border-0"

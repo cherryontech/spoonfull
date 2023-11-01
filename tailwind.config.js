@@ -83,7 +83,8 @@ export default {
         '4xl': '1.75rem',
       },
       boxShadow: {
-        "box-shadow": '0px 3px 3px 0px rgba(0, 0, 0, 0.14)'
+        "box-shadow": '0px 3px 3px 0px rgba(0, 0, 0, 0.14)',
+        "card-shadow": '0px 0px 3px 1px rgba(0, 0, 0, 0.10)'
       }
     },
   },
