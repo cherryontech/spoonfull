@@ -34,7 +34,7 @@ const TaskCard = ({ task, onRemoveTask }) => {
                         <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
                     <div className="my-2 flex flex-col items-start gap-2">
-                        <label className="mr-10" htmlFor="checkbox">{task.task}</label>
+                        <label className="mr-10 text-body" htmlFor="checkbox">{task.task}</label>
                         <div className="flex gap-1 p-2 py-1 pr-4 justify-between items-center border-[0.4px] rounded-lg">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 width="18"
@@ -54,8 +54,8 @@ const TaskCard = ({ task, onRemoveTask }) => {
                                     </clipPath>
                                 </defs>
                             </svg>
-                            <p>x</p>
-                            <p>{task.spoons}</p>
+                            <p className="text-caption">x</p>
+                            <p className="text-caption">{task.spoons}</p>
                         </div>
                     </div>
                 </div>
