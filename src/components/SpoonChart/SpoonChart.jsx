@@ -8,7 +8,7 @@ const SpoonChart = ({remainingSpoons, usedSpoons, plannedSpoons}) => {
         datasets: [{
             label: "Spoons",
             data: [usedSpoons, plannedSpoons, remainingSpoons],
-            backgroundColor: ["rgba(35, 161, 175, 0.50)","rgba(35, 161, 175, 0.75)", "#23A1AF"]
+            backgroundColor: ["rgba(35, 161, 175, 0.25)","rgba(35, 161, 175, 0.75)", "#23A1AF"]
             }]
     }
     return (

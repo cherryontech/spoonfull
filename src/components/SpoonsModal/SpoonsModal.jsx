@@ -21,7 +21,7 @@ const SpoonsModal = ({setShowSpoonsModal, remainingSpoons, usedSpoons, plannedSp
                 plannedSpoons={plannedSpoons}
             />
             <div className="flex flex-col gap-2 my-4 w-[200px]">
-                <div className="flex justify-between w-full rounded-lg bg-primary2 py-1">
+                <div className="flex justify-between w-full rounded-lg bg-primary3 py-1">
                     <div className="flex items-center gap-1 px-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
                             <path fillRule="evenodd" clipRule="evenodd" d="M7.02254 8.30429L1.31654 3.77879C1.12275 3.62529 0.963628 3.43253 0.849617 3.21317C0.735606 2.99381 0.669289 2.75281 0.655021 2.50601C0.640753 2.2592 0.678857 2.01217 0.766831 1.78113C0.854805 1.55009 0.990658 1.34028 1.16547 1.16547C1.34028 0.990658 1.55009 0.854805 1.78113 0.766831C2.01217 0.678857 2.2592 0.640753 2.50601 0.655021C2.75281 0.669289 2.99381 0.735606 3.21317 0.849617C3.43253 0.963628 3.62529 1.12275 3.77879 1.31654L8.30429 7.02254C9.28454 6.59429 10.7793 6.53654 12.0385 7.79504C12.7998 8.55704 13.2738 9.48854 13.4358 10.375C13.5933 11.2375 13.4725 12.1945 12.8335 12.8335C12.1953 13.4725 11.2375 13.5933 10.3758 13.4358C9.48929 13.2738 8.55704 12.7998 7.79579 12.0378C6.53579 10.7785 6.59429 9.28454 7.02254 8.30429Z" fill="#0F0129"/>
@@ -31,7 +31,7 @@ const SpoonsModal = ({setShowSpoonsModal, remainingSpoons, usedSpoons, plannedSp
                     </div>
                     <p className="text-caption text-end px-4">Used</p>
                 </div>
-                <div className="flex justify-between w-full rounded-lg bg-primary1 py-1">
+                <div className="flex justify-between w-full rounded-lg bg-primary2 py-1">
                     <div className="flex items-center gap-1 px-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
                             <path fillRule="evenodd" clipRule="evenodd" d="M7.02254 8.30429L1.31654 3.77879C1.12275 3.62529 0.963628 3.43253 0.849617 3.21317C0.735606 2.99381 0.669289 2.75281 0.655021 2.50601C0.640753 2.2592 0.678857 2.01217 0.766831 1.78113C0.854805 1.55009 0.990658 1.34028 1.16547 1.16547C1.34028 0.990658 1.55009 0.854805 1.78113 0.766831C2.01217 0.678857 2.2592 0.640753 2.50601 0.655021C2.75281 0.669289 2.99381 0.735606 3.21317 0.849617C3.43253 0.963628 3.62529 1.12275 3.77879 1.31654L8.30429 7.02254C9.28454 6.59429 10.7793 6.53654 12.0385 7.79504C12.7998 8.55704 13.2738 9.48854 13.4358 10.375C13.5933 11.2375 13.4725 12.1945 12.8335 12.8335C12.1953 13.4725 11.2375 13.5933 10.3758 13.4358C9.48929 13.2738 8.55704 12.7998 7.79579 12.0378C6.53579 10.7785 6.59429 9.28454 7.02254 8.30429Z" fill="#0F0129"/>
