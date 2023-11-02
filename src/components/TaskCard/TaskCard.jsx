@@ -35,7 +35,7 @@ const TaskCard = ({ task, onRemoveTask }) => {
                     </svg>
                     <div className="my-2 flex flex-col items-start gap-2">
                         <label className="mr-10 text-body" htmlFor="checkbox">{task.task}</label>
-                        <div className="flex gap-1 p-2 py-1 pr-4 justify-between items-center border-[0.4px] rounded-lg">
+                        <div className="flex gap-1 p-2 py-1 pr-4 justify-between items-center border-[0.4px] border-text1 rounded-lg">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 width="18"
                                 height="18"
