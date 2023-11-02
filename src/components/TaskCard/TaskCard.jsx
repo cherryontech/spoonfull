@@ -54,8 +54,8 @@ const TaskCard = ({ task, onRemoveTask }) => {
                                     </clipPath>
                                 </defs>
                             </svg>
-                            <p className="text-caption">x</p>
-                            <p className="text-caption">{task.spoons}</p>
+                            <p>x</p>
+                            <p>{task.spoons}</p>
                         </div>
                     </div>
                 </div>
