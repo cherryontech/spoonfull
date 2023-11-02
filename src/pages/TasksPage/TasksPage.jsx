@@ -46,14 +46,14 @@ const TasksPage = () => {
             const checkedArray = [];
             arr.map(task => {
                 if(task.checked === true) {
-                    return checkedArray.push(Number(task.spoons))
+                    return checkedArray.push(task.spoons)
                 }
             })
             const used = checkedArray.reduce((accumulator, spoon) => accumulator + spoon, 0);
 
             const spoonArray = [];
             arr.map(task => {
-                return spoonArray.push(Number(task.spoons));
+                return spoonArray.push(task.spoons);
             })
             const totalSpoons = spoonArray.reduce((accumulator, currentSpoon) => accumulator + currentSpoon, 0);
            
@@ -65,8 +65,6 @@ const TasksPage = () => {
         spoonCount(taskList);
 
     }, [taskList])
-
-    console.log(remainingSpoons, plannedSpoons)
 
     useEffect(() => {
         if (!localStorage["tutorial"]) {

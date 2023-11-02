@@ -41,7 +41,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
     const newTask = {
         id: Date.now(),
         task: taskName,
-        spoons: spoons,
+        spoons: Number(spoons),
         checked: checked,
     }
 
