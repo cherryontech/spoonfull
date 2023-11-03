@@ -38,6 +38,7 @@ export default function Navbar() {
                 < Link to='/'>
                   <div className="flex flex-shrink-0 items-center">
                     <svg
+                      alt="spoonfull logo"
                       width="72"
                       height="35"
                       viewBox="0 0 124 60"
