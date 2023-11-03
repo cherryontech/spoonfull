@@ -8,7 +8,6 @@ const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
     const [activeButton, setActiveButton] = useState(true);
     const [taskName, setTaskName] = useState('');
     const [spoons, setSpoons] = useState(0);
-    const [checked, setChecked] = useState(false);
     
     
     const handleChangeTask = (e) => {
@@ -42,7 +41,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
         id: Date.now(),
         task: taskName,
         spoons: Number(spoons),
-        checked: checked,
+        checked: false,
     }
 
     const handleClear = (e) => {
