@@ -26,7 +26,6 @@ export default {
       'success2': 'rgba(65, 153, 63, 0.50)',
       'success3': 'rgba(65, 153, 63, 0.25)',
       'error': '#D61F14',
-      "navbar-background": '#E5E3E7',
 
     },
     fontFamily: {
