@@ -16,6 +16,7 @@ const SpoonsModal = ({setShowSpoonsModal, remainingSpoons, usedSpoons, plannedSp
             </div>
             <p className="text-body text-center pt-6 pb-8 px-2">Each day, you can use up to 12 spoons, but using them all is not necessary.</p>
             <SpoonChart 
+                data-testid="spoonChart"
                 remainingSpoons={remainingSpoons} 
                 usedSpoons={usedSpoons}
                 plannedSpoons={plannedSpoons}
