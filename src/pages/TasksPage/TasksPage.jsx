@@ -30,6 +30,7 @@ const TasksPage = () => {
 
         let tasks = localStorage["tasks"];
         tasks = JSON.parse(tasks);
+        tasks = tasks.sort((a, b) => a.id - b.id)
         setTaskList(tasks)
     }, []);
 
@@ -39,6 +40,24 @@ const TasksPage = () => {
         localStorage["tasks"] = JSON.stringify(tasks);
         setTaskList(tasks)
     };
+
+    const editChecked = (id) => {
+        let tasks = JSON.parse(JSON.stringify(taskList));
+        let editedTask = tasks.find((task) => task.id == id);
+
+        if(editedTask.checked === false) {
+            editedTask.checked = true;
+        } 
+        else {
+            editedTask.checked = false;
+        }
+
+        tasks = tasks.filter((task) => task.id != id);
+        tasks.push(editedTask);
+        localStorage["tasks"] = JSON.stringify(tasks);
+        tasks = tasks.sort((a, b) => a.id - b.id)
+        setTaskList(tasks)
+    }
 
     useEffect(() => {
         const spoonCount = (arr) => {
@@ -99,7 +118,7 @@ const TasksPage = () => {
                         <ul>
                             {taskList.map((task) => {
                                 return (
-                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} /></li>
+                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} /></li>
                                 )
                             })}
                         </ul>
