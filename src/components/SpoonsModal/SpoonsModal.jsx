@@ -6,11 +6,11 @@ const SpoonsModal = ({setShowSpoonsModal, remainingSpoons, usedSpoons, plannedSp
     
     return (
         <section className="flex flex-col items-center bg-background h-full w-full fixed top-0 px-4">
-            <div className="p-2.5 my-6 self-start" onClick={() => setShowSpoonsModal(false)}>
+            <button className="p-2.5 my-6 self-start" onClick={() => setShowSpoonsModal(false)}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="black"/>
                 </svg>
-            </div>
+            </button>
             <div className="w-[100%] flex justify-between items-center border-b border-text3 px-2 pb-2">
                 <h4 className="text-header4">Spoons</h4>
             </div>
