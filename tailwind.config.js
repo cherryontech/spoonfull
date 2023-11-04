@@ -11,10 +11,12 @@ export default {
       'primary2':'rgba(35, 161, 175, 0.50)',
       'primary3':'rgba(35, 161, 175, 0.25)',
       'primary4': 'rgba(35, 161, 175, 0.10)',
+      'primary-text': '#1C7E87',
       'accent': '#F7559E',
       'accent1': 'rgba(247, 85, 158, 0.75)',
       'accent2': 'rgba(247, 85, 158, 0.50)',
       'accent3': 'rgba(247, 85, 158, 0.25)',
+      'accent-text': '#E50B6D',
       'text': '#001111',
       'text1': 'rgba(0, 17, 17, 0.75)',
       'text2': 'rgba(0, 17, 17, 0.50)',
@@ -26,7 +28,6 @@ export default {
       'success2': 'rgba(65, 153, 63, 0.50)',
       'success3': 'rgba(65, 153, 63, 0.25)',
       'error': '#D61F14',
-      "navbar-background": '#E5E3E7',
 
     },
     fontFamily: {
@@ -62,7 +63,6 @@ export default {
         fontWeight: '400',
       }],
       'small-body': ['1rem', {
-        lineHeight: '140%',
         fontWeight: '700',
       }],
       'button-text': ['1rem', {
@@ -83,7 +83,8 @@ export default {
         '4xl': '1.75rem',
       },
       boxShadow: {
-        "box-shadow": '0px 3px 3px 0px rgba(0, 0, 0, 0.14)'
+        "box-shadow": '0px 3px 3px 0px rgba(0, 0, 0, 0.14)',
+        "card-shadow": '0px 0px 3px 1px rgba(0, 0, 0, 0.10)'
       }
     },
   },

@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import TasksPage from './pages/TasksPage/TasksPage';
-import TutorialPage from './pages/TutorialPage/TutorialPage';
+import TutorialPage from './components/TutorialPage/TutorialPage';
 import Navbar from './components/Navbar/Navbar';
 import "@fontsource/lato";
 

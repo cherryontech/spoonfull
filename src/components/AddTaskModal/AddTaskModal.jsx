@@ -40,7 +40,8 @@ const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
     const newTask = {
         id: Date.now(),
         task: taskName,
-        spoons: spoons,
+        spoons: Number(spoons),
+        checked: false,
     }
 
     const handleClear = (e) => {
@@ -133,7 +134,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
                     </div>
                     <div className="flex justify-end gap-2">
                         <button type="submit" className="btn-modal" onClick={() => setShowModal(false)}>Cancel</button>
-                        <button disabled={activeButton} className="btn-modal text-primary">Add</button>
+                        <button disabled={activeButton} className="btn-modal text-primary-text">Add</button>
                     </div>
                 </form>
             </article>
