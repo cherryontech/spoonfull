@@ -6,7 +6,7 @@ import gif from "../../assets/giphy.gif";
 const TutorialThirdScreen = () => {
 
     return (
-        <section className="center-column pt-[121px]">
+        <section className="center-column">
             <img src={tutorialImg1} alt="an illustration of a person standing in front of boards" className="mb-9"/>
             <div className="center-column w-[256px]">
                 <h4 className="text-header4 mb-6">Add Tasks</h4>

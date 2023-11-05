@@ -5,7 +5,7 @@ import singleSpoon from "../../assets/tut-first-single-spoon.png";
 
 const TutorialFirstScreen = () => {
     return (
-        <section className="center-column text-center self-center gap-8 py-8">
+        <section className="center-column text-center self-center gap-8">
             <div className="center-column w-[256px] gap-4">
                 <img src={firstImg} />
                 <h4 className="text-header4">Spoon Theory, to stay mindful of your energy</h4>

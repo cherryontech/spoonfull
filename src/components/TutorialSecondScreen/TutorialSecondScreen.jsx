@@ -2,7 +2,7 @@ import mainImg from "../../assets/tut-second-img.png";
 
 const TutorialSecondScreen = () => {
     return (
-        <section className="center-column text-center self-center gap-8 py-8 px-4">
+        <section className="center-column text-center self-center gap-6 px-4">
             <div className="center-column gap-2">
                 <img src={mainImg} alt="an illustration of a happy woman holding a document"/>
                 <h4 className="text-header4">Your path to a wholesome day</h4>
