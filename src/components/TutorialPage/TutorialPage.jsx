@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router";
 import TutorialFourthScreen from "../TutorialFourthScreen/TutorialFourthScreen";
 import TutorialFirstScreen from "../TutorialFirstScreen/TutorialFirstScreen";
+import TutorialSecondScreen from "../TutorialSecondScreen/TutorialSecondScreen";
 
 
 // eslint-disable-next-line react/prop-types
@@ -14,6 +15,7 @@ const TutorialPage = ({handleSkipTutorial}) => {
 
     return (
         <section className="bg-background flex flex-col justify-between h-full w-full fixed top-0">
+            <TutorialSecondScreen />
             <TutorialFirstScreen />
             <TutorialFourthScreen />
             <div className="flex justify-between p-4">
