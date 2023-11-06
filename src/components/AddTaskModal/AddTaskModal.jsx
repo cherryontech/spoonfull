@@ -7,16 +7,18 @@ import 'react-toastify/dist/ReactToastify.css';
 const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
     const [activeButton, setActiveButton] = useState(true);
     const [taskName, setTaskName] = useState('');
-    const [spoons, setSpoons] = useState(0);
+    const [spoons, setSpoons] = useState("");
     
     
     const handleChangeTask = (e) => {
-        if(e.target.value !== "") {
+        let newTask = e.target.value
+        newTask = newTask.replaceAll("  ", " ");
+        if(newTask !== "" && newTask !== " ") {
             setActiveButton(false)
         } else {
             setActiveButton(true)
         }
-        setTaskName(e.target.value);
+        setTaskName(newTask);
     }
 
     const handleChangeSpoons = (e) => {
@@ -51,7 +53,10 @@ const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
     };
 
     const handleKeyDown = (e) => {
-        if (e.key === 'Enter' && taskName !== "" && (remainingSpoons - spoons) >= 0) {
+        if (e.key === 'Enter' 
+            && taskName !== "" 
+            && (remainingSpoons - spoons) >= 0 
+            && taskName !== " ") {
           handleSubmit();
           window.location.reload()
         }
