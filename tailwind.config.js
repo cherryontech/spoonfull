@@ -28,6 +28,7 @@ export default {
       'success2': 'rgba(65, 153, 63, 0.50)',
       'success3': 'rgba(65, 153, 63, 0.25)',
       'error': '#D61F14',
+      'white': '#FFF',
 
     },
     fontFamily: {
@@ -63,7 +64,6 @@ export default {
         fontWeight: '400',
       }],
       'small-body': ['1rem', {
-        lineHeight: '140%',
         fontWeight: '700',
       }],
       'button-text': ['1rem', {

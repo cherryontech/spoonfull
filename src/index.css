@@ -13,7 +13,7 @@
       @apply text-button-text rounded-full w-[256px] h-[48px] border-accent border
     }
     .center-column {
-      @apply flex flex-col items-center
+      @apply flex flex-col items-center justify-center
     }
   }
 
