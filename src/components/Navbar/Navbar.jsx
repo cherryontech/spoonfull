@@ -3,20 +3,20 @@ import { useEffect } from "react";
 import { Link } from 'react-router-dom'
 import { createPortal } from "react-dom";
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Badge } from '@mui/material'
 import SpoonsModal from '../SpoonsModal/SpoonsModal';
 
 const Navbar = ({
-  taskList, 
+  taskList,
   maxSpoons,
-  setShowSpoonsModal, 
-  showSpoonsModal, 
-  remainingSpoons, 
+  setShowSpoonsModal,
+  showSpoonsModal,
+  remainingSpoons,
   setRemainingSpoons,
   usedSpoons,
   setUsedSpoons,
-  plannedSpoons,  
+  plannedSpoons,
   setPlannedSpoons, }) => {
 
   const navigation = [
@@ -30,32 +30,32 @@ const Navbar = ({
     ``
     return classes.filter(Boolean).join(' ')
   }
-  
+
   useEffect(() => {
     const spoonCount = (arr) => {
 
-        const checkedArray = [];
-        arr.map(task => {
-            if(task.checked === true) {
-                return checkedArray.push(task.spoons)
-            }
-        })
-        const used = checkedArray.reduce((accumulator, spoon) => accumulator + spoon, 0);
+      const checkedArray = [];
+      arr.map(task => {
+        if (task.checked === true) {
+          return checkedArray.push(task.spoons)
+        }
+      })
+      const used = checkedArray.reduce((accumulator, spoon) => accumulator + spoon, 0);
 
-        const spoonArray = [];
-        arr.map(task => {
-            return spoonArray.push(task.spoons);
-        })
-        const totalSpoons = spoonArray.reduce((accumulator, currentSpoon) => accumulator + currentSpoon, 0);
-       
-        setUsedSpoons(used)
-        setPlannedSpoons(totalSpoons - used)
-        setRemainingSpoons(maxSpoons - totalSpoons)
+      const spoonArray = [];
+      arr.map(task => {
+        return spoonArray.push(task.spoons);
+      })
+      const totalSpoons = spoonArray.reduce((accumulator, currentSpoon) => accumulator + currentSpoon, 0);
+
+      setUsedSpoons(used)
+      setPlannedSpoons(totalSpoons - used)
+      setRemainingSpoons(maxSpoons - totalSpoons)
     }
 
     spoonCount(taskList);
 
-}, [taskList])
+  }, [taskList])
 
   return (
     <Disclosure as="nav" className="bg-background">
@@ -116,17 +116,17 @@ const Navbar = ({
 
                 </div>
                 <div>
-              <button className="btn-modal" onClick={() => {console.log("button Clicked"); setShowSpoonsModal(true);}}>Spoons</button>
-              {showSpoonsModal && createPortal(
-                <SpoonsModal 
-                    setShowSpoonsModal={setShowSpoonsModal}
-                    remainingSpoons={remainingSpoons} 
-                    usedSpoons={usedSpoons}
-                    plannedSpoons={plannedSpoons}   
-                />,
-                document.body
-            )}
-             </div>
+                  <button className="btn-modal" onClick={() => { console.log("button Clicked"); setShowSpoonsModal(true); }}>Spoons</button>
+                  {showSpoonsModal && createPortal(
+                    <SpoonsModal
+                      setShowSpoonsModal={setShowSpoonsModal}
+                      remainingSpoons={remainingSpoons}
+                      usedSpoons={usedSpoons}
+                      plannedSpoons={plannedSpoons}
+                    />,
+                    document.body
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -153,6 +153,6 @@ const Navbar = ({
       )}
     </Disclosure>
   )
-} 
+}
 
 export default Navbar;

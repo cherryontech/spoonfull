@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { createPortal } from "react-dom";
 import TasksPage from './pages/TasksPage/TasksPage';
 import Navbar from './components/Navbar/Navbar';
 import "@fontsource/lato";
@@ -13,36 +12,31 @@ function App() {
   const [usedSpoons, setUsedSpoons] = useState(0);
   const [plannedSpoons, setPlannedSpoons] = useState(0);
   const [taskList, setTaskList] = useState([]);
-  
+
   return (
     <BrowserRouter>
-    <Navbar 
-    showSpoonsModal={showSpoonsModal}
-    setShowSpoonsModal={setShowSpoonsModal}                     
-    remainingSpoons={remainingSpoons} 
-    setRemainingSpoons={setRemainingSpoons}
-    usedSpoons={usedSpoons}
-    setUsedSpoons={setUsedSpoons}
-    plannedSpoons={plannedSpoons}
-    setPlannedSpoons={setPlannedSpoons}
-    maxSpoons={maxSpoons}
-    taskList={taskList} 
-    setTaskList={setTaskList}
-    />
-     <Routes>
-      <Route path="/" element={<TasksPage taskList={taskList} setTaskList={setTaskList} remainingSpoons={remainingSpoons} maxSpoons={maxSpoons}/>}/>                    
-                    {/* // setShowSpoonsModal={setShowSpoonsModal}
-                    // // remainingSpoons={remainingSpoons} 
-                    // // usedSpoons={usedSpoons}
-                    // // plannedSpoons={plannedSpoons}
-                    // // maxSpoons={maxSpoons}
-                    // showSpoonsModal={showSpoonsModal}
-                    // remainingSpoons={remainingSpoons} 
-                    // usedSpoons={usedSpoons}
-                    // plannedSpoons={plannedSpoons}}
-                    // maxSpoons={maxSpoons} */}
-                   
-     </Routes>
+      <Navbar
+        showSpoonsModal={showSpoonsModal}
+        setShowSpoonsModal={setShowSpoonsModal}
+        remainingSpoons={remainingSpoons}
+        setRemainingSpoons={setRemainingSpoons}
+        usedSpoons={usedSpoons}
+        setUsedSpoons={setUsedSpoons}
+        plannedSpoons={plannedSpoons}
+        setPlannedSpoons={setPlannedSpoons}
+        maxSpoons={maxSpoons}
+        taskList={taskList}
+        setTaskList={setTaskList}
+      />
+      <Routes>
+        <Route path="/"
+          element={<TasksPage
+            taskList={taskList}
+            setTaskList={setTaskList}
+            remainingSpoons={remainingSpoons}
+            maxSpoons={maxSpoons} />}
+        />
+      </Routes>
     </BrowserRouter>
   )
 }

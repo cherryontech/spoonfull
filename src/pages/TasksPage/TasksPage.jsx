@@ -8,16 +8,10 @@ import SpoonsModal from "../../components/SpoonsModal/SpoonsModal";
 
 
 const TasksPage = ({remainingSpoons, maxSpoons, taskList, setTaskList}) => {
-    // const maxSpoons = 12
+
     const [showModal, setShowModal] = useState(false);
     const [showWelcomePage, setShowWelcomePage] = useState(true);
-    const [showSpoonsModal, setShowSpoonsModal] = useState(false)
-    // const [taskList, setTaskList] = useState([]);
-    // const [remainingSpoons, setRemainingSpoons] = useState(maxSpoons);
-    const [usedSpoons, setUsedSpoons] = useState(0);
-    const [plannedSpoons, setPlannedSpoons] = useState(0);
     
-
     const openModal = (e) => {
         e.preventDefault();
         setShowModal(true)
@@ -58,32 +52,6 @@ const TasksPage = ({remainingSpoons, maxSpoons, taskList, setTaskList}) => {
         tasks = tasks.sort((a, b) => a.id - b.id)
         setTaskList(tasks)
     }
-
-    // useEffect(() => {
-    //     const spoonCount = (arr) => {
-
-    //         const checkedArray = [];
-    //         arr.map(task => {
-    //             if(task.checked === true) {
-    //                 return checkedArray.push(task.spoons)
-    //             }
-    //         })
-    //         const used = checkedArray.reduce((accumulator, spoon) => accumulator + spoon, 0);
-
-    //         const spoonArray = [];
-    //         arr.map(task => {
-    //             return spoonArray.push(task.spoons);
-    //         })
-    //         const totalSpoons = spoonArray.reduce((accumulator, currentSpoon) => accumulator + currentSpoon, 0);
-           
-    //         setUsedSpoons(used)
-    //         setPlannedSpoons(totalSpoons - used)
-    //         setRemainingSpoons(maxSpoons - totalSpoons)
-    //     }
-
-    //     spoonCount(taskList);
-
-    // }, [taskList])
 
     useEffect(() => {
         if (!localStorage["tutorial"]) {
@@ -140,15 +108,6 @@ const TasksPage = ({remainingSpoons, maxSpoons, taskList, setTaskList}) => {
                 <WelcomePage handleSkipTutorial={handleSkipTutorial}/>,
                 document.body
             )}
-            {/* {showSpoonsModal && createPortal(
-                <SpoonsModal 
-                    setShowSpoonsModal={setShowSpoonsModal}
-                    remainingSpoons={remainingSpoons} 
-                    usedSpoons={usedSpoons}
-                    plannedSpoons={plannedSpoons}   
-                />,
-                document.body
-            )} */}
         </section>
     )
 }
