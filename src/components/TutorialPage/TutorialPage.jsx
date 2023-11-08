@@ -32,7 +32,7 @@ const TutorialPage = ({handleSkipTutorial}) => {
 
     return (
         <section className="bg-background flex flex-col justify-between h-full w-full fixed top-0">
-            <button className={(currentScreen >= 4)? "hidden" : "btn-modal self-end pt-6 px-8"} onClick={skipTutorial}>Skip</button>
+            <button className={(currentScreen >= 4)? "btn-modal self-end pt-6 px-8 text-background" : "btn-modal self-end pt-6 px-8"} onClick={skipTutorial}>Skip</button>
             {
                 (currentScreen === 1)?
                 <TutorialFirstScreen />
@@ -74,7 +74,7 @@ const TutorialPage = ({handleSkipTutorial}) => {
                     {(currentScreen === 5)?
                         <div className="w-[12px] h-[12px] bg-primary rounded-lg"></div>
                         :
-                        <div className="w-[12px] h-[12px] bg-primary3 rounded-lg"></div>}
+                        <div className="hidden w-[12px] h-[12px] bg-primary3 rounded-lg"></div>}
                 </div>
                 {(currentScreen >= 4)?
                     <button className="btn-modal text-primary-text" onClick={skipTutorial}>Start</button>
