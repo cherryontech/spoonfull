@@ -70,6 +70,12 @@ export default function Navbar() {
                   </div> */}
                 </div>
               </div>
+              <div className="flex flex-col justify-center items-center p-4 gap-4">
+                <div>
+                  
+                </div>
+              <button className="btn-modal" onClick={() => setShowSpoonsModal(true)}>Spoons</button>
+              </div>
             </div>
           </div>
           <Disclosure.Panel className="sm:hidden">
