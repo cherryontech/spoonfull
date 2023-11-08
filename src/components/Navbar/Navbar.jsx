@@ -1,21 +1,62 @@
 import { Fragment } from 'react'
+import { useEffect } from "react";
 import { Link } from 'react-router-dom'
+import { createPortal } from "react-dom";
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Badge } from '@mui/material'
+import SpoonsModal from '../SpoonsModal/SpoonsModal';
 
-const navigation = [
-  { name: 'Home', href: '/', current: true },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
-]
+const Navbar = ({
+  taskList, 
+  maxSpoons,
+  setShowSpoonsModal, 
+  showSpoonsModal, 
+  remainingSpoons, 
+  setRemainingSpoons,
+  usedSpoons,
+  setUsedSpoons,
+  plannedSpoons,  
+  setPlannedSpoons, }) => {
 
-function classNames(...classes) {
-  ``
-  return classes.filter(Boolean).join(' ')
-}
+  const navigation = [
+    { name: 'Home', href: '/', current: true },
+    { name: 'Team', href: '#', current: false },
+    { name: 'Projects', href: '#', current: false },
+    { name: 'Calendar', href: '#', current: false },
+  ]
 
-export default function Navbar() {
+  function classNames(...classes) {
+    ``
+    return classes.filter(Boolean).join(' ')
+  }
+  
+  useEffect(() => {
+    const spoonCount = (arr) => {
+
+        const checkedArray = [];
+        arr.map(task => {
+            if(task.checked === true) {
+                return checkedArray.push(task.spoons)
+            }
+        })
+        const used = checkedArray.reduce((accumulator, spoon) => accumulator + spoon, 0);
+
+        const spoonArray = [];
+        arr.map(task => {
+            return spoonArray.push(task.spoons);
+        })
+        const totalSpoons = spoonArray.reduce((accumulator, currentSpoon) => accumulator + currentSpoon, 0);
+       
+        setUsedSpoons(used)
+        setPlannedSpoons(totalSpoons - used)
+        setRemainingSpoons(maxSpoons - totalSpoons)
+    }
+
+    spoonCount(taskList);
+
+}, [taskList])
+
   return (
     <Disclosure as="nav" className="bg-background">
       {({ open }) => (
@@ -72,9 +113,20 @@ export default function Navbar() {
               </div>
               <div className="flex flex-col justify-center items-center p-4 gap-4">
                 <div>
-                  
+
                 </div>
-              <button className="btn-modal" onClick={() => setShowSpoonsModal(true)}>Spoons</button>
+                <div>
+              <button className="btn-modal" onClick={() => {console.log("button Clicked"); setShowSpoonsModal(true);}}>Spoons</button>
+              {showSpoonsModal && createPortal(
+                <SpoonsModal 
+                    setShowSpoonsModal={setShowSpoonsModal}
+                    remainingSpoons={remainingSpoons} 
+                    usedSpoons={usedSpoons}
+                    plannedSpoons={plannedSpoons}   
+                />,
+                document.body
+            )}
+             </div>
               </div>
             </div>
           </div>
@@ -102,3 +154,5 @@ export default function Navbar() {
     </Disclosure>
   )
 } 
+
+export default Navbar;
