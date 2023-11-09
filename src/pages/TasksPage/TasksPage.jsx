@@ -72,7 +72,6 @@ const TasksPage = ({remainingSpoons, maxSpoons, taskList, setTaskList}) => {
         <section className="bg-background w-[100vw] h-[100vh] p-4">
             <div className="w-[100%] flex justify-between items-center border-b border-text3 pb-2">
                 <h4 className="text-header4">Tasks</h4>
-                {/* <button className="btn-modal" onClick={() => setShowSpoonsModal(true)}>Spoons</button> */}
             </div>
             {
                 (!taskList[0] || !taskList[0].task) ?
