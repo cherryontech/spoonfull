@@ -93,7 +93,7 @@ const Navbar = ({
                   </div>
                 </Link>
               </div>
-              <button className="flex flex-col flex-shrink-0 justify-center items-center py-4 pr-4 gap-0.5 text-center" onClick={() => { setShowSpoonsModal(true); }}>
+              <button className="flex flex-col flex-shrink-0 justify-center items-center py-4 pr-4 gap-0.5 text-center z-0" onClick={() => { setShowSpoonsModal(true); }}>
                 {remainingSpoons > 3 ? (
                   <Badge badgeContent={remainingSpoons} sx={{ "& .MuiBadge-badge": { backgroundColor: "#23A1AF", color: "white" } }}>
                     <div className="pr-1.5 self-start">

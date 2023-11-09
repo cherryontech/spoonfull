@@ -5,12 +5,15 @@ import AddTaskModal from "../../components/AddTaskModal/AddTaskModal";
 import TaskCard from "../../components/TaskCard/TaskCard";
 import WelcomePage from "../WelcomePage/WelcomePage";
 import SpoonsModal from "../../components/SpoonsModal/SpoonsModal";
+import TutorialPage from "../../components/TutorialPage/TutorialPage";
 
 
 const TasksPage = ({remainingSpoons, maxSpoons, taskList, setTaskList}) => {
 
     const [showModal, setShowModal] = useState(false);
     const [showWelcomePage, setShowWelcomePage] = useState(true);
+    const [showSpoonsModal, setShowSpoonsModal] = useState(false)
+    const [showTutorialPage, setShowTutorialPage] = useState(false)
     
     const openModal = (e) => {
         e.preventDefault();
@@ -104,7 +107,25 @@ const TasksPage = ({remainingSpoons, maxSpoons, taskList, setTaskList}) => {
                 document.body
             )}
             {showWelcomePage && createPortal(
-                <WelcomePage handleSkipTutorial={handleSkipTutorial}/>,
+                <WelcomePage 
+                    handleSkipTutorial={handleSkipTutorial}
+                    setShowTutorialPage={setShowTutorialPage}
+                />,
+                document.body
+            )}
+            {showTutorialPage && createPortal(
+                <TutorialPage 
+                    handleSkipTutorial={handleSkipTutorial}
+                />,
+                document.body
+            )}
+            {showSpoonsModal && createPortal(
+                <SpoonsModal 
+                    setShowSpoonsModal={setShowSpoonsModal}
+                    remainingSpoons={remainingSpoons} 
+                    usedSpoons={usedSpoons}
+                    plannedSpoons={plannedSpoons}   
+                />,
                 document.body
             )}
         </section>

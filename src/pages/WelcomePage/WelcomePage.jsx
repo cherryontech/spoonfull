@@ -2,7 +2,7 @@ import logo from "../../assets/spoonfull-logo.svg";
 import welcomeImg from "../../assets/welcome-img.png";
 
 // eslint-disable-next-line react/prop-types
-const WelcomePage = ({ handleSkipTutorial }) => {
+const WelcomePage = ({ handleSkipTutorial, setShowTutorialPage }) => {
     return (
         <section className="p-6 bg-background h-full w-full center-column justify-center gap-16 fixed top-0">
             <div className="center-column justify-center gap-9 px-9">
@@ -15,7 +15,7 @@ const WelcomePage = ({ handleSkipTutorial }) => {
                 </div>
             </div>
             <div className="center-column gap-4">
-                <button className="btn-filled">Start Quick Tutorial</button>
+                <button className="btn-filled" onClick={() => setShowTutorialPage(true)}>Start Quick Tutorial</button>
                 <button className="btn-outlined" onClick={handleSkipTutorial}>Skip, Dive Right in</button>
             </div>
         </section>
