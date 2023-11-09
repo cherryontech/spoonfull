@@ -5,7 +5,7 @@ import SpoonChart from "../SpoonChart/SpoonChart";
 const SpoonsModal = ({setShowSpoonsModal, remainingSpoons, usedSpoons, plannedSpoons}) => {
     
     return (
-        <section className="flex flex-col items-center bg-background h-full w-full fixed top-0 px-4">
+        <section className="flex flex-col items-center bg-background h-full w-full fixed top-0 px-4 z-10">
             <button className="p-2.5 my-6 self-start" onClick={() => setShowSpoonsModal(false)}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="black"/>
@@ -20,7 +20,7 @@ const SpoonsModal = ({setShowSpoonsModal, remainingSpoons, usedSpoons, plannedSp
                 remainingSpoons={remainingSpoons} 
                 usedSpoons={usedSpoons}
                 plannedSpoons={plannedSpoons}
-            />
+            /> 
             <div className="flex flex-col gap-2 my-4 w-[200px]">
                 <div className="flex justify-between w-full rounded-lg bg-primary3 py-1">
                     <div className="flex items-center gap-1 px-2">
