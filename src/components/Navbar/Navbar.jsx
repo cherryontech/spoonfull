@@ -1,31 +1,72 @@
 import { Fragment } from 'react'
+import { useEffect } from "react";
 import { Link } from 'react-router-dom'
+import { createPortal } from "react-dom";
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Badge } from '@mui/material'
+import SpoonsModal from '../SpoonsModal/SpoonsModal';
 
-const navigation = [
-  { name: 'Home', href: '/', current: true },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
-]
+const Navbar = ({
+  taskList,
+  maxSpoons,
+  setShowSpoonsModal,
+  showSpoonsModal,
+  remainingSpoons,
+  setRemainingSpoons,
+  usedSpoons,
+  setUsedSpoons,
+  plannedSpoons,
+  setPlannedSpoons, }) => {
 
-function classNames(...classes) {
-  ``
-  return classes.filter(Boolean).join(' ')
-}
+  const navigation = [
+    { name: 'Home', href: '/', current: true },
+    { name: 'Team', href: '#', current: false },
+    { name: 'Projects', href: '#', current: false },
+    { name: 'Calendar', href: '#', current: false },
+  ]
 
-export default function Navbar() {
+  function classNames(...classes) {
+    ``
+    return classes.filter(Boolean).join(' ')
+  }
+
+  useEffect(() => {
+    const spoonCount = (arr) => {
+
+      const checkedArray = [];
+      arr.map(task => {
+        if (task.checked === true) {
+          return checkedArray.push(task.spoons)
+        }
+      })
+      const used = checkedArray.reduce((accumulator, spoon) => accumulator + spoon, 0);
+
+      const spoonArray = [];
+      arr.map(task => {
+        return spoonArray.push(task.spoons);
+      })
+      const totalSpoons = spoonArray.reduce((accumulator, currentSpoon) => accumulator + currentSpoon, 0);
+
+      setUsedSpoons(used)
+      setPlannedSpoons(totalSpoons - used)
+      setRemainingSpoons(maxSpoons - totalSpoons)
+    }
+
+    spoonCount(taskList);
+
+  }, [taskList])
+
   return (
     <Disclosure as="nav" className="bg-background">
       {({ open }) => (
         <>
-          <div className="mx-0 max-w-7xl sm:px-4">
-            <div className="relative flex h-16 items-center justify-between">
-              <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+          <div className="mx-0 sm:px-4">
+            <div className="flex px-4 py-1 items-center justify-between">
+              <div className="flex px-4 py-3.5 inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
-                <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-4 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
-                  <span className="absolute -inset-0.5" />
+                <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                  <span className=" -inset-0.5" />
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
@@ -34,7 +75,7 @@ export default function Navbar() {
                   )}
                 </Disclosure.Button>
               </div>
-              <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+              <div className="flex flex-col justify-between items-center">
                 < Link to='/'>
                   <div className="flex flex-shrink-0 items-center">
                     <svg
@@ -51,25 +92,34 @@ export default function Navbar() {
                     </svg>
                   </div>
                 </Link>
-                <div className="hidden sm:ml-6 sm:block">
-                  {/* TODO: update menu options
-                  <div className="flex space-x-4">
-                    {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className={classNames(
-                          item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                          'rounded-md px-3 py-2 text-sm font-medium'
-                        )}
-                        aria-current={item.current ? 'page' : undefined}
-                      >
-                        {item.name}
-                      </a>
-                    ))}
-                  </div> */}
-                </div>
               </div>
+              <button className="flex flex-col flex-shrink-0 justify-center items-center py-4 pr-4 gap-0.5 text-center z-0" onClick={() => { setShowSpoonsModal(true); }}>
+                {remainingSpoons > 3 ? (
+                  <Badge badgeContent={remainingSpoons} sx={{ "& .MuiBadge-badge": { backgroundColor: "#23A1AF", color: "white" } }}>
+                    <div className="pr-1.5 self-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 20 20" fill="none">
+                        <path fillRule="evenodd" clipRule="evenodd" d="M10.025 11.4492L3.68505 6.42088C3.46973 6.25033 3.29292 6.03615 3.16624 5.79241C3.03956 5.54868 2.96588 5.28091 2.95002 5.00667C2.93417 4.73244 2.97651 4.45796 3.07426 4.20125C3.17201 3.94455 3.32295 3.71142 3.51719 3.51719C3.71142 3.32295 3.94455 3.17201 4.20125 3.07426C4.45796 2.97651 4.73244 2.93417 5.00667 2.95002C5.28091 2.96588 5.54868 3.03956 5.79241 3.16624C6.03615 3.29292 6.25033 3.46973 6.42088 3.68505L11.4492 10.025C12.5384 9.54922 14.1992 9.48505 15.5984 10.8834C16.4442 11.7301 16.9709 12.765 17.1509 13.75C17.3259 14.7084 17.1917 15.7717 16.4817 16.4817C15.7725 17.1917 14.7084 17.3259 13.7509 17.1509C12.7659 16.9709 11.73 16.4442 10.8842 15.5975C9.48422 14.1984 9.54922 12.5384 10.025 11.4492Z" fill="#0F0129" />
+                      </svg>
+                    </div>
+                  </Badge>)
+                  :
+                  (<Badge badgeContent={remainingSpoons} sx={{ "& .MuiBadge-badge": { backgroundColor: "#F7559E", color: "white" } }}>
+                    <div className="pr-1.5">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path fillRule="evenodd" clipRule="evenodd" d="M10.025 11.4492L3.68505 6.42088C3.46973 6.25033 3.29292 6.03615 3.16624 5.79241C3.03956 5.54868 2.96588 5.28091 2.95002 5.00667C2.93417 4.73244 2.97651 4.45796 3.07426 4.20125C3.17201 3.94455 3.32295 3.71142 3.51719 3.51719C3.71142 3.32295 3.94455 3.17201 4.20125 3.07426C4.45796 2.97651 4.73244 2.93417 5.00667 2.95002C5.28091 2.96588 5.54868 3.03956 5.79241 3.16624C6.03615 3.29292 6.25033 3.46973 6.42088 3.68505L11.4492 10.025C12.5384 9.54922 14.1992 9.48505 15.5984 10.8834C16.4442 11.7301 16.9709 12.765 17.1509 13.75C17.3259 14.7084 17.1917 15.7717 16.4817 16.4817C15.7725 17.1917 14.7084 17.3259 13.7509 17.1509C12.7659 16.9709 11.73 16.4442 10.8842 15.5975C9.48422 14.1984 9.54922 12.5384 10.025 11.4492Z" fill="#0F0129" />
+                      </svg>
+                    </div>
+                  </Badge>)}
+                <p className="text-caption">Spoons</p></button>
+              {showSpoonsModal && createPortal(
+                <SpoonsModal
+                  setShowSpoonsModal={setShowSpoonsModal}
+                  remainingSpoons={remainingSpoons}
+                  usedSpoons={usedSpoons}
+                  plannedSpoons={plannedSpoons}
+                />,
+                document.body
+              )}
             </div>
           </div>
           <Disclosure.Panel className="sm:hidden">
@@ -95,4 +145,6 @@ export default function Navbar() {
       )}
     </Disclosure>
   )
-} 
+}
+
+export default Navbar;
