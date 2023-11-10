@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Listbox } from '@headlessui/react'
 
 
 // eslint-disable-next-line react/prop-types
@@ -8,7 +9,14 @@ const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
     const [activeButton, setActiveButton] = useState(true);
     const [taskName, setTaskName] = useState('');
     const [spoons, setSpoons] = useState("");
+    const [selectedPriority, setSelectedPriority] = useState("Priority")
     
+    const backgroundColors = {
+        High: "primary1",
+        Medium: "primary3",
+        Low: "primary4",
+    }
+   
     
     const handleChangeTask = (e) => {
         let newTask = e.target.value
@@ -44,6 +52,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
         task: taskName,
         spoons: Number(spoons),
         checked: false,
+        priority: selectedPriority,
     }
 
     const handleClear = (e) => {
@@ -82,7 +91,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
                 <form onSubmit={handleSubmit}>
                     <h4 className="text-header4 mt-0 mb-2">Add Task</h4>
                     <div className="w-[100%] flex flex-col flex-start mb-6">
-                        <label htmlFor="taskName" className="text-caption bg-background w-[80px] text-center relative inset-x-2 inset-y-2 z-10 p-x-4">Task Name</label>
+                        <label htmlFor="taskName" className="text-caption bg-background w-[80px] text-center relative inset-x-2 inset-y-2 z-10 p-x-4">Task Name<span className="absolute text-2 top-0 right-0">*</span></label>
                         <div className="relative">
                             <input 
                                 name="task" 
@@ -102,11 +111,15 @@ const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
                                     </svg>
                                 </button>
                             </div>
-                            <p className="text-caption text-text2 ml-4">*Required</p>
                         </div>
                     </div>
                     <div className="pb-6">
-                        <h5 className="text-subtitle mb-2">Assign spoons to this task</h5>
+                        <div className="flex items-center gap-2 mb-2">
+                            <h5 className="text-subtitle">Assign spoons</h5>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M11 17H13V11H11V17ZM12 9C12.2833 9 12.521 8.904 12.713 8.712C12.905 8.52 13.0007 8.28267 13 8C13 7.71667 12.904 7.479 12.712 7.287C12.52 7.095 12.2827 6.99933 12 7C11.7167 7 11.479 7.096 11.287 7.288C11.095 7.48 10.9993 7.71733 11 8C11 8.28333 11.096 8.521 11.288 8.713C11.48 8.905 11.7173 9.00067 12 9ZM12 22C10.6167 22 9.31667 21.7373 8.1 21.212C6.88333 20.6867 5.825 19.9743 4.925 19.075C4.025 18.175 3.31267 17.1167 2.788 15.9C2.26333 14.6833 2.00067 13.3833 2 12C2 10.6167 2.26267 9.31667 2.788 8.1C3.31333 6.88333 4.02567 5.825 4.925 4.925C5.825 4.025 6.88333 3.31267 8.1 2.788C9.31667 2.26333 10.6167 2.00067 12 2C13.3833 2 14.6833 2.26267 15.9 2.788C17.1167 3.31333 18.175 4.02567 19.075 4.925C19.975 5.825 20.6877 6.88333 21.213 8.1C21.7383 9.31667 22.0007 10.6167 22 12C22 13.3833 21.7373 14.6833 21.212 15.9C20.6867 17.1167 19.9743 18.175 19.075 19.075C18.175 19.975 17.1167 20.6877 15.9 21.213C14.6833 21.7383 13.3833 22.0007 12 22Z" fill="black"/>
+                            </svg>
+                        </div>
                         <div className="flex gap-2 justify-between items-center">
                             <div className="flex gap-2 p-2 justify-between items-center border-[0.4px] rounded-lg">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -136,6 +149,22 @@ const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
                                 }</p>
                             </div>
                         </div>
+                    </div>
+                    <div>
+                        <h5 className="text-subtitle mb-2">Assign priority</h5>
+                        <Listbox value={selectedPriority} onChange={setSelectedPriority}>
+                        <Listbox.Button className={`bg-${backgroundColors[selectedPriority]} w-[128px] flex justify-between items-center text-body text-text1 border-[1px] border-[#79747E] px-4 py-[10px] rounded-lg`}>
+                            {selectedPriority}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                                <path fillRule="evenodd" clipRule="evenodd" d="M20.625 9L12.625 17L4.625 9L6.625 7L12.625 13L18.625 7L20.625 9Z" fill="#001111" fillOpacity="0.75"/>
+                            </svg>
+                        </Listbox.Button>
+                                <Listbox.Options>
+                                    <Listbox.Option value="High" className="bg-primary1">High</Listbox.Option>
+                                    <Listbox.Option value="Medium" className="bg-primary3">Medium</Listbox.Option>
+                                    <Listbox.Option value="Low" className="bg-primary4">Low</Listbox.Option>
+                                </Listbox.Options>
+                        </Listbox>
                     </div>
                     <div className="flex justify-end gap-2">
                         <button type="submit" className="btn-modal" onClick={() => setShowModal(false)}>Cancel</button>

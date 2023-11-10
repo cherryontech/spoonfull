@@ -1,18 +1,17 @@
+/* eslint-disable react/prop-types */
 import heroImg from "../../assets/heroImg.png";
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import AddTaskModal from "../../components/AddTaskModal/AddTaskModal";
 import TaskCard from "../../components/TaskCard/TaskCard";
 import WelcomePage from "../WelcomePage/WelcomePage";
-import SpoonsModal from "../../components/SpoonsModal/SpoonsModal";
 import TutorialPage from "../../components/TutorialPage/TutorialPage";
 
 
-const TasksPage = ({remainingSpoons, maxSpoons, taskList, setTaskList}) => {
+const TasksPage = ({remainingSpoons, taskList, setTaskList}) => {
 
     const [showModal, setShowModal] = useState(false);
     const [showWelcomePage, setShowWelcomePage] = useState(true);
-    const [showSpoonsModal, setShowSpoonsModal] = useState(false)
     const [showTutorialPage, setShowTutorialPage] = useState(false)
     
     const openModal = (e) => {
@@ -119,15 +118,7 @@ const TasksPage = ({remainingSpoons, maxSpoons, taskList, setTaskList}) => {
                 />,
                 document.body
             )}
-            {showSpoonsModal && createPortal(
-                <SpoonsModal 
-                    setShowSpoonsModal={setShowSpoonsModal}
-                    remainingSpoons={remainingSpoons} 
-                    usedSpoons={usedSpoons}
-                    plannedSpoons={plannedSpoons}   
-                />,
-                document.body
-            )}
+         
         </section>
     )
 }
