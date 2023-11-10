@@ -53,6 +53,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
         spoons: Number(spoons),
         checked: false,
         priority: selectedPriority,
+        background: backgroundColors[selectedPriority],
     }
 
     const handleClear = (e) => {
@@ -130,7 +131,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
                                     name="spoons"
                                     type="number"
                                     id="spoons"
-                                    placeholder="00"
+                                    placeholder="0"
                                     className="text-body w-[52px] h-12 bg-primary4 p-4 rounded-lg text-center"
                                     value={spoons}
                                     onChange={handleChangeSpoons}
@@ -153,17 +154,17 @@ const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
                     <div>
                         <h5 className="text-subtitle mb-2">Assign priority</h5>
                         <Listbox value={selectedPriority} onChange={setSelectedPriority}>
-                        <Listbox.Button className={`bg-${backgroundColors[selectedPriority]} w-[128px] flex justify-between items-center text-body text-text1 border-[1px] border-[#79747E] px-4 py-[10px] rounded-lg`}>
-                            {selectedPriority}
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
-                                <path fillRule="evenodd" clipRule="evenodd" d="M20.625 9L12.625 17L4.625 9L6.625 7L12.625 13L18.625 7L20.625 9Z" fill="#001111" fillOpacity="0.75"/>
-                            </svg>
-                        </Listbox.Button>
-                                <Listbox.Options>
-                                    <Listbox.Option value="High" className="bg-primary1">High</Listbox.Option>
-                                    <Listbox.Option value="Medium" className="bg-primary3">Medium</Listbox.Option>
-                                    <Listbox.Option value="Low" className="bg-primary4">Low</Listbox.Option>
-                                </Listbox.Options>
+                            <Listbox.Button className={`bg-${backgroundColors[selectedPriority]} w-[128px] flex justify-between items-center text-body text-text1 border-[1px] border-[#79747E] px-4 py-[10px] rounded-lg`}>
+                                {selectedPriority}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                                    <path fillRule="evenodd" clipRule="evenodd" d="M20.625 9L12.625 17L4.625 9L6.625 7L12.625 13L18.625 7L20.625 9Z" fill="#001111" fillOpacity="0.75"/>
+                                </svg>
+                            </Listbox.Button>
+                            <Listbox.Options className="absolute w-[128px] bg-background text-body text-text1">
+                                <Listbox.Option value="High" className="bg-primary1 px-2 py-2.5">High</Listbox.Option>
+                                <Listbox.Option value="Medium" className="bg-primary3 px-2 py-2.5">Medium</Listbox.Option>
+                                <Listbox.Option value="Low" className="bg-primary4 px-2 py-2.5">Low</Listbox.Option>
+                            </Listbox.Options>
                         </Listbox>
                     </div>
                     <div className="flex justify-end gap-2">

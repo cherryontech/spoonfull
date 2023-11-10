@@ -12,7 +12,7 @@ const TaskCard = ({ task, onRemoveTask, editChecked }) => {
 
     return (
         <div className="w-full p-1">
-            <div className="bg-background shadow-card-shadow rounded-lg flex items-start justify-between pl-4">
+            <div className={`bg-${task.background} shadow-card-shadow rounded-lg flex items-start justify-between pl-4`}>
                 <div className="flex py-4 items-center">
                     <input
                         className="peer appearance-none p-2.5 w-[24] h-[24] border rounded-sm mr-5 mt-1 shrink-0 checked:bg-accent checked:border-accent1"
