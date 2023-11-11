@@ -15,6 +15,10 @@ const TasksPage = ({remainingSpoons, taskList, setTaskList}) => {
     const [showWelcomePage, setShowWelcomePage] = useState(true);
     const [showTutorialPage, setShowTutorialPage] = useState(false)
     const [taskAdded, setTaskAdded] = useState(false)
+    const [highPriorityTasks, setHighPriorityTasks] = useState([])
+    const [mediumPriorityTasks, setMediumPriorityTasks] = useState([])
+    const [lowPriorityTasks, setLowPriorityTasks] = useState([])
+    const [noPriorityTasks, setNoPriorityTasks] = useState([])
     
     const openModal = (e) => {
         e.preventDefault();
@@ -30,7 +34,20 @@ const TasksPage = ({remainingSpoons, taskList, setTaskList}) => {
         let tasks = localStorage["tasks"];
         tasks = JSON.parse(tasks);
         tasks = tasks.sort((a, b) => a.id - b.id)
-        setTaskList(tasks)
+        setTaskList(tasks);
+
+        let highPriority = tasks.filter(task => task.priority === "High");
+        setHighPriorityTasks(highPriority)
+
+        let mediumPriority = tasks.filter(task => task.priority === "Medium");
+        setMediumPriorityTasks(mediumPriority)
+
+        let lowPriority = tasks.filter(task => task.priority === "Low");
+        setLowPriorityTasks(lowPriority)
+
+        let noPriority = tasks.filter(task => task.priority === "Priority");
+        setNoPriorityTasks(noPriority)
+
     }, [taskAdded]);
 
     const removeTask = (id) => {
@@ -101,13 +118,35 @@ const TasksPage = ({remainingSpoons, taskList, setTaskList}) => {
                     :
                     <div className="pt-2 pb-[100px]">
                         <ul>
-                            {taskList.map((task) => {
+                            {highPriorityTasks.map((task) => {
+                                return (
+                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} /></li>
+                                )
+                            })}
+                        </ul>
+                        <ul>
+                            {mediumPriorityTasks.map((task) => {
+                                return (
+                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} /></li>
+                                )
+                            })}
+                        </ul>
+                        <ul>
+                            {lowPriorityTasks.map((task) => {
+                                return (
+                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} /></li>
+                                )
+                            })}
+                        </ul>
+                        <ul>
+                            {noPriorityTasks.map((task) => {
                                 return (
                                     <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} /></li>
                                 )
                             })}
                         </ul>
                     </div>
+                    
             }
             <button className="flex gap-3 fixed bottom-px right-px p-4 m-4 shadow-box-shadow rounded-2xl bg-accent" onClick={openModal}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
