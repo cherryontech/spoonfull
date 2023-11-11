@@ -2,14 +2,17 @@ import { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Listbox } from '@headlessui/react'
+import TooltipModal from "../TooltipModal/TooltipModal";
+import { createPortal } from "react-dom";
 
 
 // eslint-disable-next-line react/prop-types
-const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
+const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
     const [activeButton, setActiveButton] = useState(true);
     const [taskName, setTaskName] = useState('');
     const [spoons, setSpoons] = useState("");
-    const [selectedPriority, setSelectedPriority] = useState("Priority")
+    const [selectedPriority, setSelectedPriority] = useState("Priority");
+    const [openTooltip, setOpenTooltip] = useState(false);
     
     const backgroundColors = {
         High: "primary1",
@@ -67,16 +70,23 @@ const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
             && taskName !== "" 
             && (remainingSpoons - spoons) >= 0 
             && taskName !== " ") {
-          handleSubmit();
-          window.location.reload()
+          handleSubmit(e);
         }
     }
 
-    const handleSubmit = () => {
-            let tasks = localStorage["tasks"];
-            tasks = JSON.parse(tasks);
-            tasks.push(newTask);
-            localStorage["tasks"] = JSON.stringify(tasks);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        let tasks = localStorage["tasks"];
+        tasks = JSON.parse(tasks);
+        tasks.push(newTask);
+        localStorage["tasks"] = JSON.stringify(tasks);
+        handleTaskAdded();
+        setShowModal(false);
+    }
+        
+    const handleOpenTooltip = (e) => {
+        e.preventDefault();
+        setOpenTooltip(true)
     }
 
     return (
@@ -105,7 +115,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
                                 onKeyDown={handleKeyDown}
                                 required
                             />
-                            <div className="absolute top-3 right-2">
+                            <div className={(taskName === "")? "hidden" : "absolute top-3 right-2"}>
                                 <button onClick={handleClear}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
                                         <path fillRule="evenodd" clipRule="evenodd" d="M12.5 2C6.97 2 2.5 6.47 2.5 12C2.5 17.53 6.97 22 12.5 22C18.03 22 22.5 17.53 22.5 12C22.5 6.47 18.03 2 12.5 2ZM12.5 20C8.09 20 4.5 16.41 4.5 12C4.5 7.59 8.09 4 12.5 4C16.91 4 20.5 7.59 20.5 12C20.5 16.41 16.91 20 12.5 20ZM12.5 10.59L16.09 7L17.5 8.41L13.91 12L17.5 15.59L16.09 17L12.5 13.41L8.91 17L7.5 15.59L11.09 12L7.5 8.41L8.91 7L12.5 10.59Z" fill="#0F0129"/>
@@ -117,9 +127,15 @@ const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
                     <div className="pb-6">
                         <div className="flex items-center gap-2 mb-2">
                             <h5 className="text-subtitle">Assign spoons</h5>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M11 17H13V11H11V17ZM12 9C12.2833 9 12.521 8.904 12.713 8.712C12.905 8.52 13.0007 8.28267 13 8C13 7.71667 12.904 7.479 12.712 7.287C12.52 7.095 12.2827 6.99933 12 7C11.7167 7 11.479 7.096 11.287 7.288C11.095 7.48 10.9993 7.71733 11 8C11 8.28333 11.096 8.521 11.288 8.713C11.48 8.905 11.7173 9.00067 12 9ZM12 22C10.6167 22 9.31667 21.7373 8.1 21.212C6.88333 20.6867 5.825 19.9743 4.925 19.075C4.025 18.175 3.31267 17.1167 2.788 15.9C2.26333 14.6833 2.00067 13.3833 2 12C2 10.6167 2.26267 9.31667 2.788 8.1C3.31333 6.88333 4.02567 5.825 4.925 4.925C5.825 4.025 6.88333 3.31267 8.1 2.788C9.31667 2.26333 10.6167 2.00067 12 2C13.3833 2 14.6833 2.26267 15.9 2.788C17.1167 3.31333 18.175 4.02567 19.075 4.925C19.975 5.825 20.6877 6.88333 21.213 8.1C21.7383 9.31667 22.0007 10.6167 22 12C22 13.3833 21.7373 14.6833 21.212 15.9C20.6867 17.1167 19.9743 18.175 19.075 19.075C18.175 19.975 17.1167 20.6877 15.9 21.213C14.6833 21.7383 13.3833 22.0007 12 22Z" fill="black"/>
-                            </svg>
+                            <button onClick={handleOpenTooltip}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M11 17H13V11H11V17ZM12 9C12.2833 9 12.521 8.904 12.713 8.712C12.905 8.52 13.0007 8.28267 13 8C13 7.71667 12.904 7.479 12.712 7.287C12.52 7.095 12.2827 6.99933 12 7C11.7167 7 11.479 7.096 11.287 7.288C11.095 7.48 10.9993 7.71733 11 8C11 8.28333 11.096 8.521 11.288 8.713C11.48 8.905 11.7173 9.00067 12 9ZM12 22C10.6167 22 9.31667 21.7373 8.1 21.212C6.88333 20.6867 5.825 19.9743 4.925 19.075C4.025 18.175 3.31267 17.1167 2.788 15.9C2.26333 14.6833 2.00067 13.3833 2 12C2 10.6167 2.26267 9.31667 2.788 8.1C3.31333 6.88333 4.02567 5.825 4.925 4.925C5.825 4.025 6.88333 3.31267 8.1 2.788C9.31667 2.26333 10.6167 2.00067 12 2C13.3833 2 14.6833 2.26267 15.9 2.788C17.1167 3.31333 18.175 4.02567 19.075 4.925C19.975 5.825 20.6877 6.88333 21.213 8.1C21.7383 9.31667 22.0007 10.6167 22 12C22 13.3833 21.7373 14.6833 21.212 15.9C20.6867 17.1167 19.9743 18.175 19.075 19.075C18.175 19.975 17.1167 20.6877 15.9 21.213C14.6833 21.7383 13.3833 22.0007 12 22Z" fill="black"/>
+                                </svg>
+                            </button>
+                            {openTooltip && createPortal(
+                                <TooltipModal setOpenTooltip={setOpenTooltip}/>,
+                                document.body
+                            )}
                         </div>
                         <div className="flex gap-2 justify-between items-center">
                             <div className="flex gap-2 p-2 justify-between items-center border-[0.4px] rounded-lg">
@@ -154,7 +170,10 @@ const AddTaskModal = ({ setShowModal, remainingSpoons }) => {
                     <div>
                         <h5 className="text-subtitle mb-2">Assign priority</h5>
                         <Listbox value={selectedPriority} onChange={setSelectedPriority}>
-                            <Listbox.Button className={`bg-${backgroundColors[selectedPriority]} w-[128px] flex justify-between items-center text-body text-text1 border-[1px] border-[#79747E] px-4 py-[10px] rounded-lg`}>
+                            <Listbox.Button className={`bg-${backgroundColors[selectedPriority]} w-[151px] flex justify-between items-center text-body text-text1 border-[1px] border-[#79747E] px-4 py-[10px] rounded-lg`}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M14 3.00001V10.5C13.9996 10.5712 13.984 10.6415 13.9543 10.7061C13.9245 10.7708 13.8813 10.8284 13.8275 10.875C12.8725 11.7019 11.9594 12 11.0887 12C9.90687 12 8.80312 11.4538 7.77625 10.9469C6.11687 10.125 4.67438 9.41314 3 10.7356V13.5C3 13.6326 2.94732 13.7598 2.85355 13.8536C2.75979 13.9473 2.63261 14 2.5 14C2.36739 14 2.24021 13.9473 2.14645 13.8536C2.05268 13.7598 2 13.6326 2 13.5V3.00001C2.00048 2.92878 2.01617 2.85847 2.04603 2.7938C2.07589 2.72913 2.11922 2.67158 2.17313 2.62501C4.42313 0.676263 6.4425 1.67439 8.2225 2.55501C9.9375 3.40376 11.4244 4.13751 13.1725 2.62501C13.2448 2.56238 13.3335 2.52178 13.4281 2.50802C13.5227 2.49427 13.6193 2.50793 13.7064 2.5474C13.7935 2.58687 13.8674 2.65049 13.9195 2.73071C13.9715 2.81093 13.9995 2.90439 14 3.00001Z" fill="#001111" fillOpacity="0.75"/>
+                                </svg>
                                 {selectedPriority}
                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
                                     <path fillRule="evenodd" clipRule="evenodd" d="M20.625 9L12.625 17L4.625 9L6.625 7L12.625 13L18.625 7L20.625 9Z" fill="#001111" fillOpacity="0.75"/>

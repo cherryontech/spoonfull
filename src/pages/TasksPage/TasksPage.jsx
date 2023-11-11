@@ -6,6 +6,7 @@ import AddTaskModal from "../../components/AddTaskModal/AddTaskModal";
 import TaskCard from "../../components/TaskCard/TaskCard";
 import WelcomePage from "../WelcomePage/WelcomePage";
 import TutorialPage from "../../components/TutorialPage/TutorialPage";
+import { ToastContainer, toast } from 'react-toastify';
 
 
 const TasksPage = ({remainingSpoons, taskList, setTaskList}) => {
@@ -13,10 +14,12 @@ const TasksPage = ({remainingSpoons, taskList, setTaskList}) => {
     const [showModal, setShowModal] = useState(false);
     const [showWelcomePage, setShowWelcomePage] = useState(true);
     const [showTutorialPage, setShowTutorialPage] = useState(false)
+    const [taskAdded, setTaskAdded] = useState(false)
     
     const openModal = (e) => {
         e.preventDefault();
         setShowModal(true)
+        setTaskAdded(false)
     };
 
     useEffect(() => {
@@ -28,7 +31,7 @@ const TasksPage = ({remainingSpoons, taskList, setTaskList}) => {
         tasks = JSON.parse(tasks);
         tasks = tasks.sort((a, b) => a.id - b.id)
         setTaskList(tasks)
-    }, []);
+    }, [taskAdded]);
 
     const removeTask = (id) => {
         let tasks = JSON.parse(JSON.stringify(taskList));
@@ -67,11 +70,24 @@ const TasksPage = ({remainingSpoons, taskList, setTaskList}) => {
     
     const handleSkipTutorial = () => {
         localStorage.setItem("tutorial", "false");
-        window.location.reload();
+        setShowWelcomePage(false)
+    }
+
+    const handleTaskAdded = () => {
+        setTaskAdded(true);
+        toast.success("Task created successfully");
     }
 
     return (
         <section className="bg-background w-[100vw] h-[100vh] p-4">
+            <ToastContainer 
+                position="top-center" 
+                theme="colored" 
+                toastStyle={{ backgroundColor: "#41993F", textAlign: 'center' }}
+                hideProgressBar={true} 
+                limit={1} 
+                role="alert"
+            />
             <div className="w-[100%] flex justify-between items-center border-b border-text3 pb-2">
                 <h4 className="text-header4">Tasks</h4>
             </div>
@@ -83,7 +99,7 @@ const TasksPage = ({remainingSpoons, taskList, setTaskList}) => {
                         <p className="text-caption text-text1 text-center w-[200px]">Plan your day by adding tasks and allocating your energy among them.</p>
                     </div>
                     :
-                    <div className="py-2">
+                    <div className="pt-2 pb-[100px]">
                         <ul>
                             {taskList.map((task) => {
                                 return (
@@ -102,7 +118,8 @@ const TasksPage = ({remainingSpoons, taskList, setTaskList}) => {
             {showModal && createPortal(
                 <AddTaskModal 
                     setShowModal={setShowModal}
-                    remainingSpoons={remainingSpoons} />,
+                    remainingSpoons={remainingSpoons}
+                    handleTaskAdded={handleTaskAdded} />,
                 document.body
             )}
             {showWelcomePage && createPortal(
