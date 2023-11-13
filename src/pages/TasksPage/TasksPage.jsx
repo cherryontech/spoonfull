@@ -15,6 +15,7 @@ const TasksPage = ({remainingSpoons, taskList, setTaskList}) => {
     const [showWelcomePage, setShowWelcomePage] = useState(true);
     const [showTutorialPage, setShowTutorialPage] = useState(false)
     const [taskAdded, setTaskAdded] = useState(false)
+    const [taskRemoved, setTaskRemoved] = useState(false)
     const [highPriorityTasks, setHighPriorityTasks] = useState([])
     const [mediumPriorityTasks, setMediumPriorityTasks] = useState([])
     const [lowPriorityTasks, setLowPriorityTasks] = useState([])
@@ -48,13 +49,18 @@ const TasksPage = ({remainingSpoons, taskList, setTaskList}) => {
         let noPriority = tasks.filter(task => task.priority === "Priority");
         setNoPriorityTasks(noPriority)
 
-    }, [taskAdded]);
+    }, [taskAdded, taskRemoved]);
 
     const removeTask = (id) => {
         let tasks = JSON.parse(JSON.stringify(taskList));
         tasks = tasks.filter((task) => task.id !== id);
         localStorage["tasks"] = JSON.stringify(tasks);
-        setTaskList(tasks)
+        setTaskList(tasks);
+        if (taskRemoved === false){
+            setTaskRemoved(true)
+        } else {
+            setTaskRemoved(false)
+        }
     };
 
     const editChecked = (id) => {
@@ -92,15 +98,13 @@ const TasksPage = ({remainingSpoons, taskList, setTaskList}) => {
 
     const handleTaskAdded = () => {
         setTaskAdded(true);
-        toast.success("Task created successfully");
+        toast.success("Task created successfully", { theme: "colored", style : {backgroundColor: "#41993F", textAlign: 'center'} });
     }
 
     return (
         <section className="bg-background w-[100vw] h-[100vh] p-4">
             <ToastContainer 
-                position="top-center" 
-                theme="colored" 
-                toastStyle={{ backgroundColor: "#41993F", textAlign: 'center' }}
+                position="top-center"
                 hideProgressBar={true} 
                 limit={1} 
                 role="alert"

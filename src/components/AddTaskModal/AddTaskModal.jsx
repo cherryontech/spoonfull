@@ -13,6 +13,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
     const [spoons, setSpoons] = useState("");
     const [selectedPriority, setSelectedPriority] = useState("Priority");
     const [openTooltip, setOpenTooltip] = useState(false);
+    const [errorMessage, setErrorMessage] = useState(false);
     
     const backgroundColors = {
         High: "primary1",
@@ -22,13 +23,22 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
    
     
     const handleChangeTask = (e) => {
-        let newTask = e.target.value
+        let newTask = e.target.value;
         newTask = newTask.replaceAll("  ", " ");
+
         if(newTask !== "" && newTask !== " ") {
             setActiveButton(false)
+            setErrorMessage(false)
         } else {
             setActiveButton(true)
         }
+
+        if(newTask === " ") {
+            setErrorMessage(true)
+        } else {
+            setErrorMessage(false)
+        }
+        
         setTaskName(newTask);
     }
 
@@ -122,9 +132,14 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
                                     </svg>
                                 </button>
                             </div>
+                            {errorMessage? 
+                                <p className="absolute text-caption text-error px-4">Not a valid entry, enter characters</p>
+                                :
+                                <p></p>
+                            }
                         </div>
                     </div>
-                    <div className="pb-6">
+                    <div className="pb-6 pt-2.5">
                         <div className="flex items-center gap-2 mb-2">
                             <h5 className="text-subtitle">Assign spoons</h5>
                             <button onClick={handleOpenTooltip}>
@@ -167,7 +182,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <div className="relative">
                         <h5 className="text-subtitle mb-2">Assign priority</h5>
                         <Listbox value={selectedPriority} onChange={setSelectedPriority}>
                             <Listbox.Button className={`bg-${backgroundColors[selectedPriority]} w-[151px] flex justify-between items-center text-body text-text1 border-[1px] border-[#79747E] px-4 py-[10px] rounded-lg`}>
@@ -179,10 +194,10 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
                                     <path fillRule="evenodd" clipRule="evenodd" d="M20.625 9L12.625 17L4.625 9L6.625 7L12.625 13L18.625 7L20.625 9Z" fill="#001111" fillOpacity="0.75"/>
                                 </svg>
                             </Listbox.Button>
-                            <Listbox.Options className="absolute w-[128px] bg-background text-body text-text1">
-                                <Listbox.Option value="High" className="bg-primary1 px-2 py-2.5">High</Listbox.Option>
-                                <Listbox.Option value="Medium" className="bg-primary3 px-2 py-2.5">Medium</Listbox.Option>
-                                <Listbox.Option value="Low" className="bg-primary4 px-2 py-2.5">Low</Listbox.Option>
+                            <Listbox.Options className="absolute top-[79px] w-[151px] rounded-lg bg-background text-body text-text1">
+                                <Listbox.Option value="High" className="bg-primary1 px-2 py-2.5 hover:bg-primary-text">High</Listbox.Option>
+                                <Listbox.Option value="Medium" className="bg-primary3 px-2 py-2.5 hover:bg-primary">Medium</Listbox.Option>
+                                <Listbox.Option value="Low" className="bg-primary4 px-2 py-2.5 hover:bg-primary1">Low</Listbox.Option>
                             </Listbox.Options>
                         </Listbox>
                     </div>
