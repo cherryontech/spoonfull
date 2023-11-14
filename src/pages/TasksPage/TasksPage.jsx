@@ -175,6 +175,7 @@ const TasksPage = ({remainingSpoons, taskList, setTaskList}) => {
             {showTutorialPage && createPortal(
                 <TutorialPage 
                     handleSkipTutorial={handleSkipTutorial}
+                    setShowTutorialPage={setShowTutorialPage}
                 />,
                 document.body
             )}

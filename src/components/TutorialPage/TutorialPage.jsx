@@ -7,12 +7,13 @@ import TutorialFourthScreen from "../TutorialFourthScreen/TutorialFourthScreen";
 
 
 // eslint-disable-next-line react/prop-types
-const TutorialPage = ({handleSkipTutorial}) => {
+const TutorialPage = ({handleSkipTutorial, setShowTutorialPage}) => {
     const [currentScreen, setCurrentScreen] = useState(1)
     const navigate = useNavigate();
     const skipTutorial = (e) => {
         e.preventDefault();
         handleSkipTutorial();
+        setShowTutorialPage(false);
         navigate("/")
     }
 
