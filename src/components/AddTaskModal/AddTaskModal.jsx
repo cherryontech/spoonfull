@@ -174,7 +174,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
                                     type="number"
                                     id="spoons"
                                     placeholder="0"
-                                    className="text-body w-[52px] h-12 bg-primary4 p-4 rounded-lg text-center"
+                                    className="text-body w-[54px] h-12 bg-primary4 p-4 rounded-lg text-center"
                                     value={spoons}
                                     onChange={handleChangeSpoons}
                                     onKeyDown={handleKeyDown}
