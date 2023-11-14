@@ -106,8 +106,8 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
             <article className="bg-background w-[328px] p-6 rounded-4xl" onClick={e => e.stopPropagation()}>
                 <form onSubmit={handleSubmit}>
                     <h4 className="text-header4 mt-0 mb-2">Add Task</h4>
-                    <div className="w-[100%] flex flex-col flex-start mb-6">
-                        <label htmlFor="taskName" className="text-caption bg-background w-[80px] text-center relative inset-x-2 inset-y-2 z-10 p-x-4">Task Name<span className="absolute text-2 top-0 right-0">*</span></label>
+                    <div className="w-[100%] flex flex-col relative flex-start mb-4">
+                        <label htmlFor="taskName" className="text-subtitle px-3 mb-1"><span className="absolute text-2 top-0 left-0">*</span>Task Name</label>
                         <div className="relative">
                             <input 
                                 name="task" 
@@ -128,14 +128,14 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
                                 </button>
                             </div>
                             {errorMessage? 
-                                <p className="absolute text-caption text-error px-4">Not a valid entry, enter characters</p>
+                                <p className="text-caption text-error px-4">Not a valid entry, enter characters</p>
                                 :
                                 <p></p>
                             }
                         </div>
                     </div>
-                    <div className="pb-6 pt-2.5">
-                        <div className="flex items-center gap-2 mb-2">
+                    <div className="pb-4">
+                        <div className="flex items-center gap-2 mb-1">
                             <h5 className="text-subtitle">Assign spoons</h5>
                             <div className="relative flex justify-center items-center">
                             {openTooltip? 
@@ -192,8 +192,8 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
                             </div>
                         </div>
                     </div>
-                    <div className="relative">
-                        <h5 className="text-subtitle mb-2">Assign priority</h5>
+                    <div className="relative pb-4">
+                        <h5 className="text-subtitle mb-1">Assign priority</h5>
                         <Listbox value={selectedPriority} onChange={setSelectedPriority}>
                             <Listbox.Button className={`bg-${backgroundColors[selectedPriority]} w-[151px] flex justify-between items-center text-body text-text1 border-[1px] border-[#79747E] px-4 py-[10px] rounded-lg`}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">

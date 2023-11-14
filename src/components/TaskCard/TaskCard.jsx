@@ -101,6 +101,7 @@ const TaskCard = ({ task, onRemoveTask, editChecked }) => {
                         <TaskSettingsModal 
                             setOpenSettings={setOpenSettings}
                             activeTask={activeTask}
+                            onRemoveTask={onRemoveTask}
                         />,
                         document.body
                     )}
