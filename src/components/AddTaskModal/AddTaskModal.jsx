@@ -46,9 +46,10 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
 
         if(e.target.value > remainingSpoons) {
             setActiveButton(true)
-        } else {
-            setActiveButton(false)
-        }
+        } 
+        // else {
+        //     setActiveButton(false)
+        // }
 
         if (e.target.value === "") {
             setSpoons(0)
