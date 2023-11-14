@@ -46,10 +46,12 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
 
         if(e.target.value > remainingSpoons) {
             setActiveButton(true)
-        } 
-        // else {
-        //     setActiveButton(false)
-        // }
+        } else if (e.target.value <= remainingSpoons && taskName === "" ){
+            setActiveButton(true)
+        }
+        else {
+            setActiveButton(false)
+        }
 
         if (e.target.value === "") {
             setSpoons(0)
@@ -113,7 +115,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
                                 name="task" 
                                 type="text" 
                                 id="task" 
-                                className="border-solid border border-[#79747E] rounded h-12 text-caption p-4 pr-10 w-[100%]"
+                                className="border-solid border border-text3 rounded h-12 text-caption p-4 pr-10 w-[100%]"
                                 placeholder="Type the name of your task"
                                 value={taskName}
                                 onChange={handleChangeTask}
@@ -163,7 +165,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
                             </div>
                         </div>
                         <div className="flex gap-2 justify-between items-center">
-                            <div className="flex gap-2 p-2 justify-between items-center border-[0.4px] rounded-lg">
+                            <div className="flex gap-2 p-2 justify-between items-center border border-text3 rounded-lg">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                     <path fillRule="evenodd" clipRule="evenodd" d="M12.0301 13.7391L4.42206 7.70506C4.16367 7.50039 3.9515 7.24338 3.79949 6.9509C3.64747 6.65842 3.55905 6.33709 3.54003 6.00801C3.521 5.67893 3.57181 5.34955 3.68911 5.04151C3.80641 4.73346 3.98754 4.4537 4.22062 4.22062C4.4537 3.98754 4.73346 3.80641 5.04151 3.68911C5.34955 3.57181 5.67893 3.521 6.00801 3.54003C6.33709 3.55905 6.65842 3.64747 6.9509 3.79949C7.24338 3.9515 7.50039 4.16367 7.70506 4.42206L13.7391 12.0301C15.0461 11.4591 17.0391 11.3821 18.7181 13.0601C19.7331 14.0761 20.3651 15.3181 20.5811 16.5001C20.7911 17.6501 20.6301 18.9261 19.7781 19.7781C18.9271 20.6301 17.6501 20.7911 16.5011 20.5811C15.3191 20.3651 14.0761 19.7331 13.0611 18.7171C11.3811 17.0381 11.4591 15.0461 12.0301 13.7391Z" fill="#001111" fillOpacity="0.5"/>
                                 </svg>
@@ -195,7 +197,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
                     <div className="relative pb-4">
                         <h5 className="text-subtitle mb-1">Assign priority</h5>
                         <Listbox value={selectedPriority} onChange={setSelectedPriority}>
-                            <Listbox.Button className={`bg-${backgroundColors[selectedPriority]} w-[151px] flex justify-between items-center text-body text-text1 border-[1px] border-[#79747E] px-4 py-[10px] rounded-lg`}>
+                            <Listbox.Button className={`bg-${backgroundColors[selectedPriority]} w-[151px] flex justify-between items-center text-body text-text1 border-[1px] border-text3 px-4 py-[10px] rounded-lg`}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                     <path d="M14 3.00001V10.5C13.9996 10.5712 13.984 10.6415 13.9543 10.7061C13.9245 10.7708 13.8813 10.8284 13.8275 10.875C12.8725 11.7019 11.9594 12 11.0887 12C9.90687 12 8.80312 11.4538 7.77625 10.9469C6.11687 10.125 4.67438 9.41314 3 10.7356V13.5C3 13.6326 2.94732 13.7598 2.85355 13.8536C2.75979 13.9473 2.63261 14 2.5 14C2.36739 14 2.24021 13.9473 2.14645 13.8536C2.05268 13.7598 2 13.6326 2 13.5V3.00001C2.00048 2.92878 2.01617 2.85847 2.04603 2.7938C2.07589 2.72913 2.11922 2.67158 2.17313 2.62501C4.42313 0.676263 6.4425 1.67439 8.2225 2.55501C9.9375 3.40376 11.4244 4.13751 13.1725 2.62501C13.2448 2.56238 13.3335 2.52178 13.4281 2.50802C13.5227 2.49427 13.6193 2.50793 13.7064 2.5474C13.7935 2.58687 13.8674 2.65049 13.9195 2.73071C13.9715 2.81093 13.9995 2.90439 14 3.00001Z" fill="#001111" fillOpacity="0.75"/>
                                 </svg>
