@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Listbox } from '@headlessui/react'
 
@@ -41,7 +41,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
 
     const handleChangeSpoons = (e) => {
         if( (remainingSpoons - e.target.value) < 0) {
-            toast.error("You don't have enough spoons available.")
+            toast.error("You don't have enough spoons available.", {toastId: "notEnoughSpoons"})
         }
 
         if(e.target.value > remainingSpoons) {
@@ -102,14 +102,8 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
     
     return (
         <section className=" bg-text2 w-[100vw] h-[100vh] flex justify-center items-center fixed top-0" onClick={() => setShowModal(false)}>
-            <ToastContainer 
-                position="top-center" 
-                theme="light" 
-                hideProgressBar={true} 
-                limit={1} 
-                role="alert"
-            />
             <article className="bg-background w-[328px] p-6 rounded-4xl" onClick={e => e.stopPropagation()}>
+           
                 <form onSubmit={handleSubmit}>
                     <h4 className="text-header4 mt-0 mb-2">Add Task</h4>
                     <div className="w-[100%] flex flex-col flex-start mb-6">

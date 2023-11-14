@@ -105,7 +105,9 @@ const TasksPage = ({remainingSpoons, taskList, setTaskList}) => {
         <section className="bg-background w-[100vw] h-[100vh] p-4">
             <ToastContainer 
                 position="top-center"
-                hideProgressBar={true} 
+                autoClose={3000}
+                hideProgressBar={false} 
+                newestOnTop={false}
                 limit={1} 
                 role="alert"
             />
