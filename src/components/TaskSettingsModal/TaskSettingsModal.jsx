@@ -9,8 +9,8 @@ const TaskSettingsModal = ({setOpenSettings, activeTask, remainingSpoons, handle
     const [openEditModal, setOpenEditModal] = useState(false)
 
     return (
-        <section className="bg-text2 w-[100vw] h-[100vh] flex justify-center items-center fixed top-0">
-            <article className="center-column bg-background w-[328px] p-6 rounded-4xl">
+        <section className="bg-text2 w-[100vw] h-[100vh] flex justify-center items-center fixed top-0" onClick={() => setOpenSettings(false)}>
+            <article className="center-column bg-background w-[328px] p-6 rounded-4xl" onClick={e => e.stopPropagation()}>
                 <button className="self-end" onClick={() => setOpenSettings(false)}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="#001111"/>
