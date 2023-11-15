@@ -5,7 +5,7 @@ import taskImg from "../../assets/tut-fourth-task.png";
 const TutorialFourthScreen = () => {
 
     return (
-        <section className="center-column gap-6 self-center text-center">
+        <section className="center-column gap-4 self-center text-center">
             <h4 className="text-header4">Customize your tasks</h4>
             <p className="text-body text-text1 w-[256px]">A modal appears for task details when you click “Add Task” as shown below</p>
             <div>
@@ -28,7 +28,7 @@ const TutorialFourthScreen = () => {
                     <p className="text-body text-text1">Click on “Add” to finish</p>
                 </div>
             </div>
-            <img src={taskImg} alt="a screenshot of adding task modal" />
+            <img className="block" src={taskImg} alt="a screenshot of adding task modal" />
         </section>
     )
 }
