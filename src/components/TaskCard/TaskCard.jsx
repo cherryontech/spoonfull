@@ -7,6 +7,7 @@ const TaskCard = ({ task, onRemoveTask, editChecked }) => {
     const [isChecked, setChecked] = useState(task.checked)
     const [openSettings, setOpenSettings] = useState(false);
     const [activeTask, setActiveTask] = useState("")
+    const [activeTaskId, setActiveTaskId] = useState('');
 
     const handleCheck = (e) => {
         const ischecked = e.target.checked;
@@ -17,6 +18,7 @@ const TaskCard = ({ task, onRemoveTask, editChecked }) => {
     const handleOpenSettings = (e) => {
         setOpenSettings(true);
         setActiveTask(e.target.getAttribute("value"))
+        setActiveTaskId(task.id)
     }
 
     return (
@@ -101,6 +103,7 @@ const TaskCard = ({ task, onRemoveTask, editChecked }) => {
                         <TaskSettingsModal 
                             setOpenSettings={setOpenSettings}
                             activeTask={activeTask}
+                            activeTaskId={activeTaskId}
                             onRemoveTask={onRemoveTask}
                         />,
                         document.body
