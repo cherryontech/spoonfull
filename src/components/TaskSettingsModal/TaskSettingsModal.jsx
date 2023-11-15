@@ -5,7 +5,7 @@ import EditTaskModal from "../EditTaskModal/EditTaskModal";
 
 
 
-const TaskSettingsModal = ({setOpenSettings, activeTask, remainingSpoons, handleTaskEdited}) => {
+const TaskSettingsModal = ({setOpenSettings, activeTask, remainingSpoons, handleTaskEdited, onRemoveTask}) => {
     const [openEditModal, setOpenEditModal] = useState(false)
 
     return (
@@ -27,7 +27,7 @@ const TaskSettingsModal = ({setOpenSettings, activeTask, remainingSpoons, handle
                         </svg>
                         Edit
                     </button>
-                    <button className="btn-settings">
+                    <button className="btn-settings" onClick={() => onRemoveTask(activeTask.id)}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
                             <path d="M12.5 6.75V14.25H6.5V6.75H12.5ZM11.375 2.25H7.625L6.875 3H4.25V4.5H14.75V3H12.125L11.375 2.25ZM14 5.25H5V14.25C5 15.075 5.675 15.75 6.5 15.75H12.5C13.325 15.75 14 15.075 14 14.25V5.25Z" fill="black"/>
                         </svg>
