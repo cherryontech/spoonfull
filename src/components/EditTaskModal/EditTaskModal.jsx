@@ -4,11 +4,11 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-const EditTaskModal = ({remainingSpoons, setOpenEditModal, activeTaskName, activeTaskId, activeSpoons, activePriority, activeBackground,}) => {
-    const [activeButton, setActiveButton] = useState(true);
-    const [taskName, setTaskName] = useState(activeTaskName);
-    const [spoons, setSpoons] = useState(activeSpoons);
-    const [selectedPriority, setSelectedPriority] = useState(activePriority);
+const EditTaskModal = ({remainingSpoons, setOpenEditModal, activeTask, handleTaskEdited, setOpenSettings}) => {
+    const [activeButton, setActiveButton] = useState(false);
+    const [taskName, setTaskName] = useState(activeTask.task);
+    const [spoons, setSpoons] = useState(activeTask.spoons);
+    const [selectedPriority, setSelectedPriority] = useState(activeTask.priority);
     const [openDropdown, setOpenDropdown] = useState(false);
     const [openTooltip, setOpenTooltip] = useState(false);
     const [errorMessage, setErrorMessage] = useState(false);
@@ -20,26 +20,26 @@ const EditTaskModal = ({remainingSpoons, setOpenEditModal, activeTaskName, activ
         Low: "primary4",
     }
 
-    const editedSpoons = remainingSpoons + activeSpoons
+    const editedSpoons = remainingSpoons + activeTask.spoons
 
     const handleChangeTask = (e) => {
-        let newTask = e.target.value;
-        newTask = newTask.replaceAll("  ", " ");
+        let editedTask = e.target.value;
+        editedTask = editedTask.replaceAll("  ", " ");
 
-        if(newTask !== "" && newTask !== " ") {
+        if(editedTask !== "" && editedTask !== " ") {
             setActiveButton(false)
             setErrorMessage(false)
         } else {
             setActiveButton(true)
         }
 
-        if(newTask === " ") {
+        if(editedTask === " ") {
             setErrorMessage(true)
         } else {
             setErrorMessage(false)
         }
 
-        setTaskName(newTask);
+        setTaskName(editedTask);
     }
 
     const handleChangeSpoons = (e) => {
@@ -68,8 +68,8 @@ const EditTaskModal = ({remainingSpoons, setOpenEditModal, activeTaskName, activ
         // }
     }
 
-    const newTask = {
-        id: activeTaskId,
+    const editedTask = {
+        id: activeTask.id,
         task: taskName,
         spoons: Number(spoons),
         checked: false,
@@ -96,10 +96,12 @@ const EditTaskModal = ({remainingSpoons, setOpenEditModal, activeTaskName, activ
         e.preventDefault();
         let tasks = localStorage["tasks"];
         tasks = JSON.parse(tasks);
-        tasks.push(newTask);
+        tasks = tasks.filter((task) => task.id !== editedTask.id);
+        tasks.push(editedTask);
         localStorage["tasks"] = JSON.stringify(tasks);
         handleTaskEdited();
         setOpenEditModal(false);
+        setOpenSettings(false);
     }
         
     const handleOpenTooltip = (e) => {
@@ -127,7 +129,7 @@ const EditTaskModal = ({remainingSpoons, setOpenEditModal, activeTaskName, activ
     }
 
     return (
-        <section className="bg-text2 w-[100vw] h-[100vh] flex justify-center items-center fixed top-0" onClick={() => setOpenEditModal(false)}>
+        <section className="w-[100vw] h-[100vh] flex justify-center items-center fixed top-0" onClick={() => setOpenEditModal(false)}>
             <article className="bg-background w-[328px] p-6 rounded-4xl" onClick={e => e.stopPropagation()}>
                 <form onSubmit={handleSubmit}>
                     <h4 className="text-header4 mt-0 mb-2">Edit Task</h4>
@@ -244,7 +246,7 @@ const EditTaskModal = ({remainingSpoons, setOpenEditModal, activeTaskName, activ
                     </div>
                     <div className="flex justify-end gap-2">
                         <button type="submit" className="btn-modal" onClick={() => setOpenEditModal(false)}>Cancel</button>
-                        <button disabled={activeButton} className="btn-modal text-primary-text">Add</button>
+                        <button disabled={activeButton} className="btn-modal text-primary-text">Save</button>
                     </div>
                 </form>
             </article>
