@@ -207,7 +207,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
                                 </svg>
                             </Listbox.Button>
                             <Listbox.Options className="absolute top-[79px] w-[151px] rounded-lg bg-background text-body text-text1">
-                                <Listbox.Option value="High" className="bg-primary1 px-2 py-2.5 hover:bg-primary-text">High</Listbox.Option>
+                                <Listbox.Option value="High" className="bg-primary1 px-2 py-2.5 hover:bg-primary-text current:bg-primary-text">High</Listbox.Option>
                                 <Listbox.Option value="Medium" className="bg-primary3 px-2 py-2.5 hover:bg-primary">Medium</Listbox.Option>
                                 <Listbox.Option value="Low" className="bg-primary4 px-2 py-2.5 hover:bg-primary1">Low</Listbox.Option>
                             </Listbox.Options>

@@ -15,6 +15,7 @@
     "@emotion/styled": "^11.11.0",
     "@fontsource/lato": "^5.0.15",
     "@headlessui/react": "^1.7.17",
+    "@headlessui/tailwindcss": "^0.2.0",
     "@heroicons/react": "^2.0.18",
     "@mui/material": "^5.14.17",
     "chart.js": "^4.4.0",
