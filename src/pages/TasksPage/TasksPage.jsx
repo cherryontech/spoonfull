@@ -98,7 +98,7 @@ const TasksPage = ({remainingSpoons, taskList, setTaskList}) => {
 
     const handleTaskAdded = () => {
         setTaskAdded(true);
-        toast.success("Task created successfully", { theme: "colored", style : {backgroundColor: "#41993F", textAlign: 'center'} });
+        toast.success("Task created successfully", { theme: "colored", style : {backgroundColor: "#41993F", textAlign: 'center'}, toastId: "successAdd" });
     }
 
     return (

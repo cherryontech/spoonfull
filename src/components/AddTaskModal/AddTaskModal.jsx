@@ -44,6 +44,11 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
             toast.error("You don't have enough spoons available.", {toastId: "notEnoughSpoons"})
         }
 
+        if(e.target.value > 99) {
+            let shortValue = e.target.value.slice(0,1)
+            return shortValue
+        }
+
         if(e.target.value > remainingSpoons) {
             setActiveButton(true)
         } else if (e.target.value <= remainingSpoons && taskName === "" ){
@@ -52,12 +57,12 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
         else {
             setActiveButton(false)
         }
-
-        if (e.target.value === "") {
-            setSpoons(0)
-        } else {
-            setSpoons(e.target.value);   
-        }
+        setSpoons(e.target.value)
+        // if (e.target.value === "") {
+        //     setSpoons(0)
+        // } else {
+        //     setSpoons(e.target.value);   
+        // }
     }
 
     const newTask = {
