@@ -134,7 +134,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
                             <input 
                                 name="task" 
                                 type="text" 
-                                id="task" 
+                                id="taskName" 
                                 className="border-solid border border-text3 rounded h-12 text-caption p-4 pr-10 w-[100%]"
                                 placeholder="Type the name of your task"
                                 value={taskName}
