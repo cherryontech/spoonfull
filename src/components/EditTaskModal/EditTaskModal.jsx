@@ -1,24 +1,27 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-// eslint-disable-next-line react/prop-types
-const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
+
+const EditTaskModal = ({remainingSpoons, setOpenEditModal, activeTaskName, activeTaskId, activeSpoons, activePriority, activeBackground,}) => {
     const [activeButton, setActiveButton] = useState(true);
-    const [taskName, setTaskName] = useState('');
-    const [spoons, setSpoons] = useState("");
-    const [selectedPriority, setSelectedPriority] = useState("Priority");
+    const [taskName, setTaskName] = useState(activeTaskName);
+    const [spoons, setSpoons] = useState(activeSpoons);
+    const [selectedPriority, setSelectedPriority] = useState(activePriority);
     const [openDropdown, setOpenDropdown] = useState(false);
     const [openTooltip, setOpenTooltip] = useState(false);
     const [errorMessage, setErrorMessage] = useState(false);
     
+
     const backgroundColors = {
         High: "primary1",
         Medium: "primary3",
         Low: "primary4",
     }
-   
-    
+
+    const editedSpoons = remainingSpoons + activeSpoons
+
     const handleChangeTask = (e) => {
         let newTask = e.target.value;
         newTask = newTask.replaceAll("  ", " ");
@@ -40,18 +43,18 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
     }
 
     const handleChangeSpoons = (e) => {
+        if( (editedSpoons - e.target.value) < 0) {
+            toast.error("You don't have enough spoons available.", {toastId: "notEnoughSpoons"})
+        }
+
         if(e.target.value > 99) {
             let shortValue = e.target.value.slice(0,1)
             return shortValue
         }
 
-        if( (remainingSpoons - e.target.value) < 0) {
-            toast.error("You don't have enough spoons available.", {toastId: "notEnoughSpoons"})
-        }
-
-        if(e.target.value > remainingSpoons) {
+        if(e.target.value > editedSpoons) {
             setActiveButton(true)
-        } else if (e.target.value <= remainingSpoons && taskName === "" ){
+        } else if (e.target.value <= editedSpoons && taskName === "" ){
             setActiveButton(true)
         }
         else {
@@ -66,7 +69,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
     }
 
     const newTask = {
-        id: Date.now(),
+        id: activeTaskId,
         task: taskName,
         spoons: Number(spoons),
         checked: false,
@@ -83,7 +86,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
     const handleKeyDown = (e) => {
         if (e.key === 'Enter' 
             && taskName !== "" 
-            && (remainingSpoons - spoons) >= 0 
+            && (editedSpoons - spoons) >= 0 
             && taskName !== " ") {
           handleSubmit(e);
         }
@@ -95,8 +98,8 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
         tasks = JSON.parse(tasks);
         tasks.push(newTask);
         localStorage["tasks"] = JSON.stringify(tasks);
-        handleTaskAdded();
-        setShowModal(false);
+        handleTaskEdited();
+        setOpenEditModal(false);
     }
         
     const handleOpenTooltip = (e) => {
@@ -122,12 +125,12 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
         setSelectedPriority(e.target.value);
         setOpenDropdown(false);
     }
-    
+
     return (
-        <section className="bg-text2 w-[100vw] h-[100vh] flex justify-center items-center fixed top-0" onClick={() => setShowModal(false)}>
+        <section className="bg-text2 w-[100vw] h-[100vh] flex justify-center items-center fixed top-0" onClick={() => setOpenEditModal(false)}>
             <article className="bg-background w-[328px] p-6 rounded-4xl" onClick={e => e.stopPropagation()}>
                 <form onSubmit={handleSubmit}>
-                    <h4 className="text-header4 mt-0 mb-2">Add Task</h4>
+                    <h4 className="text-header4 mt-0 mb-2">Edit Task</h4>
                     <div className="w-[100%] flex flex-col relative flex-start mb-4">
                         <label htmlFor="taskName" className="text-subtitle px-3 mb-1"><span className="absolute text-2 top-0 left-0">*</span>Task Name</label>
                         <div className="relative">
@@ -204,12 +207,12 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
                             <div className="flex justify-between gap-2">
                                 <p className="text-body-small">Available Spoons:</p>
                                 <p className={
-                                    ((remainingSpoons - Number(spoons)) > 0)? 
+                                    ((editedSpoons - Number(spoons)) > 0)? 
                                     "text-body-small" 
                                     : 
                                     "text-body-small text-error"
                                 }>{
-                                    remainingSpoons - Number(spoons) 
+                                    editedSpoons - Number(spoons) 
                                 }</p>
                             </div>
                         </div>
@@ -240,7 +243,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
                         </div>
                     </div>
                     <div className="flex justify-end gap-2">
-                        <button type="submit" className="btn-modal" onClick={() => setShowModal(false)}>Cancel</button>
+                        <button type="submit" className="btn-modal" onClick={() => setOpenEditModal(false)}>Cancel</button>
                         <button disabled={activeButton} className="btn-modal text-primary-text">Add</button>
                     </div>
                 </form>
@@ -249,4 +252,4 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
     )
 }
 
-export default AddTaskModal;
+export default EditTaskModal;

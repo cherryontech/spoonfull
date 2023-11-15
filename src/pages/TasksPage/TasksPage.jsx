@@ -98,7 +98,7 @@ const TasksPage = ({remainingSpoons, taskList, setTaskList}) => {
 
     const handleTaskAdded = () => {
         setTaskAdded(true);
-        toast.success("Task created successfully", { theme: "colored", style : {backgroundColor: "#41993F", textAlign: 'center'} });
+        toast.success("Task created successfully", { theme: "colored", style : {backgroundColor: "#41993F", textAlign: 'center'}, toastId: "successAdd" });
     }
 
     return (
@@ -126,28 +126,28 @@ const TasksPage = ({remainingSpoons, taskList, setTaskList}) => {
                         <ul>
                             {highPriorityTasks.map((task) => {
                                 return (
-                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} /></li>
+                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} remainingSpoons={remainingSpoons}/></li>
                                 )
                             })}
                         </ul>
                         <ul>
                             {mediumPriorityTasks.map((task) => {
                                 return (
-                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} /></li>
+                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} remainingSpoons={remainingSpoons}/></li>
                                 )
                             })}
                         </ul>
                         <ul>
                             {lowPriorityTasks.map((task) => {
                                 return (
-                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} /></li>
+                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} remainingSpoons={remainingSpoons}/></li>
                                 )
                             })}
                         </ul>
                         <ul>
                             {noPriorityTasks.map((task) => {
                                 return (
-                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} /></li>
+                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} remainingSpoons={remainingSpoons}/></li>
                                 )
                             })}
                         </ul>

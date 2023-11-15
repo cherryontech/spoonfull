@@ -12,6 +12,9 @@
     .btn-outlined {
       @apply text-button-text rounded-full w-[256px] h-[48px] border-accent border
     }
+    .btn-settings {
+      @apply w-full py-2.5 text-button-text flex justify-center items-center gap-2 border-primary3 border rounded-full hover:shadow-card-shadow
+    }
     .center-column {
       @apply flex flex-col items-center justify-center
     }
