@@ -1,23 +1,30 @@
+/* eslint-disable react/prop-types */
 import heroImg from "../../assets/heroImg.png";
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import AddTaskModal from "../../components/AddTaskModal/AddTaskModal";
 import TaskCard from "../../components/TaskCard/TaskCard";
 import WelcomePage from "../WelcomePage/WelcomePage";
-import SpoonsModal from "../../components/SpoonsModal/SpoonsModal";
 import TutorialPage from "../../components/TutorialPage/TutorialPage";
+import { ToastContainer, toast } from 'react-toastify';
 
 
-const TasksPage = ({remainingSpoons, maxSpoons, taskList, setTaskList}) => {
+const TasksPage = ({remainingSpoons, taskList, setTaskList}) => {
 
     const [showModal, setShowModal] = useState(false);
     const [showWelcomePage, setShowWelcomePage] = useState(true);
-    const [showSpoonsModal, setShowSpoonsModal] = useState(false)
     const [showTutorialPage, setShowTutorialPage] = useState(false)
+    const [taskAdded, setTaskAdded] = useState(false)
+    const [taskRemoved, setTaskRemoved] = useState(false)
+    const [highPriorityTasks, setHighPriorityTasks] = useState([])
+    const [mediumPriorityTasks, setMediumPriorityTasks] = useState([])
+    const [lowPriorityTasks, setLowPriorityTasks] = useState([])
+    const [noPriorityTasks, setNoPriorityTasks] = useState([])
     
     const openModal = (e) => {
         e.preventDefault();
         setShowModal(true)
+        setTaskAdded(false)
     };
 
     useEffect(() => {
@@ -28,14 +35,32 @@ const TasksPage = ({remainingSpoons, maxSpoons, taskList, setTaskList}) => {
         let tasks = localStorage["tasks"];
         tasks = JSON.parse(tasks);
         tasks = tasks.sort((a, b) => a.id - b.id)
-        setTaskList(tasks)
-    }, []);
+        setTaskList(tasks);
+
+        let highPriority = tasks.filter(task => task.priority === "High");
+        setHighPriorityTasks(highPriority)
+
+        let mediumPriority = tasks.filter(task => task.priority === "Medium");
+        setMediumPriorityTasks(mediumPriority)
+
+        let lowPriority = tasks.filter(task => task.priority === "Low");
+        setLowPriorityTasks(lowPriority)
+
+        let noPriority = tasks.filter(task => task.priority === "Priority");
+        setNoPriorityTasks(noPriority)
+
+    }, [taskAdded, taskRemoved]);
 
     const removeTask = (id) => {
         let tasks = JSON.parse(JSON.stringify(taskList));
         tasks = tasks.filter((task) => task.id !== id);
         localStorage["tasks"] = JSON.stringify(tasks);
-        setTaskList(tasks)
+        setTaskList(tasks);
+        if (taskRemoved === false){
+            setTaskRemoved(true)
+        } else {
+            setTaskRemoved(false)
+        }
     };
 
     const editChecked = (id) => {
@@ -68,11 +93,24 @@ const TasksPage = ({remainingSpoons, maxSpoons, taskList, setTaskList}) => {
     
     const handleSkipTutorial = () => {
         localStorage.setItem("tutorial", "false");
-        window.location.reload();
+        setShowWelcomePage(false)
+    }
+
+    const handleTaskAdded = () => {
+        setTaskAdded(true);
+        toast.success("Task created successfully", { theme: "colored", style : {backgroundColor: "#41993F", textAlign: 'center'} });
     }
 
     return (
         <section className="bg-background w-[100vw] h-[100vh] p-4">
+            <ToastContainer 
+                position="top-center"
+                autoClose={3000}
+                hideProgressBar={false} 
+                newestOnTop={false}
+                limit={1} 
+                role="alert"
+            />
             <div className="w-[100%] flex justify-between items-center border-b border-text3 pb-2">
                 <h4 className="text-header4">Tasks</h4>
             </div>
@@ -84,15 +122,37 @@ const TasksPage = ({remainingSpoons, maxSpoons, taskList, setTaskList}) => {
                         <p className="text-caption text-text1 text-center w-[200px]">Plan your day by adding tasks and allocating your energy among them.</p>
                     </div>
                     :
-                    <div className="py-2">
+                    <div className="pt-2 pb-[100px]">
                         <ul>
-                            {taskList.map((task) => {
+                            {highPriorityTasks.map((task) => {
+                                return (
+                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} /></li>
+                                )
+                            })}
+                        </ul>
+                        <ul>
+                            {mediumPriorityTasks.map((task) => {
+                                return (
+                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} /></li>
+                                )
+                            })}
+                        </ul>
+                        <ul>
+                            {lowPriorityTasks.map((task) => {
+                                return (
+                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} /></li>
+                                )
+                            })}
+                        </ul>
+                        <ul>
+                            {noPriorityTasks.map((task) => {
                                 return (
                                     <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} /></li>
                                 )
                             })}
                         </ul>
                     </div>
+                    
             }
             <button className="flex gap-3 fixed bottom-px right-px p-4 m-4 shadow-box-shadow rounded-2xl bg-accent" onClick={openModal}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -103,7 +163,8 @@ const TasksPage = ({remainingSpoons, maxSpoons, taskList, setTaskList}) => {
             {showModal && createPortal(
                 <AddTaskModal 
                     setShowModal={setShowModal}
-                    remainingSpoons={remainingSpoons} />,
+                    remainingSpoons={remainingSpoons}
+                    handleTaskAdded={handleTaskAdded} />,
                 document.body
             )}
             {showWelcomePage && createPortal(
@@ -116,18 +177,11 @@ const TasksPage = ({remainingSpoons, maxSpoons, taskList, setTaskList}) => {
             {showTutorialPage && createPortal(
                 <TutorialPage 
                     handleSkipTutorial={handleSkipTutorial}
+                    setShowTutorialPage={setShowTutorialPage}
                 />,
                 document.body
             )}
-            {showSpoonsModal && createPortal(
-                <SpoonsModal 
-                    setShowSpoonsModal={setShowSpoonsModal}
-                    remainingSpoons={remainingSpoons} 
-                    usedSpoons={usedSpoons}
-                    plannedSpoons={plannedSpoons}   
-                />,
-                document.body
-            )}
+         
         </section>
     )
 }
