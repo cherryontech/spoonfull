@@ -3,11 +3,14 @@ import { useState } from "react";
 import { createPortal } from "react-dom";
 import TaskSettingsModal from "../TaskSettingsModal/TaskSettingsModal";
 
-const TaskCard = ({ task, onRemoveTask, editChecked }) => {
+const TaskCard = ({ task, onRemoveTask, editChecked, remainingSpoons }) => {
     const [isChecked, setChecked] = useState(task.checked)
     const [openSettings, setOpenSettings] = useState(false);
-    const [activeTask, setActiveTask] = useState("")
+    const [activeTaskName, setActiveTaskName] = useState("")
     const [activeTaskId, setActiveTaskId] = useState('');
+    const [activeSpoons, setActiveSpoons] = useState('');
+    const [activePriority, setActivePriority] = useState('');
+    const [activeBackground, setActiveBackground] = useState('');
 
     const handleCheck = (e) => {
         const ischecked = e.target.checked;
@@ -17,8 +20,11 @@ const TaskCard = ({ task, onRemoveTask, editChecked }) => {
 
     const handleOpenSettings = (e) => {
         setOpenSettings(true);
-        setActiveTask(e.target.getAttribute("value"))
+        setActiveTaskName(e.target.getAttribute("value"))
         setActiveTaskId(task.id)
+        setActiveSpoons(task.spoons)
+        setActivePriority(task.priority)
+        setActiveBackground(task.background)
     }
 
     return (
@@ -84,10 +90,11 @@ const TaskCard = ({ task, onRemoveTask, editChecked }) => {
                         </div>
                     </div>
                 </div>
-                <div className="flex p-2.5 justify-center items-center">
+                <div className="flex p-2.5 justify-center items-center" value={task.task}>
                     <button
                         className="mt-1 p-2.5"
                         onClick={handleOpenSettings}
+                        value={task.task}
                     >
                         <svg 
                             xmlns="http://www.w3.org/2000/svg" 
@@ -102,9 +109,13 @@ const TaskCard = ({ task, onRemoveTask, editChecked }) => {
                     {openSettings && createPortal(
                         <TaskSettingsModal 
                             setOpenSettings={setOpenSettings}
-                            activeTask={activeTask}
+                            activeTaskName={activeTaskName}
                             activeTaskId={activeTaskId}
+                            activeSpoons={activeSpoons}
+                            activePriority={activePriority}
+                            activeBackground={activeBackground}
                             onRemoveTask={onRemoveTask}
+                            remainingSpoons={remainingSpoons}
                         />,
                         document.body
                     )}
