@@ -21,7 +21,7 @@ const TaskSettingsModal = ({setOpenSettings, activeTask, remainingSpoons, handle
                 <div className="w-[100%] flex justify-between items-center border-b border-text3 pb-2">
                     <h4 className="text-header4">Tasks</h4>
                 </div>
-                <p className="text-body py-6 w-full">{activeTask.task}</p>
+                <p className="text-body py-4 w-full">{activeTask.task}</p>
                 <div className="center-column gap-4 w-full">
                     <button className="btn-settings bg-primary3" onClick={() => setOpenEditModal(true)}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
