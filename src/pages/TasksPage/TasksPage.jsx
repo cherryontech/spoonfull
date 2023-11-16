@@ -16,6 +16,7 @@ const TasksPage = ({remainingSpoons, taskList, setTaskList}) => {
     const [showTutorialPage, setShowTutorialPage] = useState(false)
     const [taskAdded, setTaskAdded] = useState(false)
     const [taskRemoved, setTaskRemoved] = useState(false)
+    const [taskEdited, setTaskEdited] = useState(false)
     const [highPriorityTasks, setHighPriorityTasks] = useState([])
     const [mediumPriorityTasks, setMediumPriorityTasks] = useState([])
     const [lowPriorityTasks, setLowPriorityTasks] = useState([])
@@ -49,7 +50,7 @@ const TasksPage = ({remainingSpoons, taskList, setTaskList}) => {
         let noPriority = tasks.filter(task => task.priority === "Priority");
         setNoPriorityTasks(noPriority)
 
-    }, [taskAdded, taskRemoved]);
+    }, [taskAdded, taskRemoved, taskEdited]);
 
     const removeTask = (id) => {
         let tasks = JSON.parse(JSON.stringify(taskList));
@@ -101,6 +102,15 @@ const TasksPage = ({remainingSpoons, taskList, setTaskList}) => {
         toast.success("Task created successfully", { theme: "colored", style : {backgroundColor: "#41993F", textAlign: 'center'}, toastId: "successAdd" });
     }
 
+    const handleTaskEdited = () => {
+        if(taskEdited === true) {
+            setTaskEdited(false)
+        } else {
+            setTaskEdited(true)
+        }
+        toast.success("Your task has been edited successfully!", { theme: "colored", style : {backgroundColor: "#41993F", textAlign: 'center'}, toastId: "successEdit" });
+    }
+
     return (
         <section className="bg-background w-[100vw] h-[100vh] p-4">
             <ToastContainer 
@@ -126,28 +136,28 @@ const TasksPage = ({remainingSpoons, taskList, setTaskList}) => {
                         <ul>
                             {highPriorityTasks.map((task) => {
                                 return (
-                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} remainingSpoons={remainingSpoons}/></li>
+                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} remainingSpoons={remainingSpoons} handleTaskEdited={handleTaskEdited}/></li>
                                 )
                             })}
                         </ul>
                         <ul>
                             {mediumPriorityTasks.map((task) => {
                                 return (
-                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} remainingSpoons={remainingSpoons}/></li>
+                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} remainingSpoons={remainingSpoons} handleTaskEdited={handleTaskEdited}/></li>
                                 )
                             })}
                         </ul>
                         <ul>
                             {lowPriorityTasks.map((task) => {
                                 return (
-                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} remainingSpoons={remainingSpoons}/></li>
+                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} remainingSpoons={remainingSpoons} handleTaskEdited={handleTaskEdited}/></li>
                                 )
                             })}
                         </ul>
                         <ul>
                             {noPriorityTasks.map((task) => {
                                 return (
-                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} remainingSpoons={remainingSpoons}/></li>
+                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} remainingSpoons={remainingSpoons} handleTaskEdited={handleTaskEdited}/></li>
                                 )
                             })}
                         </ul>

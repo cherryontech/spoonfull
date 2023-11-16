@@ -5,12 +5,12 @@ import EditTaskModal from "../EditTaskModal/EditTaskModal";
 
 
 
-const TaskSettingsModal = ({setOpenSettings, activeTaskName, activeTaskId, activeSpoons, activePriority, activeBackground, remainingSpoons}) => {
+const TaskSettingsModal = ({setOpenSettings, activeTask, remainingSpoons, handleTaskEdited}) => {
     const [openEditModal, setOpenEditModal] = useState(false)
 
     return (
-        <section className="bg-text2 w-[100vw] h-[100vh] flex justify-center items-center fixed top-0">
-            <article className="center-column bg-background w-[328px] p-6 rounded-4xl">
+        <section className="bg-text2 w-[100vw] h-[100vh] flex justify-center items-center fixed top-0" onClick={() => setOpenSettings(false)}>
+            <article className="center-column bg-background w-[328px] p-6 rounded-4xl" onClick={e => e.stopPropagation()}>
                 <button className="self-end" onClick={() => setOpenSettings(false)}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="#001111"/>
@@ -19,7 +19,7 @@ const TaskSettingsModal = ({setOpenSettings, activeTaskName, activeTaskId, activ
                 <div className="w-[100%] flex justify-between items-center border-b border-text3 pb-2">
                     <h4 className="text-header4">Tasks</h4>
                 </div>
-                <p className="text-body py-6 w-full">{activeTaskName}</p>
+                <p className="text-body py-6 w-full">{activeTask.task}</p>
                 <div className="center-column gap-4 w-full">
                     <button className="btn-settings bg-primary3" onClick={() => setOpenEditModal(true)}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
@@ -38,12 +38,10 @@ const TaskSettingsModal = ({setOpenSettings, activeTaskName, activeTaskId, activ
             {openEditModal && createPortal(
                 <EditTaskModal 
                     setOpenEditModal={setOpenEditModal}
+                    setOpenSettings={setOpenSettings}
                     remainingSpoons={remainingSpoons}
-                    activeTaskName={activeTaskName}
-                    activeTaskId={activeTaskId}
-                    activeSpoons={activeSpoons}
-                    activePriority={activePriority}
-                    activeBackground={activeBackground}
+                    activeTask={activeTask}
+                    handleTaskEdited={handleTaskEdited}
                 />,
                 document.body
             )}
