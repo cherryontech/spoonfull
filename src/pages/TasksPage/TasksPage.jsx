@@ -9,7 +9,7 @@ import TutorialPage from "../../components/TutorialPage/TutorialPage";
 import { ToastContainer, toast } from 'react-toastify';
 
 
-const TasksPage = ({remainingSpoons, taskList, setTaskList}) => {
+const TasksPage = ({ remainingSpoons, taskList, setTaskList }) => {
 
     const [showModal, setShowModal] = useState(false);
     const [showWelcomePage, setShowWelcomePage] = useState(true);
@@ -21,7 +21,7 @@ const TasksPage = ({remainingSpoons, taskList, setTaskList}) => {
     const [mediumPriorityTasks, setMediumPriorityTasks] = useState([])
     const [lowPriorityTasks, setLowPriorityTasks] = useState([])
     const [noPriorityTasks, setNoPriorityTasks] = useState([])
-    
+
     const openModal = (e) => {
         e.preventDefault();
         setShowModal(true)
@@ -57,21 +57,21 @@ const TasksPage = ({remainingSpoons, taskList, setTaskList}) => {
         tasks = tasks.filter((task) => task.id !== id);
         localStorage["tasks"] = JSON.stringify(tasks);
         setTaskList(tasks);
-        if (taskRemoved === false){
+        if (taskRemoved === false) {
             setTaskRemoved(true)
         } else {
             setTaskRemoved(false)
         }
-        toast.success("Your task has been deleted successfully!", { theme: "colored", style : {backgroundColor: "#41993F", textAlign: 'center'}, toastId: "successEdit" });
+        toast.success("Your task has been deleted successfully!", { theme: "colored", style: { backgroundColor: "#41993F", textAlign: 'center' }, toastId: "successEdit" });
     };
 
     const editChecked = (id) => {
         let tasks = JSON.parse(JSON.stringify(taskList));
         let editedTask = tasks.find((task) => task.id == id);
 
-        if(editedTask.checked === false) {
+        if (editedTask.checked === false) {
             editedTask.checked = true;
-        } 
+        }
         else {
             editedTask.checked = false;
         }
@@ -91,8 +91,8 @@ const TasksPage = ({remainingSpoons, taskList, setTaskList}) => {
         let tutorial = localStorage["tutorial"];
         tutorial = JSON.parse(tutorial);
         setShowWelcomePage(tutorial)
-    },[])
-    
+    }, [])
+
     const handleSkipTutorial = () => {
         localStorage.setItem("tutorial", "false");
         setShowWelcomePage(false)
@@ -100,31 +100,36 @@ const TasksPage = ({remainingSpoons, taskList, setTaskList}) => {
 
     const handleTaskAdded = () => {
         setTaskAdded(true);
-        toast.success("Task created successfully", { theme: "colored", style : {backgroundColor: "#41993F", textAlign: 'center'}, toastId: "successAdd" });
+        toast.success("Task created successfully", { theme: "colored", style: { backgroundColor: "#41993F", textAlign: 'center' }, toastId: "successAdd" });
     }
 
     const handleTaskEdited = () => {
-        if(taskEdited === true) {
+        if (taskEdited === true) {
             setTaskEdited(false)
         } else {
             setTaskEdited(true)
         }
-        toast.success("Your task has been edited successfully!", { theme: "colored", style : {backgroundColor: "#41993F", textAlign: 'center'}, toastId: "successEdit" });
+        toast.success("Your task has been edited successfully!", { theme: "colored", style: { backgroundColor: "#41993F", textAlign: 'center' }, toastId: "successEdit" });
+    }
+
+    const handleClearAllTasks = () => {
+        localStorage["tasks"] = "[]";
+        setTaskList([]);
     }
 
     return (
         <section className="bg-background w-[100vw] h-[100vh] p-4">
-            <ToastContainer 
+            <ToastContainer
                 position="top-center"
                 autoClose={3000}
-                hideProgressBar={false} 
+                hideProgressBar={false}
                 newestOnTop={false}
-                limit={1} 
+                limit={1}
                 role="alert"
             />
             <div className="w-[100%] flex justify-between items-center border-b border-text3 pb-2">
                 <h4 className="text-header4">Tasks</h4>
-                <button className="btn-modal text-primary-text">Clear All</button>
+                {taskList[0] && <button onClick={handleClearAllTasks} className="btn-modal text-primary-text">Clear All</button>}
             </div>
             {
                 (!taskList[0] || !taskList[0].task) ?
@@ -138,33 +143,33 @@ const TasksPage = ({remainingSpoons, taskList, setTaskList}) => {
                         <ul>
                             {highPriorityTasks.map((task) => {
                                 return (
-                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} remainingSpoons={remainingSpoons} handleTaskEdited={handleTaskEdited}/></li>
+                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} remainingSpoons={remainingSpoons} handleTaskEdited={handleTaskEdited} /></li>
                                 )
                             })}
                         </ul>
                         <ul>
                             {mediumPriorityTasks.map((task) => {
                                 return (
-                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} remainingSpoons={remainingSpoons} handleTaskEdited={handleTaskEdited}/></li>
+                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} remainingSpoons={remainingSpoons} handleTaskEdited={handleTaskEdited} /></li>
                                 )
                             })}
                         </ul>
                         <ul>
                             {lowPriorityTasks.map((task) => {
                                 return (
-                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} remainingSpoons={remainingSpoons} handleTaskEdited={handleTaskEdited}/></li>
+                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} remainingSpoons={remainingSpoons} handleTaskEdited={handleTaskEdited} /></li>
                                 )
                             })}
                         </ul>
                         <ul>
                             {noPriorityTasks.map((task) => {
                                 return (
-                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} remainingSpoons={remainingSpoons} handleTaskEdited={handleTaskEdited}/></li>
+                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} remainingSpoons={remainingSpoons} handleTaskEdited={handleTaskEdited} /></li>
                                 )
                             })}
                         </ul>
                     </div>
-                    
+
             }
             <button className="flex gap-3 fixed bottom-px right-px p-4 m-4 shadow-box-shadow rounded-2xl bg-accent" onClick={openModal}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -173,27 +178,27 @@ const TasksPage = ({remainingSpoons, taskList, setTaskList}) => {
                 <p className="text-button-text">Add Task</p>
             </button>
             {showModal && createPortal(
-                <AddTaskModal 
+                <AddTaskModal
                     setShowModal={setShowModal}
                     remainingSpoons={remainingSpoons}
                     handleTaskAdded={handleTaskAdded} />,
                 document.body
             )}
             {showWelcomePage && createPortal(
-                <WelcomePage 
+                <WelcomePage
                     handleSkipTutorial={handleSkipTutorial}
                     setShowTutorialPage={setShowTutorialPage}
                 />,
                 document.body
             )}
             {showTutorialPage && createPortal(
-                <TutorialPage 
+                <TutorialPage
                     handleSkipTutorial={handleSkipTutorial}
                     setShowTutorialPage={setShowTutorialPage}
                 />,
                 document.body
             )}
-         
+
         </section>
     )
 }
