@@ -124,6 +124,7 @@ const TasksPage = ({remainingSpoons, taskList, setTaskList}) => {
             />
             <div className="w-[100%] flex justify-between items-center border-b border-text3 pb-2">
                 <h4 className="text-header4">Tasks</h4>
+                <button className="btn-modal text-primary-text">Clear All</button>
             </div>
             {
                 (!taskList[0] || !taskList[0].task) ?
