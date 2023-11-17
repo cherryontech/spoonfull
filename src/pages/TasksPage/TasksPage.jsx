@@ -62,7 +62,7 @@ const TasksPage = ({ remainingSpoons, taskList, setTaskList }) => {
         } else {
             setTaskRemoved(false)
         }
-        toast.success("Your task has been deleted successfully!", { theme: "colored", style: { backgroundColor: "#41993F", textAlign: 'center' }, toastId: "successEdit" });
+        toast.success("Your task has been deleted!", { theme: "colored", style: { backgroundColor: "#41993F", textAlign: 'center' }, toastId: "successEdit" });
     };
 
     const editChecked = (id) => {
