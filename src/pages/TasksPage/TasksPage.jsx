@@ -118,7 +118,7 @@ const TasksPage = ({ remainingSpoons, taskList, setTaskList }) => {
     }
 
     return (
-        <section className="bg-background w-[100vw] h-[100vh] p-4 md:p-6 xl:px-24 xl:py-4">
+        <section className="bg-background w-[100vw] h-[100vh] p-4 md:py-4 md:p-6 xl:px-24">
             <ToastContainer
                 position="top-center"
                 autoClose={3000}
