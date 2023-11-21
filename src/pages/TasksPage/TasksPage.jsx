@@ -141,7 +141,7 @@ const TasksPage = ({ remainingSpoons, taskList, setTaskList }) => {
                     :
                     <div className="pt-2 pb-[100px] grid grid-cols-1 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-y-8">
                         <div>
-                            <p className="text-small-body md:text-subtitle text-text2 py-2 md:py-4">High Priority</p>
+                            <p className="text-small-body md:text-subtitle text-text1 py-2 md:py-4">High Priority</p>
                             <ul>
                                 {highPriorityTasks.map((task) => {
                                     return (
@@ -151,7 +151,7 @@ const TasksPage = ({ remainingSpoons, taskList, setTaskList }) => {
                             </ul>
                         </div>
                         <div>
-                            <p className="text-small-body md:text-subtitle text-text2 py-2 md:py-4">Medium Priority</p>
+                            <p className="text-small-body md:text-subtitle text-text1 py-2 md:py-4">Medium Priority</p>
                             <ul>
                                 {mediumPriorityTasks.map((task) => {
                                     return (
@@ -161,7 +161,7 @@ const TasksPage = ({ remainingSpoons, taskList, setTaskList }) => {
                             </ul>
                         </div>
                         <div>
-                            <p className="text-small-body md:text-subtitle text-text2 py-2 md:py-4">Low Priority</p>
+                            <p className="text-small-body md:text-subtitle text-text1 py-2 md:py-4">Low Priority</p>
                             <ul>
                                 {lowPriorityTasks.map((task) => {
                                     return (
@@ -171,7 +171,7 @@ const TasksPage = ({ remainingSpoons, taskList, setTaskList }) => {
                             </ul>
                         </div>
                        <div>
-                        <p className="text-small-body md:text-subtitle text-text2 py-2 md:py-4">Other Tasks</p>
+                        <p className="text-small-body md:text-subtitle text-text1 py-2 md:py-4">Other Tasks</p>
                         <ul>
                             {noPriorityTasks.map((task) => {
                                 return (
