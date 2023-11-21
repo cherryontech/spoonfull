@@ -217,7 +217,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
                     <div className="relative pb-4">
                         <h5 className="text-subtitle mb-1">Assign priority</h5>
                         <div>
-                            <button className={`bg-${backgroundColors[selectedPriority]} w-[151px] flex justify-between items-center text-body text-text1 border-[1px] border-text3 px-4 py-[10px] rounded-lg`} onClick={handleOpenDropdown}>
+                            <button className={`bg-${backgroundColors[selectedPriority]} w-[151px] flex justify-between items-center text-body border-[1px] border-text3 px-4 py-[10px] rounded-lg`} onClick={handleOpenDropdown}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                     <path d="M14 3.00001V10.5C13.9996 10.5712 13.984 10.6415 13.9543 10.7061C13.9245 10.7708 13.8813 10.8284 13.8275 10.875C12.8725 11.7019 11.9594 12 11.0887 12C9.90687 12 8.80312 11.4538 7.77625 10.9469C6.11687 10.125 4.67438 9.41314 3 10.7356V13.5C3 13.6326 2.94732 13.7598 2.85355 13.8536C2.75979 13.9473 2.63261 14 2.5 14C2.36739 14 2.24021 13.9473 2.14645 13.8536C2.05268 13.7598 2 13.6326 2 13.5V3.00001C2.00048 2.92878 2.01617 2.85847 2.04603 2.7938C2.07589 2.72913 2.11922 2.67158 2.17313 2.62501C4.42313 0.676263 6.4425 1.67439 8.2225 2.55501C9.9375 3.40376 11.4244 4.13751 13.1725 2.62501C13.2448 2.56238 13.3335 2.52178 13.4281 2.50802C13.5227 2.49427 13.6193 2.50793 13.7064 2.5474C13.7935 2.58687 13.8674 2.65049 13.9195 2.73071C13.9715 2.81093 13.9995 2.90439 14 3.00001Z" fill="#001111" fillOpacity="0.75"/>
                                 </svg>
@@ -226,7 +226,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
                                     <path fillRule="evenodd" clipRule="evenodd" d="M20.625 9L12.625 17L4.625 9L6.625 7L12.625 13L18.625 7L20.625 9Z" fill="#001111" fillOpacity="0.75"/>
                                 </svg>
                             </button>
-                            <ul className={openDropdown? "absolute top-[75px] w-[151px] rounded-lg bg-background text-body text-text1" : "hidden"}>
+                            <ul className={openDropdown? "absolute top-[75px] w-[151px] rounded-lg bg-background text-body" : "hidden"}>
                                 <li>
                                     <button value="High" onClick={handleSelectedPriority} className="w-full text-start bg-primary1 px-2 py-2.5 hover:bg-primary-text focus:bg-primary-text focus:outline-none">High</button>
                                 </li>
