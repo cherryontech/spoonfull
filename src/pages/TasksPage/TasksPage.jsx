@@ -118,7 +118,7 @@ const TasksPage = ({ remainingSpoons, taskList, setTaskList }) => {
     }
 
     return (
-        <section className="bg-background w-[100vw] h-[100vh] p-4">
+        <section className="bg-background w-[100vw] h-[100vh] p-4 md:py-4 md:p-6 xl:px-24">
             <ToastContainer
                 position="top-center"
                 autoClose={3000}
@@ -139,28 +139,39 @@ const TasksPage = ({ remainingSpoons, taskList, setTaskList }) => {
                         <p className="text-caption text-text1 text-center w-[200px]">Plan your day by adding tasks and allocating your energy among them.</p>
                     </div>
                     :
-                    <div className="pt-2 pb-[100px]">
-                        <ul>
-                            {highPriorityTasks.map((task) => {
-                                return (
-                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} remainingSpoons={remainingSpoons} handleTaskEdited={handleTaskEdited} /></li>
-                                )
-                            })}
-                        </ul>
-                        <ul>
-                            {mediumPriorityTasks.map((task) => {
-                                return (
-                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} remainingSpoons={remainingSpoons} handleTaskEdited={handleTaskEdited} /></li>
-                                )
-                            })}
-                        </ul>
-                        <ul>
-                            {lowPriorityTasks.map((task) => {
-                                return (
-                                    <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} remainingSpoons={remainingSpoons} handleTaskEdited={handleTaskEdited} /></li>
-                                )
-                            })}
-                        </ul>
+                    <div className="pt-2 pb-[100px] grid grid-cols-1 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-y-8">
+                        <div>
+                            <p className="text-small-body md:text-subtitle text-text1 py-2 md:py-4">High Priority</p>
+                            <ul>
+                                {highPriorityTasks.map((task) => {
+                                    return (
+                                        <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} remainingSpoons={remainingSpoons} handleTaskEdited={handleTaskEdited} /></li>
+                                    )
+                                })}
+                            </ul>
+                        </div>
+                        <div>
+                            <p className="text-small-body md:text-subtitle text-text1 py-2 md:py-4">Medium Priority</p>
+                            <ul>
+                                {mediumPriorityTasks.map((task) => {
+                                    return (
+                                        <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} remainingSpoons={remainingSpoons} handleTaskEdited={handleTaskEdited} /></li>
+                                    )
+                                })}
+                            </ul>
+                        </div>
+                        <div>
+                            <p className="text-small-body md:text-subtitle text-text1 py-2 md:py-4">Low Priority</p>
+                            <ul>
+                                {lowPriorityTasks.map((task) => {
+                                    return (
+                                        <li key={task.id}> <TaskCard task={task} onRemoveTask={removeTask} editChecked={editChecked} remainingSpoons={remainingSpoons} handleTaskEdited={handleTaskEdited} /></li>
+                                    )
+                                })}
+                            </ul>
+                        </div>
+                       <div>
+                        <p className="text-small-body md:text-subtitle text-text1 py-2 md:py-4">Other Tasks</p>
                         <ul>
                             {noPriorityTasks.map((task) => {
                                 return (
@@ -168,10 +179,11 @@ const TasksPage = ({ remainingSpoons, taskList, setTaskList }) => {
                                 )
                             })}
                         </ul>
+                       </div>
                     </div>
 
             }
-            <button className="flex gap-3 fixed bottom-px right-px p-4 m-4 shadow-box-shadow rounded-2xl bg-accent" onClick={openModal}>
+            <button className="flex gap-3 fixed bottom-px right-px p-4 m-4 md:mb-8 md:mx-6 xl:mx-24 shadow-box-shadow rounded-2xl bg-accent" onClick={openModal}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="#0F0129" />
                 </svg>

@@ -7,7 +7,7 @@ describe("AddTaskModal", () => {
     it("add button is disabled on load", () => {
         render(<AddTaskModal />);
         const button = screen.getAllByRole("button");
-        expect(button[2]).toHaveAttribute("disabled");
+        expect(button[7]).toHaveAttribute("disabled");
     })
 
     it("clear button is not disabled", () => {
@@ -39,7 +39,7 @@ describe("AddTaskModal", () => {
 
     it("should be able to type in spoon input field", () => {
         render(<AddTaskModal />);
-        const inputField = screen.getByPlaceholderText("00");
+        const inputField = screen.getByPlaceholderText("0");
         fireEvent.change(inputField, { target: { value: "12"}});
         expect(inputField.value).toBe("12");
     })
