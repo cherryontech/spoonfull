@@ -20,7 +20,7 @@ const TaskCard = ({ task, onRemoveTask, editChecked, remainingSpoons, handleTask
     }
 
     return (
-        <div className="w-full p-1">
+        <div className="w-full py-1">
             <div className={`bg-${task.background} shadow-card-shadow rounded-lg flex items-start justify-between pl-4`}>
                 <div className="flex py-4 items-center">
                     <input
