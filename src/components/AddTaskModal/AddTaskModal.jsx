@@ -125,9 +125,9 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
     
     return (
         <section className="bg-text2 w-[100vw] h-[100vh] flex justify-center items-center fixed top-0" onClick={() => setShowModal(false)}>
-            <article className="bg-background w-[328px] p-6 rounded-4xl" onClick={e => e.stopPropagation()}>
+            <article className="bg-background w-[328px] md:w-[552px] p-6 md:pb-14 rounded-4xl md:rounded-xl" onClick={e => e.stopPropagation()}>
                 <form onSubmit={handleSubmit}>
-                    <h4 className="text-header4 mt-0 mb-2">Add Task</h4>
+                    <h4 className="text-header4 md:text-header3 mt-0 mb-2 md:mb-8">Add Task</h4>
                     <div className="w-[100%] flex flex-col relative flex-start mb-4">
                         <label htmlFor="taskName" className="text-subtitle px-3 mb-1"><span className="absolute text-2 top-0 left-0">*</span>Task Name</label>
                         <div className="relative">
@@ -184,7 +184,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
                             }
                             </div>
                         </div>
-                        <div className="flex gap-2 justify-between items-center">
+                        <div className="flex gap-2 justify-between md:justify-start md:gap-8 items-center">
                             <div className="flex gap-2 p-2 justify-between items-center border border-text3 rounded-lg">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                     <path fillRule="evenodd" clipRule="evenodd" d="M12.0301 13.7391L4.42206 7.70506C4.16367 7.50039 3.9515 7.24338 3.79949 6.9509C3.64747 6.65842 3.55905 6.33709 3.54003 6.00801C3.521 5.67893 3.57181 5.34955 3.68911 5.04151C3.80641 4.73346 3.98754 4.4537 4.22062 4.22062C4.4537 3.98754 4.73346 3.80641 5.04151 3.68911C5.34955 3.57181 5.67893 3.521 6.00801 3.54003C6.33709 3.55905 6.65842 3.64747 6.9509 3.79949C7.24338 3.9515 7.50039 4.16367 7.70506 4.42206L13.7391 12.0301C15.0461 11.4591 17.0391 11.3821 18.7181 13.0601C19.7331 14.0761 20.3651 15.3181 20.5811 16.5001C20.7911 17.6501 20.6301 18.9261 19.7781 19.7781C18.9271 20.6301 17.6501 20.7911 16.5011 20.5811C15.3191 20.3651 14.0761 19.7331 13.0611 18.7171C11.3811 17.0381 11.4591 15.0461 12.0301 13.7391Z" fill="#001111" fillOpacity="0.5"/>

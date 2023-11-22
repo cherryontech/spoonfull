@@ -140,8 +140,8 @@ const TasksPage = ({ remainingSpoons, taskList, setTaskList }) => {
                     </div>
                     :
                     <div className="pt-2 pb-[100px] grid grid-cols-1 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-y-8">
-                        <div>
-                            <p className="text-small-body md:text-subtitle text-text1 py-2 md:py-4">High Priority</p>
+                        <div className={`${(highPriorityTasks[0])? "" : "hidden"}`}>
+                            <p className={`${(highPriorityTasks[0])? "text-small-body md:text-subtitle text-text1 py-2 md:py-4" : "hidden"}`}>High Priority</p>
                             <ul>
                                 {highPriorityTasks.map((task) => {
                                     return (
@@ -150,8 +150,8 @@ const TasksPage = ({ remainingSpoons, taskList, setTaskList }) => {
                                 })}
                             </ul>
                         </div>
-                        <div>
-                            <p className="text-small-body md:text-subtitle text-text1 py-2 md:py-4">Medium Priority</p>
+                        <div className={`${(mediumPriorityTasks[0])? "" : "hidden"}`}>
+                            <p className={`${(mediumPriorityTasks[0])? "text-small-body md:text-subtitle text-text1 py-2 md:py-4" : "hidden"}`}>Medium Priority</p>
                             <ul>
                                 {mediumPriorityTasks.map((task) => {
                                     return (
@@ -160,8 +160,8 @@ const TasksPage = ({ remainingSpoons, taskList, setTaskList }) => {
                                 })}
                             </ul>
                         </div>
-                        <div>
-                            <p className="text-small-body md:text-subtitle text-text1 py-2 md:py-4">Low Priority</p>
+                        <div className={`${(lowPriorityTasks[0])? "" : "hidden"}`}>
+                            <p className={`${(lowPriorityTasks[0])? "text-small-body md:text-subtitle text-text1 py-2 md:py-4" : "hidden"}`}>Low Priority</p>
                             <ul>
                                 {lowPriorityTasks.map((task) => {
                                     return (
@@ -170,8 +170,8 @@ const TasksPage = ({ remainingSpoons, taskList, setTaskList }) => {
                                 })}
                             </ul>
                         </div>
-                       <div>
-                        <p className="text-small-body md:text-subtitle text-text1 py-2 md:py-4">Other Tasks</p>
+                       <div className={`${(noPriorityTasks[0])? "" : "hidden"}`}>
+                        <p className={`${(noPriorityTasks[0])? "text-small-body md:text-subtitle text-text1 py-2 md:py-4" : "hidden"}`}>Other Tasks</p>
                         <ul>
                             {noPriorityTasks.map((task) => {
                                 return (
