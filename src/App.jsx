@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import TasksPage from './pages/TasksPage/TasksPage';
+import FAQ from './pages/FAQ/FAQ';
 import TutorialPage from './components/TutorialPage/TutorialPage';
 import Navbar from './components/Navbar/Navbar';
 import "@fontsource/lato";
@@ -38,6 +39,7 @@ function App() {
             maxSpoons={maxSpoons} />}
         />
         <Route path="/tutorial" element={<TutorialPage />}/>
+        <Route path="/faq" element={<FAQ />} />
       </Routes>
     </BrowserRouter>
   )
