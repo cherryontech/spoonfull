@@ -64,7 +64,7 @@ export default {
         fontWeight: '400',
       }],
       'small-body': ['1rem', {
-        fontWeight: '700',
+        fontWeight: '400',
       }],
       'button-text': ['1rem', {
         letterSpacing: "0.1px",

@@ -77,7 +77,7 @@ const AboutUsPage = () => {
     ]
 
     const icon = <img src={linkedinIcon}/>
-    const nameStyling = "text-bold-body text-start text-bold"
+    const nameStyling = "text-bold-body text-start"
     const items = "items-center"
 
 

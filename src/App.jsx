@@ -6,6 +6,7 @@ import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
 import TutorialPage from './components/TutorialPage/TutorialPage';
 import Navbar from './components/Navbar/Navbar';
 import "@fontsource/lato";
+import "@fontsource/lato/700.css";
 
 function App() {
 
