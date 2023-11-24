@@ -54,7 +54,6 @@ export default {
         fontWeight: '600',
       }],
       'bold-body': ['1.125rem', {
-        letterSpacing: '-2%',
         fontWeight: '700',
       }],
       'subtitle': ['1.25rem', {

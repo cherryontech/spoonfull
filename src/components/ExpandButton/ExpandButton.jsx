@@ -1,15 +1,15 @@
 /* eslint-disable react/prop-types */
 
-const ExpandButton = ({ title, subtitle, paragraph, value, setValue, svg, titleStyling }) => {
+const ExpandButton = ({ title, subtitle, paragraph, value, setValue, svg, titleStyling, icon, link, items}) => {
     return (
-        <button className="w-full py-4 px-2 border-divider border-b-2" onClick={(e) => {e.preventDefault(); setValue(!value)}}>
-            <div className="flex justify-between items-start gap-8">
+        <button className="w-full py-4 px-2 border-divider border-b-2" onClick={(e) => {e.stopPropagation(); setValue(!value)}}>
+            <div className={`flex justify-between ${items} gap-8`}>
                 <div>
                     {svg}
                 </div>
-                <div>
+                <div className="min-w-[186px]">
                     <p className={titleStyling}>{title}</p>
-                    <p>{subtitle}</p>
+                    <p className="text-body text-start">{subtitle}</p>
                 </div>
                 <div className={value? "rotate-90" : ""}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
@@ -17,7 +17,14 @@ const ExpandButton = ({ title, subtitle, paragraph, value, setValue, svg, titleS
                     </svg>
                 </div>
             </div>
-            <p className={value? "text-small-body text-start my-4" : "hidden"}>{paragraph}</p>
+            <div className={value? "" : "hidden"}>
+                <p className="text-small-body text-start my-4">{paragraph}</p>
+                <div className="w-6">
+                    <a href={link} target="_blank" rel="noreferrer noopener">
+                        {icon}
+                    </a>
+                </div>
+            </div>
         </button>
     )
 }
