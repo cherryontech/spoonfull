@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import TasksPage from './pages/TasksPage/TasksPage';
 import FAQ from './pages/FAQ/FAQ';
+import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
 import TutorialPage from './components/TutorialPage/TutorialPage';
 import Navbar from './components/Navbar/Navbar';
 import "@fontsource/lato";
+import "@fontsource/lato/700.css";
 
 function App() {
 
@@ -40,6 +42,7 @@ function App() {
         />
         <Route path="/tutorial" element={<TutorialPage />}/>
         <Route path="/faq" element={<FAQ />} />
+        <Route path="/aboutus" element={<AboutUsPage />} />
       </Routes>
     </BrowserRouter>
   )
