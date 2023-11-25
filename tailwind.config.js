@@ -29,6 +29,7 @@ export default {
       'success3': 'rgba(65, 153, 63, 0.25)',
       'error': '#D61F14',
       'white': '#FFF',
+      'divider': 'rgba(15, 1, 41, 0.10)'
 
     },
     fontFamily: {
