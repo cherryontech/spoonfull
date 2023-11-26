@@ -12,7 +12,7 @@ const SpoonChart = ({remainingSpoons, usedSpoons, plannedSpoons}) => {
             }]
     }
     return (
-        <div className='w-[200px] h-[200px] md:w-[300px] md:h-[300px] xl:w-[400px] xl:h-[400px]'>
+        <div className='w-[200px] h-[200px] md:w-[300px] md:h-[300px] xl:w-[375px] xl:h-[375px]'>
             <Pie 
             data={data}
             options={
