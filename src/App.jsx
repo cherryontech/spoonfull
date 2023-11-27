@@ -4,7 +4,7 @@ import TasksPage from './pages/TasksPage/TasksPage';
 import FAQ from './pages/FAQ/FAQ';
 import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
 import TutorialPage from './components/TutorialPage/TutorialPage';
-import CopyToClipboard from './pages/CopyToClipboard/CopyToClipboard';
+import ShareSpoonfull from './pages/ShareSpoonfull/ShareSpoonfull';
 import Navbar from './components/Navbar/Navbar';
 import "@fontsource/lato";
 import "@fontsource/lato/700.css";
@@ -44,7 +44,7 @@ function App() {
         <Route path="/tutorial" element={<TutorialPage />}/>
         <Route path="/faq" element={<FAQ />} />
         <Route path="/aboutus" element={<AboutUsPage />} />
-        <Route path="/sharespoonfull" element={<CopyToClipboard />} />
+        <Route path="/sharespoonfull" element={<ShareSpoonfull />} />
       </Routes>
     </BrowserRouter>
   )
