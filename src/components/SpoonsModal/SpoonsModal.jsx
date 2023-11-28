@@ -17,7 +17,7 @@ const SpoonsModal = ({setShowSpoonsModal, remainingSpoons, usedSpoons, plannedSp
             <div className="w-[100%] flex justify-between items-center border-b md:border-none border-text3 px-2 md:px-[92px] xl:px-0 pb-2 xl:w-[750px]">
                 <h4 className="text-header4 xl:text-start md:text-header3">Spoons</h4>
             </div>
-            <p className="text-body md:text-[24px] text-center xl:text-start pt-6 pb-8 md:pb-[56px] px-2 md:w-[390px] xl:px-0 xl:w-full xl:w-[750px]">Each day, you can use up to 12 spoons, but using them all is not necessary.</p>
+            <p className="text-body md:text-[24px] text-center xl:text-start pt-6 pb-8 md:pb-[56px] px-2 md:w-[390px] xl:px-0 xl:w-[750px]">Each day, you can use up to 12 spoons, but using them all is not necessary.</p>
             <div className="center-column xl:flex-row xl:justify-between xl:gap-4 xl:max-w-[750px] xl:w-full">
                 <SpoonChart 
                     data-testid="spoonChart"
