@@ -7,10 +7,10 @@
       @apply text-button-text disabled:text-text3 py-2.5 px-3 enabled:hover:bg-primary4 hover:rounded-full
     }
     .btn-filled {
-      @apply text-button-text bg-accent rounded-full w-[256px] h-[48px]
+      @apply text-button-text bg-accent rounded-full w-[256px] h-[48px] hover:border hover:bg-background hover:border-accent
     }
     .btn-outlined {
-      @apply text-button-text rounded-full w-[256px] h-[48px] border-accent border
+      @apply text-button-text rounded-full w-[256px] h-[48px] border-accent border hover:bg-accent
     }
     .btn-settings {
       @apply w-full py-2.5 text-button-text flex justify-center items-center gap-2 border-primary3 border rounded-full hover:shadow-card-shadow
