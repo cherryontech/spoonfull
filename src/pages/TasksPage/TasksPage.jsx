@@ -9,6 +9,7 @@ import TutorialPage from "../../components/TutorialPage/TutorialPage";
 import { ToastContainer, toast } from 'react-toastify';
 
 
+
 const TasksPage = ({ remainingSpoons, taskList, setTaskList }) => {
 
     const [showModal, setShowModal] = useState(false);
@@ -116,6 +117,7 @@ const TasksPage = ({ remainingSpoons, taskList, setTaskList }) => {
         localStorage["tasks"] = "[]";
         setTaskList([]);
     }
+
 
     return (
         <section className="bg-background w-[100vw] h-[100vh] p-4 md:py-4 md:p-6 xl:px-24">
