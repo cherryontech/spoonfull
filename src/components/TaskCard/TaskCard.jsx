@@ -26,7 +26,7 @@ const TaskCard = ({ task, onRemoveTask, editChecked, remainingSpoons, handleTask
 
     const handleSwipe = (e) => {
         const swipeEnd = e.changedTouches[0].clientX;
-        const clickedEl = e.target.closest("article")
+        const clickedEl = e.target.closest("#swipable")
         if(clickedEl === null) {
             return;
         }
@@ -44,7 +44,7 @@ const TaskCard = ({ task, onRemoveTask, editChecked, remainingSpoons, handleTask
 
     return (
         <section className="flex justify-between items-center overflow-x-clip relative" onTouchEnd={handleSwipe} onTouchStart={e => setSwipeStart(e.changedTouches[0].clientX)}>
-            <article className="w-full min-w-[320px] mx-1 py-1 z-[2] bg-background transition ease-in-out">
+            <article id="swipable" className="w-full min-w-[320px] mx-1 py-1 z-[2] bg-background transition ease-in-out">
                 <div className={`bg-${task.background} shadow-card-shadow rounded-lg flex items-start justify-between pl-4`}>
                     <div className="flex py-4 items-center">
                         <input
