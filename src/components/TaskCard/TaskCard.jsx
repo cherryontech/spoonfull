@@ -145,6 +145,7 @@ const TaskCard = ({ task, onRemoveTask, editChecked, remainingSpoons, handleTask
                     onRemoveTask={onRemoveTask}
                     activeTask={task}
                     setOpenSettings={setOpenSettings}
+                    setOpenDeleteModal={setDeleteTask}
                 />,
                 document.body
             )}

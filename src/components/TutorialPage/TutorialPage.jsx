@@ -32,7 +32,7 @@ const TutorialPage = ({handleSkipTutorial, setShowTutorialPage}) => {
     }
 
     return (
-        <section className="bg-background flex flex-col justify-between h-full w-full fixed top-0 overflow-scroll">
+        <section className="bg-background flex flex-col justify-between h-full w-full fixed top-0 overflow-scroll z-[6]">
             <button className={(currentScreen >= 4)? "btn-modal self-end mt-2 mx-4 text-background" : "btn-modal self-end mt-2 mx-4"} onClick={skipTutorial}>Skip</button>
             {
                 (currentScreen === 1)?
