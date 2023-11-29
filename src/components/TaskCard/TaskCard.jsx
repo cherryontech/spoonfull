@@ -22,8 +22,6 @@ const TaskCard = ({ task, onRemoveTask, editChecked, remainingSpoons, handleTask
         setActiveTask(task)
     }
 
-    // const transition = "transition ease-in-out translate-x-[-120px]"
-
     const handleSwipe = (e) => {
         const swipeEnd = e.changedTouches[0].clientX;
         console.log(swipeStart, swipeEnd)
