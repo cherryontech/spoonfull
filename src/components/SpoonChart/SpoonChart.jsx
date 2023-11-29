@@ -12,11 +12,13 @@ const SpoonChart = ({remainingSpoons, usedSpoons, plannedSpoons}) => {
             }]
     }
     return (
-        <div className='w-[200px]'>
+        <div className='w-[200px] h-[200px] md:w-[300px] md:h-[300px] xl:w-[375px] xl:h-[375px]'>
             <Pie 
             data={data}
             options={
                 { 
+                responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
                     legend: {
                         display: false,

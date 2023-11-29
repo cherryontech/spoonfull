@@ -4,7 +4,7 @@ import welcomeImg from "../../assets/welcome-img.png";
 // eslint-disable-next-line react/prop-types
 const WelcomePage = ({ handleSkipTutorial, setShowTutorialPage }) => {
     return (
-        <section className="p-6 bg-background h-full w-full center-column justify-center gap-16 fixed top-0">
+        <section className="p-6 bg-background h-full w-full center-column justify-center gap-16 fixed top-0 z-[5]">
             <div className="center-column justify-center gap-9 px-9">
                 <img src={logo} alt="spoonfull logo" />
                 <img src={welcomeImg} alt="an illustration of a girl holding two big hearts" />

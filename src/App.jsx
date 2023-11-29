@@ -1,9 +1,13 @@
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import TasksPage from './pages/TasksPage/TasksPage';
+import FAQ from './pages/FAQ/FAQ';
+import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
 import TutorialPage from './components/TutorialPage/TutorialPage';
+import ShareSpoonfull from './pages/ShareSpoonfull/ShareSpoonfull';
 import Navbar from './components/Navbar/Navbar';
 import "@fontsource/lato";
+import "@fontsource/lato/700.css";
 
 function App() {
 
@@ -38,6 +42,9 @@ function App() {
             maxSpoons={maxSpoons} />}
         />
         <Route path="/tutorial" element={<TutorialPage />}/>
+        <Route path="/faq" element={<FAQ />} />
+        <Route path="/aboutus" element={<AboutUsPage />} />
+        <Route path="/sharespoonfull" element={<ShareSpoonfull />} />
       </Routes>
     </BrowserRouter>
   )
