@@ -129,7 +129,7 @@ const EditTaskModal = ({remainingSpoons, setOpenEditModal, activeTask, handleTas
     }
 
     return (
-        <section className="w-[100vw] h-[100vh] flex justify-center items-center fixed top-0" onClick={() => setOpenEditModal(false)}>
+        <section className="w-[100vw] h-[100vh] flex justify-center items-center fixed top-0 z-[6]" onClick={() => setOpenEditModal(false)}>
             <article className="bg-background w-[328px] md:w-[552px] p-6 md:pb-14 rounded-4xl md:rounded-xl" onClick={e => e.stopPropagation()}>
                 <form onSubmit={handleSubmit}>
                     <h4 className="text-header4 md:text-header3 mt-0 mb-2 md:mb-8">Edit Task</h4>
