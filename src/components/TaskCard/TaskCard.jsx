@@ -2,11 +2,13 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
 import TaskSettingsModal from "../TaskSettingsModal/TaskSettingsModal";
+import DeleteTaskModal from "../DeleteTaskModal/DeleteTaskModal";
 
 
 const TaskCard = ({ task, onRemoveTask, editChecked, remainingSpoons, handleTaskEdited }) => {
     const [isChecked, setChecked] = useState(task.checked)
     const [openSettings, setOpenSettings] = useState(false);
+    const [openDeleteTask, setDeleteTask] = useState(false)
     const [activeTask, setActiveTask] = useState("")
     const [swipeStart, setSwipeStart] = useState(0)
    
@@ -24,7 +26,6 @@ const TaskCard = ({ task, onRemoveTask, editChecked, remainingSpoons, handleTask
 
     const handleSwipe = (e) => {
         const swipeEnd = e.changedTouches[0].clientX;
-        console.log(swipeStart, swipeEnd)
         const clickedEl = e.target.closest("article")
         if(clickedEl === null) {
             return;
@@ -133,12 +134,20 @@ const TaskCard = ({ task, onRemoveTask, editChecked, remainingSpoons, handleTask
                     </div>
                 </div>
             </article>
-            <button value={task.id} className="w-[120px] flex justify-center items-center gap-2 right-0 text-error text-button-text absolute z-[1]">
+            <button value={task.id} className="w-[120px] flex justify-center items-center gap-2 right-0 text-error text-button-text absolute z-[1]" onClick={() => setDeleteTask(true)}>
                 <svg value={task.id} xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
                     <path d="M12 6.75003V14.25H6V6.75003H12ZM10.875 2.25003H7.125L6.375 3.00003H3.75V4.50003H14.25V3.00003H11.625L10.875 2.25003ZM13.5 5.25003H4.5V14.25C4.5 15.075 5.175 15.75 6 15.75H12C12.825 15.75 13.5 15.075 13.5 14.25V5.25003Z" fill="#D61F14"/>
                 </svg>
                 Delete
             </button>
+            {openDeleteTask && createPortal(
+                <DeleteTaskModal 
+                    onRemoveTask={onRemoveTask}
+                    activeTask={task}
+                    setOpenSettings={setOpenSettings}
+                />,
+                document.body
+            )}
         </section>
         
     )
