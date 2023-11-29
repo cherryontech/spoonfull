@@ -52,28 +52,31 @@ const FAQ = () => {
 
 
     return (
-        <section className="center-column px-4">
-            <div className="mt-4">
-                <img src={faqImg} />
-                <p className="text-subtitle pt-4">How can we help you?</p>
-            </div>
-            <div className="w-[100%] flex justify-between items-center border-b border-divider pb-2">
-                <h4 className="text-header4 pt-4">FAQ</h4>
-            </div>
-            <div className="w-full">
-                { questionsArray.map(question => {
-                   return( <ExpandButton 
-                        key={question.id}
-                        title={question.question}
-                        paragraph={question.answer}
-                        value={question.value}
-                        setValue={question.setValue}
-                        svg={questionSvg}
-                        titleStyling={questionStyling}
-                        items={items}
-                    />)}
-                )}
-                
+        <section className="center-column">
+            <div className="center-column px-4 md:gap-6 md:w-[567px] xl:w-[718px]">
+                <div className="mt-4">
+                    <img src={faqImg} className="w-[164px] md:w-[330px] xl:w-[342px]" />
+                    <p className="text-subtitle pt-4 md:hidden">How can we help you?</p>
+                </div>
+                <div className="w-[100%] flex justify-start items-center border-b border-divider pb-2">
+                    <h4 className="text-header4 pt-4 md:hidden">FAQ</h4>
+                    <h4 className="hidden md:flex md:text-header4 pt-4">Frequently Asked Questions</h4>
+                </div>
+                <div className="w-full">
+                    { questionsArray.map(question => {
+                    return( <ExpandButton 
+                            key={question.id}
+                            title={question.question}
+                            paragraph={question.answer}
+                            value={question.value}
+                            setValue={question.setValue}
+                            svg={questionSvg}
+                            titleStyling={questionStyling}
+                            items={items}
+                        />)}
+                    )}
+                    
+                </div>
             </div>
         </section>
     )
