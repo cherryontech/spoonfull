@@ -69,7 +69,7 @@ const AboutUsPage = () => {
             svg: <img src={designerImg}/>,
             name: "Vandana Kala",
             title: "Designer",
-            bio: "",
+            bio: "Engineer turned UX enthusiast, I blend methodology with personal investment in crafting meaningful user experiences. Collaborating to transform ideas into valuable products.",
             linkedin: "https://www.linkedin.com/in/vandana-kala/",
             value: vandana,
             setValue: setVandana,
