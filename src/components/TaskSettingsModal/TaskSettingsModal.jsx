@@ -10,8 +10,13 @@ const TaskSettingsModal = ({setOpenSettings, activeTask, remainingSpoons, handle
     const [openEditModal, setOpenEditModal] = useState(false)
     const [openDeleteModal, setOpenDeleteModal] = useState(false)
 
+    const handleOpenSettings = (e) => {
+        e.stopPropagation();
+        setOpenSettings(false)
+    }
+
     return (
-        <section className="bg-text2 w-[100vw] h-[100vh] flex justify-center items-center fixed top-0" onClick={() => setOpenSettings(false)}>
+        <section className="bg-text2 w-[100vw] h-[100vh] flex justify-center items-center fixed top-0 z-[5]" onClick={handleOpenSettings}>
             <article className="center-column bg-background w-[328px] p-6 rounded-4xl" onClick={e => e.stopPropagation()}>
                 <button className="self-end" onClick={() => setOpenSettings(false)}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
