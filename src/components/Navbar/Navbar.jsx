@@ -101,21 +101,21 @@ const Navbar = ({
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" style={{ background: "background" }}>
         <Toolbar>
           <IconButton
             size="large"
             edge="start"
-            color="inherit"
+            color="black"
             aria-label="menu"
             sx={{ mr: 2 }}
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: "black" }}>
             News
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button sx={{ color: "black" }} color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
     </Box>
