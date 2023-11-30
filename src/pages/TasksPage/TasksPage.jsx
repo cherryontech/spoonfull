@@ -185,7 +185,7 @@ const TasksPage = ({ remainingSpoons, taskList, setTaskList }) => {
                     </div>
 
             }
-            <button className="flex gap-3 fixed bottom-px right-px p-4 m-4 md:mb-8 md:mx-6 xl:mx-24 shadow-box-shadow rounded-2xl bg-accent z-2" onClick={openModal}>
+            <button className="flex gap-3 fixed bottom-px right-px p-4 m-4 md:mb-8 md:mx-6 xl:mx-24 shadow-box-shadow rounded-2xl bg-accent z-[3]" onClick={openModal}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="#0F0129" />
                 </svg>

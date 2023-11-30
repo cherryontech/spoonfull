@@ -11,6 +11,7 @@ const TaskCard = ({ task, onRemoveTask, editChecked, remainingSpoons, handleTask
     const [openDeleteTask, setDeleteTask] = useState(false)
     const [activeTask, setActiveTask] = useState("")
     const [swipeStart, setSwipeStart] = useState(0)
+    const [swipeBottom, setSwipeBottom] = useState(0)
    
 
     const handleCheck = (e) => {
@@ -24,10 +25,20 @@ const TaskCard = ({ task, onRemoveTask, editChecked, remainingSpoons, handleTask
         setActiveTask(task)
     }
 
+    const handleTouchStart = (e) => {
+        setSwipeStart(e.changedTouches[0].clientX)
+        setSwipeBottom(e.changedTouches[0].clientY)
+    }
+
     const handleSwipe = (e) => {
+        e.stopPropagation();
         const swipeEnd = e.changedTouches[0].clientX;
+        const swipeUp = e.changedTouches[0].clientY;
         const clickedEl = e.target.closest("#swipable")
         if(clickedEl === null) {
+            return;
+        }
+        if((swipeBottom - swipeUp) > 20) {
             return;
         }
         if (
@@ -43,7 +54,7 @@ const TaskCard = ({ task, onRemoveTask, editChecked, remainingSpoons, handleTask
 
 
     return (
-        <section className="flex justify-between items-center overflow-x-clip relative" onTouchEnd={handleSwipe} onTouchStart={e => setSwipeStart(e.changedTouches[0].clientX)}>
+        <section className="flex justify-between items-center overflow-x-clip relative" onTouchEnd={handleSwipe} onTouchStart={handleTouchStart}>
             <article id="swipable" className="w-full min-w-[320px] mx-1 py-1 z-[2] bg-background transition ease-in-out">
                 <div className={`bg-${task.background} shadow-card-shadow rounded-lg flex items-start justify-between pl-4`}>
                     <div className="flex py-4 items-center">
@@ -68,8 +79,8 @@ const TaskCard = ({ task, onRemoveTask, editChecked, remainingSpoons, handleTask
                         >
                             <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>
-                        <div className="my-2 flex flex-col items-start gap-2">
-                            <label className="mr-10 text-body" htmlFor="checkbox">{task.task}</label>
+                        <div className="my-2 flex flex-col items-start gap-2" >
+                            <label className={`mr-10 text-body ${isChecked ? "line-through decoration-1" : ""}`}>{task.task}</label>
                             <div className="flex justify-between items-center gap-2">
                                 <div className="flex gap-1 p-2 py-1 pr-4 justify-between items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg"
