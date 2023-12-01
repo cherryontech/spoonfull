@@ -51,13 +51,13 @@ export default {
       }],
       'header4': ['1.5rem', {
         letterSpacing: '-0.48px',
-        fontWeight: '600',
+        fontWeight: '400',
       }],
       'bold-body': ['1.125rem', {
         fontWeight: '700',
       }],
       'subtitle': ['1.25rem', {
-        fontWeight: '500'
+        fontWeight: '400'
       }],
       'body': ['1.125rem', {
         lineHeight: '140%',
