@@ -4,12 +4,14 @@ const ExpandButton = ({ title, subtitle, paragraph, value, setValue, svg, titleS
     return (
         <button className="w-full py-4 px-2 border-divider border-b-2" onClick={(e) => {e.stopPropagation(); setValue(!value)}}>
             <div className={`flex justify-between ${items} gap-8`}>
-                <div>
-                    {svg}
-                </div>
-                <div className="min-w-[186px]">
-                    <p className={titleStyling}>{title}</p>
-                    <p className="text-body text-start">{subtitle}</p>
+                <div className={`flex justify-between ${items} gap-6`}>
+                    <div>
+                        {svg}
+                    </div>
+                    <div className="min-w-[186px]">
+                        <p className={titleStyling}>{title}</p>
+                        <p className="text-body text-start">{subtitle}</p>
+                    </div>
                 </div>
                 <div className={value? "rotate-90" : ""}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
@@ -18,7 +20,7 @@ const ExpandButton = ({ title, subtitle, paragraph, value, setValue, svg, titleS
                 </div>
             </div>
             <div className={value? "" : "hidden"}>
-                <p className="text-small-body text-start my-4">{paragraph}</p>
+                <p className="text-small-body text-start my-4 md:max-w-[504px]">{paragraph}</p>
                 <div className="w-6">
                     <a href={link} target="_blank" rel="noreferrer noopener">
                         {icon}
