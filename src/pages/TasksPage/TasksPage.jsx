@@ -72,6 +72,7 @@ const TasksPage = ({ remainingSpoons, taskList, setTaskList }) => {
 
         if (editedTask.checked === false) {
             editedTask.checked = true;
+            toast.success(`Great job! 🎉 You've successfully completed the task`, { theme: "colored", style: { backgroundColor: "#41993F", textAlign: 'center' }, toastId: "successChecked" })
         }
         else {
             editedTask.checked = false;
