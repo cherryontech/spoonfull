@@ -202,6 +202,7 @@ const TasksPage = ({ remainingSpoons, taskList, setTaskList }) => {
                 <WelcomePage
                     handleSkipTutorial={handleSkipTutorial}
                     setShowTutorialPage={setShowTutorialPage}
+                    setShowWelcomePage={setShowWelcomePage}
                 />,
                 document.body
             )}

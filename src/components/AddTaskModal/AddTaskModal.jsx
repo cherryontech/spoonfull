@@ -91,6 +91,9 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if((newTask.checked === undefined) || (newTask.spoons === undefined) || (newTask.priority === undefined)) {
+            return;
+        }
         let tasks = localStorage["tasks"];
         tasks = JSON.parse(tasks);
         tasks.push(newTask);
