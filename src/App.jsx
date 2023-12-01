@@ -7,6 +7,7 @@ import TutorialPage from './components/TutorialPage/TutorialPage';
 import ShareSpoonfull from './pages/ShareSpoonfull/ShareSpoonfull';
 import Navbar from './components/Navbar/Navbar';
 import "@fontsource/lato";
+import "@fontsource/lato/400.css";
 import "@fontsource/lato/700.css";
 
 function App() {

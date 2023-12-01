@@ -11,7 +11,7 @@ const TaskCard = ({ task, onRemoveTask, editChecked, remainingSpoons, handleTask
     const [openDeleteTask, setDeleteTask] = useState(false)
     const [activeTask, setActiveTask] = useState("")
     const [swipeStart, setSwipeStart] = useState(0)
-    const [swipeBottom, setSwipeBottom] = useState(0)
+    const [swipeDown, setSwipeDown] = useState(0)
    
 
     const handleCheck = (e) => {
@@ -27,7 +27,7 @@ const TaskCard = ({ task, onRemoveTask, editChecked, remainingSpoons, handleTask
 
     const handleTouchStart = (e) => {
         setSwipeStart(e.changedTouches[0].clientX)
-        setSwipeBottom(e.changedTouches[0].clientY)
+        setSwipeDown(e.changedTouches[0].clientY)
     }
 
     const handleSwipe = (e) => {
@@ -38,7 +38,7 @@ const TaskCard = ({ task, onRemoveTask, editChecked, remainingSpoons, handleTask
         if(clickedEl === null) {
             return;
         }
-        if((swipeBottom - swipeUp) > 20) {
+        if((swipeDown - swipeUp) > 20 || (swipeDown - swipeUp) < -20) {
             return;
         }
         if (
