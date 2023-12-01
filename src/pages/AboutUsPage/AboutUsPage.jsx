@@ -39,7 +39,7 @@ const AboutUsPage = () => {
             id: 3,
             svg: <img src={devImg}/>,
             name: "Kat Kowalik",
-            title: "Designer",
+            title: "Developer",
             bio: "Healthcare and beauty professional turned software developer, navigating the tech world to create solutions that simplify and empower.",
             linkedin: "https://www.linkedin.com/in/kat-kowalik/",
             value: kat,
