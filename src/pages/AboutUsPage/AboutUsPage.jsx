@@ -1,5 +1,6 @@
 import ExpandButton from "../../components/ExpandButton/ExpandButton";
 import { useState } from "react";
+import aboutUsImg from "../../assets/aboutus-img.png"
 import pmImg from "../../assets/pm.png";
 import designerImg from "../../assets/designer.png";
 import devImg from "../../assets/dev.png";
@@ -82,11 +83,14 @@ const AboutUsPage = () => {
 
 
     return (
-        <section className="center-column px-4">
+        <section className="center-column px-4 md:px-[88px]">
             <div className="w-[100%] flex justify-between items-center border-b border-text3 pb-2">
-                <h4 className="text-header4">About Us</h4>
+                <h4 className="text-header4 md:pt-6">About Us</h4>
             </div>
-            <p className="text-body py-4 px-[11px]">Inspired by Cherry on Tech lab&apos;s challenge, our team of product managers, designers, and developers launched SpoonFul to help individuals manage their finite energy and prevent burnout in daily activities. Meet our team below.</p>
+            <div className="flex items-center gap-6 md:py-8">
+                <p className="text-body py-4 px-[11px]">Inspired by Cherry on Tech lab&apos;s challenge, our team of product managers, designers, and developers launched SpoonFul to help individuals manage their finite energy and prevent burnout in daily activities. Meet our team below.</p>
+                <img src={aboutUsImg} className="hidden md:block md:w-[266px] xl:w-[300px]"/>
+            </div>
             <div>
                 {creatorsArray.map(creator => {
                     return ( <ExpandButton
