@@ -54,7 +54,7 @@ const TutorialFourthScreen = () => {
                     </div>
                 </div>
             </div>
-            <img className="block" src={taskImg} alt="a screenshot of adding task modal" />
+            <img className="block h-[220px]" src={taskImg} alt="a screenshot of adding task modal" />
         </section>
     )
 }

@@ -36,7 +36,7 @@ const TutorialSecondScreen = () => {
                     <p className="text-body text-text1 mt-0">Prevent exhaustion by avoiding using spoons too quickly</p>
                 </div>
             </div>
-            <p className="text-bold-body text-center">Next, Let’s see how to do this on SpoonFull!</p>
+            <p className="text-bold-body text-center">Next, let’s see how to do this on SpoonFull!</p>
         </section>
     )
 }
