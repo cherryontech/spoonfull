@@ -91,6 +91,9 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if((newTask.checked === undefined) || (newTask.spoons === undefined) || (newTask.priority === undefined)) {
+            return;
+        }
         let tasks = localStorage["tasks"];
         tasks = JSON.parse(tasks);
         tasks.push(newTask);
@@ -124,7 +127,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
     }
     
     return (
-        <section className="bg-text2 w-[100vw] h-[100vh] flex justify-center items-center fixed top-0" onClick={() => setShowModal(false)}>
+        <section className="bg-text2 w-[100vw] h-[100vh] flex justify-center items-center fixed top-0 z-[5]" onClick={() => setShowModal(false)}>
             <article className="bg-background w-[328px] md:w-[552px] p-6 md:pb-14 rounded-4xl md:rounded-xl" onClick={e => e.stopPropagation()}>
                 <form onSubmit={handleSubmit}>
                     <h4 className="text-header4 md:text-header3 mt-0 mb-2 md:mb-8">Add Task</h4>
@@ -135,7 +138,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
                                 name="task" 
                                 type="text" 
                                 id="taskName" 
-                                className="border-solid border border-text3 rounded h-12 text-caption p-4 pr-10 w-[100%]"
+                                className="border-solid border border-text3 rounded h-12 text-caption md:text-body p-4 pr-10 w-[100%]"
                                 placeholder="Type the name of your task"
                                 value={taskName}
                                 onChange={handleChangeTask}
