@@ -7,7 +7,7 @@ const TutorialFourthScreen = () => {
     return (
         <section className="center-column gap-6 self-center text-center">
             <h4 className="text-header4">Customize your tasks</h4>
-            <p className="text-body text-text1 w-[256px]">{`After clicking "Add Task", a pop-up will appear allowing you to enter details for your task`}</p>
+            <p className="text-body text-text1 w-[256px] md:w-[350px]">{`After clicking "Add Task", a pop-up will appear allowing you to enter details for your task`}</p>
             <div className="flex flex-col justify-start gap-4">
                 <div className="flex flex-col justify-start gap-2">
                     <div className="flex gap-2 justify-start items-center">
@@ -54,7 +54,7 @@ const TutorialFourthScreen = () => {
                     </div>
                 </div>
             </div>
-            <img className="block" src={taskImg} alt="a screenshot of adding task modal" />
+            <img className="block h-[220px]" src={taskImg} alt="a screenshot of adding task modal" />
         </section>
     )
 }
