@@ -14,6 +14,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import logo from "../../assets/spoonfull-logo.svg";
 
 const Navbar = ({
   taskList,
@@ -112,9 +113,11 @@ const Navbar = ({
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: "black" }}>
-            News
+          <Link to='/'>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1}}>
+            <img src={logo} style={{width: 72, height: 35 }} alt="spoonfull logo" />
           </Typography>
+          </Link>
           <Button sx={{ color: "black" }} color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
