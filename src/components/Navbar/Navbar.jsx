@@ -104,29 +104,31 @@ const Navbar = ({
 
   return (
     <div>
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static" style={{ background: "background" }}>
-          <Toolbar>
+      <Box sx={{ flexGrow: 1 }}>    
+        <AppBar className="lg:px-16 md:pl-1 pr-6 pb-1 sm: pr-2 py-2" position="static" style={{ background: "background" }} >
+          <Toolbar sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <IconButton
+            // className="md:-p-4 sm:p-1"
+              // sx={{p:2}}
               size="large"
               edge="start"
               color="black"
               aria-label="menu"
-              sx={{ mr: 2 }}
+              // sx={{ mr: 2}}
               onClick={handleDrawerOpen}
             >
               <MenuIcon />
             </IconButton>
             <Link to='/'>
-              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              <Typography variant="h6" component="div" sx={{ flexGrow: 1, px: 2 }}>
                 <img src={logo} style={{ width: 72, height: 35 }} alt="spoonfull logo" />
               </Typography>
             </Link>
-            <button onClick={() => { setShowSpoonsModal(true); }}>
+            <button className="md: w-[46px] h-[49px]" onClick={() => { setShowSpoonsModal(true); }} sx={{pt: 8, alignContent: 'center'}}>
               {remainingSpoons > 3 ? (
                 <Badge badgeContent={remainingSpoons} sx={{ "& .MuiBadge-badge": { backgroundColor: "#23A1AF", color: "white" } }}>
                   <div className="pr-1.5 self-start">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 20 20" fill="none">
+                    <svg className="sm: w-[20px] h-[20px]" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 20 20" fill="none">
                       <path fillRule="evenodd" clipRule="evenodd" d="M10.025 11.4492L3.68505 6.42088C3.46973 6.25033 3.29292 6.03615 3.16624 5.79241C3.03956 5.54868 2.96588 5.28091 2.95002 5.00667C2.93417 4.73244 2.97651 4.45796 3.07426 4.20125C3.17201 3.94455 3.32295 3.71142 3.51719 3.51719C3.71142 3.32295 3.94455 3.17201 4.20125 3.07426C4.45796 2.97651 4.73244 2.93417 5.00667 2.95002C5.28091 2.96588 5.54868 3.03956 5.79241 3.16624C6.03615 3.29292 6.25033 3.46973 6.42088 3.68505L11.4492 10.025C12.5384 9.54922 14.1992 9.48505 15.5984 10.8834C16.4442 11.7301 16.9709 12.765 17.1509 13.75C17.3259 14.7084 17.1917 15.7717 16.4817 16.4817C15.7725 17.1917 14.7084 17.3259 13.7509 17.1509C12.7659 16.9709 11.73 16.4442 10.8842 15.5975C9.48422 14.1984 9.54922 12.5384 10.025 11.4492Z" fill="#0F0129" />
                     </svg>
                   </div>
@@ -134,12 +136,12 @@ const Navbar = ({
                 :
                 (<Badge badgeContent={remainingSpoons} sx={{ "& .MuiBadge-badge": { backgroundColor: "#F7559E", color: "white" } }} showZero>
                   <div className="pr-1.5">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <svg classNsame="sm: w-[20px] h-[20px]" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                       <path fillRule="evenodd" clipRule="evenodd" d="M10.025 11.4492L3.68505 6.42088C3.46973 6.25033 3.29292 6.03615 3.16624 5.79241C3.03956 5.54868 2.96588 5.28091 2.95002 5.00667C2.93417 4.73244 2.97651 4.45796 3.07426 4.20125C3.17201 3.94455 3.32295 3.71142 3.51719 3.51719C3.71142 3.32295 3.94455 3.17201 4.20125 3.07426C4.45796 2.97651 4.73244 2.93417 5.00667 2.95002C5.28091 2.96588 5.54868 3.03956 5.79241 3.16624C6.03615 3.29292 6.25033 3.46973 6.42088 3.68505L11.4492 10.025C12.5384 9.54922 14.1992 9.48505 15.5984 10.8834C16.4442 11.7301 16.9709 12.765 17.1509 13.75C17.3259 14.7084 17.1917 15.7717 16.4817 16.4817C15.7725 17.1917 14.7084 17.3259 13.7509 17.1509C12.7659 16.9709 11.73 16.4442 10.8842 15.5975C9.48422 14.1984 9.54922 12.5384 10.025 11.4492Z" fill="#0F0129" />
                     </svg>
                   </div>
                 </Badge>)}
-              <p className="text-caption">Spoons</p>
+              <p className="text-caption text-text">Spoons</p>
             </button>
             {showSpoonsModal && createPortal(
               <SpoonsModal
@@ -194,7 +196,7 @@ const Navbar = ({
         }}
         open={open}
       >
-        <div className="felx flex-col flex-1 items-start">
+        <div className="flex flex-col flex-1 items-start">
           <h4 className="text-header4 p-2 indent-4">Menu</h4>
           <Divider variant="middle" />
           <List >

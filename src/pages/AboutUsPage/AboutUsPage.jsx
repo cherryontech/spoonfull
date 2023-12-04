@@ -60,7 +60,7 @@ const AboutUsPage = () => {
             svg: <img src={devImg}/>,
             name: "Tanya Piña ",
             title: "Developer",
-            bio: "",
+            bio: "Software developer with a background in libraries, community work, and anthropology. I am passionate about creating inclusive tech spaces that are by and for underrepresented communities.",
             linkedin: "https://www.linkedin.com/in/tanyapina/",
             value: tanya,
             setValue: setTanya,
