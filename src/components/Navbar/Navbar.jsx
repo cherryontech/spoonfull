@@ -1,13 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
 import { createPortal } from "react-dom";
-import { AppBar, Badge, useTheme, useMediaQuery, ListItem, Divider, List, Drawer, ListItemButton, ListItemIcon } from '@mui/material'
+import { AppBar, Badge, Box, Toolbar, Typography, IconButton, useTheme, useMediaQuery, ListItem, Divider, List, Drawer, ListItemButton, ListItemIcon } from '@mui/material'
 import SpoonsModal from '../SpoonsModal/SpoonsModal';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import logo from "../../assets/spoonfull-logo.svg";
 import HomeIcon from '@mui/icons-material/Home';
@@ -105,7 +100,7 @@ const Navbar = ({
   return (
     <div>
       <Box sx={{ flexGrow: 1 }}>    
-        <AppBar className="lg:px-16 md:pl-1 pr-6 pb-1 sm: pr-2 py-2" position="static" style={{ background: "background" }} >
+        <AppBar className="lg:px-16 md:pl-1 pr-6 pb-1 sm: pr-2 py-2" position="static" style={{ background: "background" }} elevation={0}>
           <Toolbar sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <IconButton
             // className="md:-p-4 sm:p-1"
@@ -198,7 +193,7 @@ const Navbar = ({
       >
         <div className="flex flex-col flex-1 items-start">
           <h4 className="text-header4 p-2 indent-4">Menu</h4>
-          <Divider variant="middle" />
+          <Divider flexItem variant="middle" />
           <List >
             {navigation.map((item) => {
               return (
