@@ -6,6 +6,7 @@ import AddTaskModal from "../../components/AddTaskModal/AddTaskModal";
 import TaskCard from "../../components/TaskCard/TaskCard";
 import WelcomePage from "../WelcomePage/WelcomePage";
 import TutorialPage from "../../components/TutorialPage/TutorialPage";
+import DeleteAllModal from "../../components/DeleteAllModal/DeleteAllModal"
 import { ToastContainer, toast } from 'react-toastify';
 
 
@@ -22,6 +23,7 @@ const TasksPage = ({ remainingSpoons, taskList, setTaskList }) => {
     const [mediumPriorityTasks, setMediumPriorityTasks] = useState([])
     const [lowPriorityTasks, setLowPriorityTasks] = useState([])
     const [noPriorityTasks, setNoPriorityTasks] = useState([])
+    const [openDeleteAll, setOpenDeleteAll] = useState(false)
 
     const openModal = (e) => {
         e.preventDefault();
@@ -117,6 +119,8 @@ const TasksPage = ({ remainingSpoons, taskList, setTaskList }) => {
     const handleClearAllTasks = () => {
         localStorage["tasks"] = "[]";
         setTaskList([]);
+        setOpenDeleteAll(false);
+
     }
 
 
@@ -132,7 +136,7 @@ const TasksPage = ({ remainingSpoons, taskList, setTaskList }) => {
             />
             <div className="w-[100%] flex justify-between items-center border-b border-text3 pb-2">
                 <h4 className="text-header4">Tasks</h4>
-                {taskList[0] && <button onClick={handleClearAllTasks} className="btn-modal text-primary-text">Clear All</button>}
+                {taskList[0] && <button onClick={() => setOpenDeleteAll(true)} className="btn-modal text-primary-text">Clear All</button>}
             </div>
             {
                 (!taskList[0] || !taskList[0].task) ?
@@ -214,6 +218,14 @@ const TasksPage = ({ remainingSpoons, taskList, setTaskList }) => {
                 />,
                 document.body
             )}
+            {openDeleteAll && createPortal(
+                <DeleteAllModal
+                    handleClearAllTasks={handleClearAllTasks}
+                    setOpenDeleteAll={setOpenDeleteAll}
+                />,
+                document.body
+            )}
+
 
         </section>
     )
