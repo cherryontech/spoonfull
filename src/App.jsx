@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import TasksPage from './pages/TasksPage/TasksPage';
 import FAQ from './pages/FAQ/FAQ';
@@ -18,6 +18,37 @@ function App() {
   const [usedSpoons, setUsedSpoons] = useState(0);
   const [plannedSpoons, setPlannedSpoons] = useState(0);
   const [taskList, setTaskList] = useState([]);
+  const [taskAdded, setTaskAdded] = useState(false)
+  const [taskRemoved, setTaskRemoved] = useState(false)
+  const [taskEdited, setTaskEdited] = useState(false)
+  const [highPriorityTasks, setHighPriorityTasks] = useState([])
+  const [mediumPriorityTasks, setMediumPriorityTasks] = useState([])
+  const [lowPriorityTasks, setLowPriorityTasks] = useState([])
+  const [noPriorityTasks, setNoPriorityTasks] = useState([])
+
+  useEffect(() => {
+    if (!localStorage["tasks"]) {
+        localStorage["tasks"] = "[]";
+    }
+
+    let tasks = localStorage["tasks"];
+    tasks = JSON.parse(tasks);
+    tasks = tasks.sort((a, b) => a.id - b.id)
+    setTaskList(tasks);
+
+    let highPriority = tasks.filter(task => task.priority === "High");
+    setHighPriorityTasks(highPriority)
+
+    let mediumPriority = tasks.filter(task => task.priority === "Medium");
+    setMediumPriorityTasks(mediumPriority)
+
+    let lowPriority = tasks.filter(task => task.priority === "Low");
+    setLowPriorityTasks(lowPriority)
+
+    let noPriority = tasks.filter(task => task.priority === "Priority");
+    setNoPriorityTasks(noPriority)
+
+}, [taskAdded, taskRemoved, taskEdited]);
 
   return (
     <BrowserRouter>
@@ -40,7 +71,19 @@ function App() {
             taskList={taskList}
             setTaskList={setTaskList}
             remainingSpoons={remainingSpoons}
-            maxSpoons={maxSpoons} />}
+            setRemainingSpoons={setRemainingSpoons}
+            maxSpoons={maxSpoons}
+            taskAdded={taskAdded}
+            setTaskAdded={setTaskAdded}
+            taskRemoved={taskRemoved}
+            setTaskRemoved={setTaskRemoved}
+            taskEdited={taskEdited}
+            setTaskEdited={setTaskEdited}
+            highPriorityTasks={highPriorityTasks}
+            mediumPriorityTasks={mediumPriorityTasks}
+            lowPriorityTasks={lowPriorityTasks}
+            noPriorityTasks={noPriorityTasks}
+             />}
         />
         <Route path="/tutorial" element={<TutorialPage />}/>
         <Route path="/faq" element={<FAQ />} />
