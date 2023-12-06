@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
 import { createPortal } from "react-dom";
-import { AppBar, Badge, Box, Toolbar, Typography, IconButton, useTheme, useMediaQuery, ListItem, Divider, List, Drawer, ListItemButton, ListItemIcon } from '@mui/material'
+import { AppBar, Badge, Box, Toolbar, Typography, IconButton, useTheme, useMediaQuery, ListItem, Divider, List, Drawer, ListItemButton, ListItemIcon, styled } from '@mui/material'
 import SpoonsModal from '../SpoonsModal/SpoonsModal';
 import MenuIcon from '@mui/icons-material/Menu';
 import logo from "../../assets/spoonfull-logo.svg";
@@ -96,11 +96,12 @@ const Navbar = ({
   const theme = useTheme();
   const largeScreen = useMediaQuery(theme.breakpoints.up("md"))
   const mediumScreen = useMediaQuery(theme.breakpoints.up("sm"))
+  const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
   return (
     <div>
       <Box sx={{ flexGrow: 1 }}>    
-        <AppBar className="lg:px-16 md:pl-1 pr-6 pb-1 sm: pr-2 py-2" position="static" style={{ background: "background" }} elevation={0}>
+        <AppBar className="lg:px-16 md:pl-1 pr-6 pb-1 sm:pr-2 py-2" position="fixed" style={{ background: "background"}} elevation={0}>
           <Toolbar sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <IconButton
             // className="md:-p-4 sm:p-1"
@@ -149,6 +150,7 @@ const Navbar = ({
             )}
           </Toolbar>
         </AppBar>
+        <Offset />
       </Box>
       <Drawer
         PaperProps={
