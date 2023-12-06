@@ -11,7 +11,7 @@ const WelcomePage = ({ handleSkipTutorial, setShowTutorialPage, setShowWelcomePa
     }
 
     return (
-        <section className="p-6 bg-background md:bg-text1 h-full w-full center-column justify-center gap-16 fixed top-0 z-[5]">
+        <section className="p-6 bg-background md:bg-text1 h-full w-full center-column justify-center gap-16 fixed top-10 z-[5]">
             <div className="p-6 bg-background h-full md:h-[730px] w-full md:w-[500px] md:rounded-lg md:my-4 center-column gap-16">
                 <div className="center-column justify-center gap-9 px-9">
                     <img src={logo} alt="spoonfull logo" />
