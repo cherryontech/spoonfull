@@ -25,6 +25,10 @@ const Navbar = ({
   setPlannedSpoons, }) => {
 
   const [open, setOpen] = useState(false);
+  const theme = useTheme();
+  const largeScreen = useMediaQuery(theme.breakpoints.up("md"))
+  const mediumScreen = useMediaQuery(theme.breakpoints.up("sm"))
+  const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
   const handleDrawerOpen = () => {
     setOpen(true)
@@ -44,7 +48,7 @@ const Navbar = ({
     {
       name: 'About Us',
       href: 'aboutus',
-      icon: <img src={aboutUsIcon} alt="about us"/>,
+      icon: <img src={aboutUsIcon} alt="about us" />,
       current: false
     },
     {
@@ -56,12 +60,12 @@ const Navbar = ({
     {
       name: 'FAQ',
       href: 'faq',
-      icon: <img src={faqIcon} alt="faq"/>,
+      icon: <img src={faqIcon} alt="faq" />,
       current: false
     },
     {
       name: 'Share With Friends',
-      icon: <img src={shareLinkIcon} alt="shareable link"/>,
+      icon: <img src={shareLinkIcon} alt="shareable link" />,
       href: 'sharespoonfull',
       current: false
     },
@@ -93,24 +97,16 @@ const Navbar = ({
 
   }, [taskList])
 
-  const theme = useTheme();
-  const largeScreen = useMediaQuery(theme.breakpoints.up("md"))
-  const mediumScreen = useMediaQuery(theme.breakpoints.up("sm"))
-  const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
-
   return (
     <div>
-      <Box sx={{ flexGrow: 1 }}>    
-        <AppBar className="lg:px-16 md:pl-1 pr-6 pb-1 sm:pr-2 py-2" position="fixed" style={{ background: "background"}} elevation={0}>
-          <Toolbar sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar className="lg:px-16 md:pl-1 pr-6 pb-1 sm:pr-2 py-2" position="fixed" style={{ background: "background" }} elevation={0}>
+          <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <IconButton
-            // className="md:-p-4 sm:p-1"
-              // sx={{p:2}}
               size="large"
               edge="start"
               color="black"
               aria-label="menu"
-              // sx={{ mr: 2}}
               onClick={handleDrawerOpen}
             >
               <MenuIcon />
@@ -120,7 +116,7 @@ const Navbar = ({
                 <img src={logo} style={{ width: 72, height: 35 }} alt="spoonfull logo" />
               </Typography>
             </Link>
-            <button className="md: w-[46px] h-[49px]" onClick={() => { setShowSpoonsModal(true); }} sx={{pt: 8, alignContent: 'center'}}>
+            <button className="md: w-[46px] h-[49px]" onClick={() => { setShowSpoonsModal(true); }} sx={{ pt: 8, alignContent: 'center' }}>
               {remainingSpoons > 3 ? (
                 <Badge badgeContent={remainingSpoons} sx={{ "& .MuiBadge-badge": { backgroundColor: "#23A1AF", color: "white" } }}>
                   <div className="pr-1.5 self-start">
@@ -199,20 +195,18 @@ const Navbar = ({
           <List >
             {navigation.map((item) => {
               return (
-                <ListItem>
                   <ListItemButton
                     key={item.name}
                     to={item.href}>
                     <ListItemIcon sx={{ mr: -3 }} style={{ color: "#001111" }}> {item.icon} </ListItemIcon>
                     {item.name}
                   </ListItemButton>
-                </ListItem>
               )
             })}
           </List>
         </div>
         <footer className="px-4 flex justify-end">
-          <img src={copyrightIcon} alt="copyright symbol"/>
+          <img src={copyrightIcon} alt="copyright symbol" />
           {mediumScreen ? <p className="pl-2 text-text1 text-body">SpoonFull, all rights reserved</p>
             :
             <p className="pl-2 text-text1 text-caption">SpoonFull, all rights reserved</p>

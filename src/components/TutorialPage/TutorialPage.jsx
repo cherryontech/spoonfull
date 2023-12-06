@@ -32,12 +32,12 @@ const TutorialPage = ({ handleSkipTutorial, setShowTutorialPage }) => {
         const previousScreen = screen - 1
         setCurrentScreen(previousScreen);
     }
-    
-    const routeChange = () =>{ 
-        let path = `/`; 
+
+    const routeChange = () => {
+        let path = `/`;
         navigate(path);
-      }
- 
+    }
+
     return (
         <section className="bg-background md:bg-text1 center-column h-full w-full fixed top-10 overflow-scroll z-[6]">
             <div className="bg-background flex flex-col justify-between h-full md:h-[730px] w-full md:w-[500px] md:rounded-lg">
@@ -90,7 +90,7 @@ const TutorialPage = ({ handleSkipTutorial, setShowTutorialPage }) => {
                         :
                         (currentScreen >= 4) ?
                             <button className="btn-modal text-primary-text" onClick={skipTutorial}>Start</button>
-                            :
+                        :
                             <button className="btn-modal text-primary-text" onClick={handleNextScreen}>Next</button>}
                 </div>
             </div>
