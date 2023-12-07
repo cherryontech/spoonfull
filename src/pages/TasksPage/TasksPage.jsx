@@ -1,21 +1,37 @@
 /* eslint-disable react/prop-types */
 import heroImg from "../../assets/heroImg.png";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { createPortal } from "react-dom";
 import AddTaskModal from "../../components/AddTaskModal/AddTaskModal";
 import TaskCard from "../../components/TaskCard/TaskCard";
 import WelcomePage from "../WelcomePage/WelcomePage";
 import TutorialPage from "../../components/TutorialPage/TutorialPage";
+import DeleteAllModal from "../../components/DeleteAllModal/DeleteAllModal"
 import { ToastContainer, toast } from 'react-toastify';
 
 
 
-const TasksPage = ({ remainingSpoons, setRemainingSpoons, taskList, setTaskList, setTaskAdded, taskRemoved, setTaskRemoved, taskEdited, setTaskEdited, highPriorityTasks, mediumPriorityTasks, lowPriorityTasks, noPriorityTasks }) => {
+const TasksPage = ({ 
+    remainingSpoons, 
+    setRemainingSpoons, 
+    taskList, 
+    setTaskList, 
+    setTaskAdded, 
+    taskRemoved, 
+    setTaskRemoved, 
+    taskEdited, 
+    setTaskEdited, 
+    highPriorityTasks, 
+    mediumPriorityTasks, 
+    lowPriorityTasks, 
+    noPriorityTasks, 
+    showWelcomePage, 
+    setShowWelcomePage,
+    showTutorialPage,
+    setShowTutorialPage }) => {
 
     const [showModal, setShowModal] = useState(false);
-    const [showWelcomePage, setShowWelcomePage] = useState(true);
-    const [showTutorialPage, setShowTutorialPage] = useState(false)
-    
+    const [openDeleteAll, setOpenDeleteAll] = useState(false)
 
     const openModal = (e) => {
         e.preventDefault();
@@ -54,17 +70,6 @@ const TasksPage = ({ remainingSpoons, setRemainingSpoons, taskList, setTaskList,
         tasks = tasks.sort((a, b) => a.id - b.id)
         setTaskList(tasks)
     }
-
-    useEffect(() => {
-        if (!localStorage["tutorial"]) {
-            localStorage["tutorial"] = "true";
-        }
-
-        let tutorial = localStorage["tutorial"];
-        tutorial = JSON.parse(tutorial);
-        setShowWelcomePage(tutorial)
-    }, [])
-
     const handleSkipTutorial = () => {
         localStorage.setItem("tutorial", "false");
         setShowWelcomePage(false)
@@ -87,6 +92,8 @@ const TasksPage = ({ remainingSpoons, setRemainingSpoons, taskList, setTaskList,
     const handleClearAllTasks = () => {
         localStorage["tasks"] = "[]";
         setTaskList([]);
+        setOpenDeleteAll(false);
+
     }
 
 
@@ -102,7 +109,7 @@ const TasksPage = ({ remainingSpoons, setRemainingSpoons, taskList, setTaskList,
             />
             <div className="w-[100%] flex justify-between items-center border-b border-text3 pb-2">
                 <h4 className="text-header4">Tasks</h4>
-                {taskList[0] && <button onClick={handleClearAllTasks} className="btn-modal text-primary-text">Clear All</button>}
+                {taskList[0] && <button onClick={() => setOpenDeleteAll(true)} className="btn-modal text-primary-text">Clear All</button>}
             </div>
             {
                 (!taskList[0] || !taskList[0].task) ?
@@ -185,7 +192,13 @@ const TasksPage = ({ remainingSpoons, setRemainingSpoons, taskList, setTaskList,
                 />,
                 document.body
             )}
-
+            {openDeleteAll && createPortal(
+                <DeleteAllModal
+                    handleClearAllTasks={handleClearAllTasks}
+                    setOpenDeleteAll={setOpenDeleteAll}
+                />,
+                document.body
+            )}
         </section>
     )
 }

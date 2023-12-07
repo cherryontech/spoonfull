@@ -52,7 +52,7 @@ const FAQ = () => {
 
 
     return (
-        <section className="center-column">
+        <section className="center-column pt-6">
             <div className="center-column px-4 md:gap-6 md:w-[567px] xl:w-[718px]">
                 <div className="mt-4">
                     <img src={faqImg} className="w-[164px] md:w-[330px] xl:w-[342px]" />

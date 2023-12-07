@@ -25,6 +25,9 @@ function App() {
   const [mediumPriorityTasks, setMediumPriorityTasks] = useState([])
   const [lowPriorityTasks, setLowPriorityTasks] = useState([])
   const [noPriorityTasks, setNoPriorityTasks] = useState([])
+  const [showWelcomePage, setShowWelcomePage] = useState(true);
+  const [showTutorialPage, setShowTutorialPage] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   useEffect(() => {
     if (!localStorage["tasks"]) {
@@ -50,6 +53,17 @@ function App() {
 
 }, [taskAdded, taskRemoved, taskEdited]);
 
+  useEffect(() => {
+    if (!localStorage["tutorial"]) {
+        localStorage["tutorial"] = "true";
+    }
+
+    let tutorial = localStorage["tutorial"];
+    tutorial = JSON.parse(tutorial);
+    setShowWelcomePage(tutorial)
+  }, [])
+
+
   return (
     <BrowserRouter>
       <Navbar
@@ -64,6 +78,9 @@ function App() {
         maxSpoons={maxSpoons}
         taskList={taskList}
         setTaskList={setTaskList}
+        showWelcomePage={showWelcomePage}
+        showTutorialPage={showTutorialPage}
+        isModalOpen={isModalOpen}
       />
       <Routes>
         <Route path="/"
@@ -83,6 +100,12 @@ function App() {
             mediumPriorityTasks={mediumPriorityTasks}
             lowPriorityTasks={lowPriorityTasks}
             noPriorityTasks={noPriorityTasks}
+            showWelcomePage={showWelcomePage}
+            setShowWelcomePage={setShowWelcomePage}
+            showTutorialPage={showTutorialPage}
+            setShowTutorialPage={setShowTutorialPage}
+            isModalOpen={isModalOpen}
+            setIsModalOpen={setIsModalOpen}
              />}
         />
         <Route path="/tutorial" element={<TutorialPage />}/>

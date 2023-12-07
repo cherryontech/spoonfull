@@ -12,6 +12,7 @@ const TaskCard = ({ task, onRemoveTask, editChecked, remainingSpoons, handleTask
     const [activeTask, setActiveTask] = useState("")
     const [swipeStart, setSwipeStart] = useState(0)
     const [swipeDown, setSwipeDown] = useState(0)
+    const [isSwiping, setIsSwiping] = useState(false);
    
 
     const handleCheck = (e) => {
@@ -32,30 +33,26 @@ const TaskCard = ({ task, onRemoveTask, editChecked, remainingSpoons, handleTask
 
     const handleSwipe = (e) => {
         e.stopPropagation();
+
         const swipeEnd = e.changedTouches[0].clientX;
         const swipeUp = e.changedTouches[0].clientY;
-        const clickedEl = e.target.closest("#swipable")
-        if(clickedEl === null) {
+
+        if ((swipeDown - swipeUp) > 50 || (swipeDown - swipeUp) < -50) {
+            setIsSwiping(false);
             return;
         }
-        if((swipeDown - swipeUp) > 20 || (swipeDown - swipeUp) < -20) {
-            return;
-        }
-        if (
-        swipeEnd < swipeStart
-        ) {
-            clickedEl.classList.add("translate-x-[-120px]")
-        } else if (
-            swipeEnd >= swipeStart 
-        ) {
-            clickedEl.classList.remove("translate-x-[-120px]")
+
+        if (swipeEnd < swipeStart) {
+            setIsSwiping(true);
+        } else if (swipeEnd >= swipeStart) {
+            setIsSwiping(false);
         }
     }
 
 
     return (
         <section className="flex justify-between items-center overflow-x-clip relative" onTouchEnd={handleSwipe} onTouchStart={handleTouchStart}>
-            <article id="swipable" className="w-full min-w-[320px] mx-1 py-1 z-[2] bg-background transition ease-in-out">
+            <article id="swipable" className={`${isSwiping? "translate-x-[-120px]" : ""} w-full min-w-[320px] mx-1 py-1 z-[2] bg-background transition ease-in-out`}>
                 <div className={`bg-${task.background} shadow-card-shadow rounded-lg flex items-start justify-between pl-4`}>
                     <div className="flex py-4 items-center">
                         <input
