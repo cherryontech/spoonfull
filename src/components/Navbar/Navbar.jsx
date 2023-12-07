@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
 import { createPortal } from "react-dom";
-import { AppBar, Badge, Box, Toolbar, Typography, IconButton, useTheme, useMediaQuery, ListItem, Divider, List, Drawer, ListItemButton, ListItemIcon, styled } from '@mui/material'
+import { AppBar, Badge, Box, Toolbar, Typography, IconButton, useTheme, useMediaQuery, Divider, List, Drawer, ListItemButton, ListItemIcon, styled } from '@mui/material'
+import { StylesProvider } from '@mui/styles';
 import SpoonsModal from '../SpoonsModal/SpoonsModal';
 import MenuIcon from '@mui/icons-material/Menu';
 import logo from "../../assets/spoonfull-logo.svg";
@@ -99,6 +100,7 @@ const Navbar = ({
 
   return (
     <div>
+      <StylesProvider injectFirst>
       <Box sx={{ flexGrow: 1 }}>
         <AppBar className="lg:px-16 md:pl-1 pr-6 pb-1 sm:pr-2 py-2" position="fixed" style={{ background: "background" }} elevation={0}>
           <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -148,6 +150,7 @@ const Navbar = ({
         </AppBar>
         <Offset />
       </Box>
+      </StylesProvider>
       <Drawer
         PaperProps={
           largeScreen ? {
