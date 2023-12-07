@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
 import { createPortal } from "react-dom";
 import { AppBar, Badge, Box, Toolbar, Typography, IconButton, useTheme, useMediaQuery, Divider, List, Drawer, ListItemButton, ListItemIcon, styled } from '@mui/material'
-import { StylesProvider } from '@mui/icons-material';
+import { StylesProvider } from '@material-ui/styles';
 import SpoonsModal from '../SpoonsModal/SpoonsModal';
 import MenuIcon from '@mui/icons-material/Menu';
 import logo from "../../assets/spoonfull-logo.svg";
