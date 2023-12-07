@@ -58,7 +58,8 @@ const Navbar = ({
       name: 'Tutorial',
       href: 'tutorial',
       icon: <DirectionsWalkIcon />,
-      current: false
+      current: false,
+      disabled: true,
     },
     {
       name: 'FAQ',
@@ -103,7 +104,7 @@ const Navbar = ({
   return (
     <div className={( showWelcomePage || showTutorialPage )? "hidden" : ""}>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar className="xl:pl-[72px] xl:pr-24 md:pl-1 pr-6 pb-1 sm:pr-2 py-2" position="fixed" style={{ background: '#FCFEFE' }} elevation={0}>
+        <AppBar className="xl:pl-[72px] xl:pr-20 md:pl-1 pr-6 pb-1 sm:pr-2 py-2" position="fixed" style={{ background: '#FCFEFE' }} elevation={0}>
           <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <IconButton
               size="large"
@@ -119,7 +120,7 @@ const Navbar = ({
                 <img src={logo} style={{ width: 72, height: 35 }} alt="spoonfull logo" />
               </Typography>
             </Link>
-            <button className="md: w-[46px] h-[49px]" onClick={() => { setShowSpoonsModal(true); }} sx={{ pt: 8, alignContent: 'center' }}>
+            <button className="md: w-[46px] h-[49px]" onClick={() => { setShowSpoonsModal(true)}} sx={{ pt: 8, alignContent: 'center' }}>
               {remainingSpoons > 3 ? (
                 <Badge badgeContent={remainingSpoons} sx={{ "& .MuiBadge-badge": { backgroundColor: "#23A1AF", color: "white" } }}>
                   <div className="pr-1.5 self-start">
@@ -200,7 +201,8 @@ const Navbar = ({
               return (
                   <ListItemButton
                     key={item.name}
-                    to={item.href}>
+                    to={item.href}
+                    disabled={item.disabled}>
                     <ListItemIcon sx={{ mr: -3 }} style={{ color: "#001111" }}> {item.icon} </ListItemIcon>
                     {item.name}
                   </ListItemButton>
