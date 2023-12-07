@@ -4,9 +4,15 @@ import SpoonChart from "../SpoonChart/SpoonChart";
 // eslint-disable-next-line react/prop-types
 const SpoonsModal = ({setShowSpoonsModal, remainingSpoons, usedSpoons, plannedSpoons}) => {
     
+    const handleKeyDown = (e) => {
+        if (e.keyCode === 27) {
+        setShowSpoonsModal(false);
+        }
+        }
+
     return (
         <section className="flex flex-col items-center bg-background h-full w-full fixed top-0 px-4 z-10 overflow-scroll">
-            <button className="p-2.5 md:pl-10 xl:px-[65px] my-6 mt-16 self-end" onClick={() => setShowSpoonsModal(false)}>
+            <button autoFocus className="p-2.5 md:pl-10 xl:px-[65px] my-6 mt-16 self-end" onClick={() => setShowSpoonsModal(false)} onKeyDown={handleKeyDown}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" className="md:hidden">
                     <path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="black"/>
                 </svg>
