@@ -11,18 +11,11 @@ import { ToastContainer, toast } from 'react-toastify';
 
 
 
-const TasksPage = ({ remainingSpoons, taskList, setTaskList }) => {
+const TasksPage = ({ remainingSpoons, setRemainingSpoons, taskList, setTaskList, setTaskAdded, taskRemoved, setTaskRemoved, taskEdited, setTaskEdited, highPriorityTasks, mediumPriorityTasks, lowPriorityTasks, noPriorityTasks }) => {
 
     const [showModal, setShowModal] = useState(false);
     const [showWelcomePage, setShowWelcomePage] = useState(true);
     const [showTutorialPage, setShowTutorialPage] = useState(false)
-    const [taskAdded, setTaskAdded] = useState(false)
-    const [taskRemoved, setTaskRemoved] = useState(false)
-    const [taskEdited, setTaskEdited] = useState(false)
-    const [highPriorityTasks, setHighPriorityTasks] = useState([])
-    const [mediumPriorityTasks, setMediumPriorityTasks] = useState([])
-    const [lowPriorityTasks, setLowPriorityTasks] = useState([])
-    const [noPriorityTasks, setNoPriorityTasks] = useState([])
     const [openDeleteAll, setOpenDeleteAll] = useState(false)
 
     const openModal = (e) => {
@@ -30,30 +23,6 @@ const TasksPage = ({ remainingSpoons, taskList, setTaskList }) => {
         setShowModal(true)
         setTaskAdded(false)
     };
-
-    useEffect(() => {
-        if (!localStorage["tasks"]) {
-            localStorage["tasks"] = "[]";
-        }
-
-        let tasks = localStorage["tasks"];
-        tasks = JSON.parse(tasks);
-        tasks = tasks.sort((a, b) => a.id - b.id)
-        setTaskList(tasks);
-
-        let highPriority = tasks.filter(task => task.priority === "High");
-        setHighPriorityTasks(highPriority)
-
-        let mediumPriority = tasks.filter(task => task.priority === "Medium");
-        setMediumPriorityTasks(mediumPriority)
-
-        let lowPriority = tasks.filter(task => task.priority === "Low");
-        setLowPriorityTasks(lowPriority)
-
-        let noPriority = tasks.filter(task => task.priority === "Priority");
-        setNoPriorityTasks(noPriority)
-
-    }, [taskAdded, taskRemoved, taskEdited]);
 
     const removeTask = (id) => {
         let tasks = JSON.parse(JSON.stringify(taskList));
@@ -200,6 +169,7 @@ const TasksPage = ({ remainingSpoons, taskList, setTaskList }) => {
                 <AddTaskModal
                     setShowModal={setShowModal}
                     remainingSpoons={remainingSpoons}
+                    setRemainingSpoons={setRemainingSpoons}
                     handleTaskAdded={handleTaskAdded} />,
                 document.body
             )}
