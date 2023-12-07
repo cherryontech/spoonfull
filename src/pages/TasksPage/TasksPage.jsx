@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import heroImg from "../../assets/heroImg.png";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { createPortal } from "react-dom";
 import AddTaskModal from "../../components/AddTaskModal/AddTaskModal";
 import TaskCard from "../../components/TaskCard/TaskCard";
@@ -11,11 +11,26 @@ import { ToastContainer, toast } from 'react-toastify';
 
 
 
-const TasksPage = ({ remainingSpoons, setRemainingSpoons, taskList, setTaskList, setTaskAdded, taskRemoved, setTaskRemoved, taskEdited, setTaskEdited, highPriorityTasks, mediumPriorityTasks, lowPriorityTasks, noPriorityTasks }) => {
+const TasksPage = ({ 
+    remainingSpoons, 
+    setRemainingSpoons, 
+    taskList, 
+    setTaskList, 
+    setTaskAdded, 
+    taskRemoved, 
+    setTaskRemoved, 
+    taskEdited, 
+    setTaskEdited, 
+    highPriorityTasks, 
+    mediumPriorityTasks, 
+    lowPriorityTasks, 
+    noPriorityTasks, 
+    showWelcomePage, 
+    setShowWelcomePage,
+    showTutorialPage,
+    setShowTutorialPage }) => {
 
     const [showModal, setShowModal] = useState(false);
-    const [showWelcomePage, setShowWelcomePage] = useState(true);
-    const [showTutorialPage, setShowTutorialPage] = useState(false)
     const [openDeleteAll, setOpenDeleteAll] = useState(false)
 
     const openModal = (e) => {
@@ -55,17 +70,6 @@ const TasksPage = ({ remainingSpoons, setRemainingSpoons, taskList, setTaskList,
         tasks = tasks.sort((a, b) => a.id - b.id)
         setTaskList(tasks)
     }
-
-    useEffect(() => {
-        if (!localStorage["tutorial"]) {
-            localStorage["tutorial"] = "true";
-        }
-
-        let tutorial = localStorage["tutorial"];
-        tutorial = JSON.parse(tutorial);
-        setShowWelcomePage(tutorial)
-    }, [])
-
     const handleSkipTutorial = () => {
         localStorage.setItem("tutorial", "false");
         setShowWelcomePage(false)
@@ -195,8 +199,6 @@ const TasksPage = ({ remainingSpoons, setRemainingSpoons, taskList, setTaskList,
                 />,
                 document.body
             )}
-
-
         </section>
     )
 }

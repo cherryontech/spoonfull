@@ -23,7 +23,9 @@ const Navbar = ({
   usedSpoons,
   setUsedSpoons,
   plannedSpoons,
-  setPlannedSpoons, }) => {
+  setPlannedSpoons,
+  showWelcomePage,
+  showTutorialPage }) => {
 
   const [open, setOpen] = useState(false);
   const theme = useTheme();
@@ -99,9 +101,9 @@ const Navbar = ({
   }, [taskList])
 
   return (
-    <div>
+    <div className={( showWelcomePage || showTutorialPage )? "hidden" : ""}>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar className="lg:px-16 md:pl-1 pr-6 pb-1 sm:pr-2 py-2" position="fixed" style={{ background: '#FCFEFE' }} elevation={0}>
+        <AppBar className="xl:pl-[72px] xl:pr-24 md:pl-1 pr-6 pb-1 sm:pr-2 py-2" position="fixed" style={{ background: '#FCFEFE' }} elevation={0}>
           <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <IconButton
               size="large"

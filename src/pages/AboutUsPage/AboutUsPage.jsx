@@ -83,7 +83,7 @@ const AboutUsPage = () => {
 
 
     return (
-        <section className="center-column px-4 md:px-[88px] xl:px-[281px]">
+        <section className="center-column px-4 md:px-[88px] xl:px-[281px] pt-6">
             <div className="w-[100%] flex justify-between items-center border-b border-text3 pb-2">
                 <h4 className="text-header4 md:pt-6">About Us</h4>
             </div>
