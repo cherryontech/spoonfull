@@ -127,7 +127,7 @@ const AddTaskModal = ({ setShowModal, remainingSpoons, handleTaskAdded }) => {
     }
     
     return (
-        <section className="bg-text2 w-[100vw] h-[100vh] flex justify-center items-center fixed top-0 z-[5]" onClick={() => setShowModal(false)}>
+        <section className="bg-text1 w-[100vw] h-[100vh] flex justify-center items-center fixed top-0 z-[5]" onClick={() => setShowModal(false)}>
             <article className="bg-background w-[328px] md:w-[552px] p-6 md:pb-14 rounded-4xl md:rounded-xl" onClick={e => e.stopPropagation()}>
                 <form onSubmit={handleSubmit}>
                     <h4 className="text-header4 md:text-header3 mt-0 mb-2 md:mb-8">Add Task</h4>
