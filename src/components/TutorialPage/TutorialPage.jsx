@@ -4,6 +4,7 @@ import TutorialFirstScreen from "../TutorialFirstScreen/TutorialFirstScreen";
 import TutorialSecondScreen from "../TutorialSecondScreen/TutorialSecondScreen";
 import TutorialThirdScreen from "../TutorialThirdScreen/TutorialThirdScreen";
 import TutorialFourthScreen from "../TutorialFourthScreen/TutorialFourthScreen";
+import TutorialFifthScreen from "../TutorialFifthScreen/TutorialFifthScreen";
 
 // eslint-disable-next-line react/prop-types
 const TutorialPage = ({ handleSkipTutorial, setShowTutorialPage }) => {
@@ -41,7 +42,7 @@ const TutorialPage = ({ handleSkipTutorial, setShowTutorialPage }) => {
     return (
         <section className="bg-background md:bg-text1 center-column h-full w-full fixed top-0 overflow-scroll z-[6]">
             <div className="bg-background flex flex-col justify-between h-full md:h-[730px] w-full md:w-[500px] md:rounded-lg">
-                <button className={(currentScreen >= 4 || !show) ? "btn-modal self-end mt-2 mx-4 text-background" : "btn-modal self-end mt-2 mx-4"} onClick={skipTutorial}>Skip</button>
+                <button className={(currentScreen >= 5 || !show) ? "btn-modal self-end mt-2 mx-4 text-background" : "btn-modal self-end mt-2 mx-4"} onClick={skipTutorial}>Skip</button>
                 {
                     (currentScreen === 1) ?
                         <TutorialFirstScreen />
@@ -52,7 +53,10 @@ const TutorialPage = ({ handleSkipTutorial, setShowTutorialPage }) => {
                             (currentScreen === 3) ?
                                 <TutorialThirdScreen />
                                 :
-                                <TutorialFourthScreen />
+                                (currentScreen === 4) ?
+                                    <TutorialFourthScreen />
+                                    :
+                                    <TutorialFifthScreen />
                 }
 
                 <div className="flex justify-between items-center p-4">
@@ -83,12 +87,12 @@ const TutorialPage = ({ handleSkipTutorial, setShowTutorialPage }) => {
                         {(currentScreen === 5) ?
                             <div className="w-[12px] h-[12px] bg-primary rounded-lg"></div>
                             :
-                            <div className="hidden w-[12px] h-[12px] bg-primary3 rounded-lg"></div>}
+                            <div className="w-[12px] h-[12px] bg-primary3 rounded-lg"></div>}
                     </div>
                     {(currentScreen >= 4 && !show) ?
                         <button className="btn-modal text-primary-text" onClick={routeChange}>Home</button>
                         :
-                        (currentScreen >= 4) ?
+                        (currentScreen >= 5) ?
                             <button className="btn-modal text-primary-text" onClick={skipTutorial}>Start</button>
                         :
                             <button className="btn-modal text-primary-text" onClick={handleNextScreen}>Next</button>}
