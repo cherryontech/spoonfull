@@ -38,9 +38,9 @@ Once the button is clicked, the user is presented with a modal that allows them 
 
 Tasks are then stored in the user's local storage and sorted by priority, although the user can always edit their tasks' name, spoons assigned, or priority. If no priority is selected, the task is sorted into the "Low Priority" column.  
 
-Once the task is completed, the user can mark a task as done by clicking on the check box next to the task, Alternatively, the user can also delete a task by clicking on the three-dot icon on the right of the task, or by also swiping to delete on tablet and mobile.   
+Once the task is completed, the user can mark a task as done by clicking on the check box next to the task. Alternatively, the user can also delete a task by clicking on the three-dot icon on the right of the task, or by  swiping to delete on tablet and mobile.   
 
-Users can always review their allotment of spoons as a whole ny clicking on the "Spoons" button on the top right corner of the screen. Here they will see a chart that depicts how many spoons have been used, are planned, and are available. 
+Users can always review their allotment of spoons as a whole by clicking on the "Spoons" button on the top right corner of the screen. Here they will see a chart that depicts how many spoons have been used, are planned, and are available. 
 
 Feel free to watch our team presentation video on SpoonFull by clicking on the image below. Throughout the video we discuss our design and tech processes, user and usability testing insights, and give a live demo of our site.
 
@@ -66,6 +66,6 @@ Feel free to watch our team presentation video on SpoonFull by clicking on the i
 
 ## About the Team
 
-SpoonFull was created by the Kiwi-Kick tech squad under the Cherry on Tech program. Read more about us [here](https://spoonfull-kiwi-kick.netlify.app/aboutus_) on our site and feel free to leave us any comments, questions, or feedback at kiwi.kick.project@gmail.com.
+SpoonFull was created by the Kiwi Kick tech squad under the Cherry on Tech program. Read more about us [here](https://spoonfull-kiwi-kick.netlify.app/aboutus_) on our site and feel free to leave us any comments, questions, or feedback at kiwi.kick.project@gmail.com.
 
  Thank you for checking out SpoonFull!   
