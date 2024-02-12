@@ -19,14 +19,13 @@ Spoonful is a website that aids in preventing burnout by incorporating a task pl
 
 <p align="center">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=js,html,css,react,vite,tailwind,materialui&perline=8" alt="Icons for the following skills: Javascript, HTML, CSS, React, Vite,Tailwind, MaterialUI" />
+    <img src="https://skillicons.dev/icons?i=js,html,css,react,vite,tailwind,materialui&perline=7" alt="Icons for the following skills: Javascript, HTML, CSS, React, Vite,Tailwind, MaterialUI" />
   </a>
-  <a href="https://www.chartjs.org/" target="_blank">
-    <img src="https://www.chartjs.org/media/logo-title.svg" alt="chart.js" width="45" height="45"/> </a> 
 </p>
 <br>
 Additional libraries used:
 
+- [Chart.Js](https://www.chartjs.org)
 - [Toastify](https://github.com/fkhadra/react-toastify#readme)
 - [HeadlessUI](https://headlessui.com/)
 - [Heroicons](https://heroicons.com/)
