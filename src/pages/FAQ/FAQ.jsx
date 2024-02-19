@@ -1,15 +1,18 @@
 import faqImg from "../../assets/faq-img.png";
-import ExpandButton from "../../components/ExpandButton/ExpandButton";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getFaq } from "../../firebase/firestore";
+import FAQSingleCard from "./FAQSingleCard";
 
 const FAQ = () => {
-    const [one, setOne] = useState(false)
-    const [two, setTwo] = useState(false)
-    const [three, setThree] = useState(false)
-    const [four, setFour] = useState(false)
-    // const [five, setFive] = useState(false)
-    // const [six, setSix] = useState(false)
-    // const [seven, setSeven] = useState(false)
+    const [questionsArray, setQuestionsArray] = useState([])
+
+    useEffect(() => {
+        const getQuestions = async() => {
+            const data = await getFaq();
+            setQuestionsArray(data)
+        }
+        getQuestions();
+    }, []);
     
     const questionSvg = 
         <svg className="self-center" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -18,38 +21,6 @@ const FAQ = () => {
 
     const questionStyling = "text-body text-left"
     const items = "items-start"
-
-    const questionsArray = [
-        {
-            id: 1,
-            question: "What is the purpose of SpoonFull?",
-            answer: "SpoonFull is a platform designed to help prevent burnout by integrating a task planner inspired by the spoon theory. We aim to help our users avoid burnout by managing their tasks and prioritizing their mental health.",
-            value: one,
-            setValue: setOne,
-        },
-        {
-            id: 2,
-            question: "Can I exceed 12 spoons daily?",
-            answer: "Certainly not, as each spoon represents a limited unit of energy. 12 spoons is currently the limit, but we are planning on implementing a feature for users to set their own daily limit in the future",
-            value: two,
-            setValue: setTwo,
-        },
-        {
-            id: 3,
-            question: "Can I save my tasks?",
-            answer: "Your tasks are stored locally in your browser; you can even take screenshots to access your task list offline.",
-            value: three,
-            setValue: setThree,
-        },
-        {
-            id: 4,
-            question: "Can I share my tasks?",
-            answer: "Certainly! You can share your task list by capturing screenshots and distributing them to anyone.",
-            value: four,
-            setValue: setFour,
-        },
-    ]
-
 
     return (
         <section className="center-column pt-6">
@@ -64,18 +35,16 @@ const FAQ = () => {
                 </div>
                 <div className="w-full">
                     { questionsArray.map(question => {
-                    return( <ExpandButton 
+                    return( <FAQSingleCard 
                             key={question.id}
+                            id={question.id}
                             title={question.question}
                             paragraph={question.answer}
-                            value={question.value}
-                            setValue={question.setValue}
                             svg={questionSvg}
                             titleStyling={questionStyling}
                             items={items}
                         />)}
-                    )}
-                    
+                    )} 
                 </div>
             </div>
         </section>
