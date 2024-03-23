@@ -1,85 +1,30 @@
-import ExpandButton from "../../components/ExpandButton/ExpandButton";
-import { useState } from "react";
 import aboutUsImg from "../../assets/aboutus-img.png"
 import pmImg from "../../assets/pm.png";
 import designerImg from "../../assets/designer.png";
 import devImg from "../../assets/dev.png";
 import linkedinIcon from "../../assets/devicon_linkedin.png"
+import { getAboutUs } from "../../firebase/firestore";
+import AboutUsSingleCard from "./AboutUsSingleCard";
+import { useState, useEffect } from "react";
+
 
 const AboutUsPage = () => {
-    const [amy, setAmy] = useState(false)
-    const [clavia, setClavia] = useState(false)
-    const [kat, setKat] = useState(false)
-    const [mary, setMary] = useState(false)
-    const [tanya, setTanya] = useState(false)
-    const [vandana, setVandana] = useState(false)
+    const [ creators, setCreators ] = useState([])
     
-    const creatorsArray = [
-        {
-            id: 1,
-            svg: <img src={pmImg}/>,
-            name: "Amy La",
-            title: "Product Manager",
-            bio: "Bachelor in Health Promotion and Disease Prevention with a minor in Web Development. Design enthusiast with a passion for solving challenging problems that create meaningful impact.",
-            linkedin: "https://www.linkedin.com/in/amylalai/",
-            value: amy,
-            setValue: setAmy,
-        },
-        {
-            id: 2,
-            svg: <img src={designerImg}/>,
-            name: "Clavia Castilhos",
-            title: "Designer",
-            bio: "Bachelor in Industrial Design and UX Designer. I'm a problem-solving and hands-on person who works on bringing important ideas and projects to life.",
-            linkedin: "https://www.linkedin.com/in/clavia-castilhos/",
-            value: clavia,
-            setValue: setClavia,
-        },
-        {
-            id: 3,
-            svg: <img src={devImg}/>,
-            name: "Kat Kowalik",
-            title: "Developer",
-            bio: "Healthcare and beauty professional turned software developer, navigating the tech world to create solutions that simplify and empower.",
-            linkedin: "https://www.linkedin.com/in/kat-kowalik/",
-            value: kat,
-            setValue: setKat,
-        },
-        {
-            id: 4,
-            svg: <img src={pmImg}/>,
-            name: "Mary Allen",
-            title: "Product Manager",
-            bio: "Student working on bachelor’s in Management Information Systems. Passionate about utilizing technology to create innovative solutions that leave a meaningful impact.",
-            linkedin: "https://www.linkedin.com/in/mary-l-allen-/",
-            value: mary,
-            setValue: setMary,
-        },
-        {
-            id: 5,
-            svg: <img src={devImg}/>,
-            name: "Tanya Piña ",
-            title: "Developer",
-            bio: "Software developer with a background in libraries, community work, and anthropology. I am passionate about creating inclusive tech spaces that are by and for underrepresented communities.",
-            linkedin: "https://www.linkedin.com/in/tanyapina/",
-            value: tanya,
-            setValue: setTanya,
-        },
-        {
-            id: 6,
-            svg: <img src={designerImg}/>,
-            name: "Vandana Kala",
-            title: "Designer",
-            bio: "Engineer turned UX enthusiast, I blend methodology with personal investment in crafting meaningful user experiences. Collaborating to transform ideas into valuable products.",
-            linkedin: "https://www.linkedin.com/in/vandana-kala/",
-            value: vandana,
-            setValue: setVandana,
+    useEffect(() => {
+        const getCreators = async() => {
+            const creatorsData = await getAboutUs();
+            setCreators(creatorsData)
         }
-    ]
+        getCreators();
+    }, [])
 
     const icon = <img src={linkedinIcon}/>
     const nameStyling = "text-bold-body text-start"
     const items = "items-center"
+    const svgDesigner = <img src={designerImg}/>
+    const svgPM = <img src={pmImg}/>
+    const svgDev = <img src={devImg}/>
 
 
     return (
@@ -92,16 +37,21 @@ const AboutUsPage = () => {
                 <img src={aboutUsImg} className="hidden md:block md:w-[266px] xl:w-[300px]"/>
             </div>
             <div>
-                {creatorsArray.map(creator => {
-                    return ( <ExpandButton
+                {creators.map(creator => {
+                    return ( <AboutUsSingleCard
                             key={creator.id}
+                            id={creator.id}
                             title={creator.name}
                             titleStyling={nameStyling}
                             subtitle={creator.title}
                             paragraph={creator.bio}
-                            value={creator.value}
-                            setValue={creator.setValue}
-                            svg={creator.svg}
+                            svg={creator.title === 'Product Manager'?
+                                   svgPM
+                                :
+                                creator.title === 'Designer'?
+                                    svgDesigner
+                                :
+                                    svgDev }
                             icon={icon}
                             link={creator.linkedin}
                             items={items}
@@ -109,7 +59,6 @@ const AboutUsPage = () => {
                     )
                 })}
             </div>
-            
         </section>
     )
 }
