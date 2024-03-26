@@ -33,7 +33,7 @@ const AboutUsPage = () => {
                 <h4 className="text-header4 md:pt-6">About Us</h4>
             </div>
             <div className="flex items-center gap-6 md:py-8">
-                <p className="text-body py-4 px-[11px]">Inspired by Cherry on Tech lab&apos;s challenge, our team of product managers, designers, and developers launched SpoonFul to help individuals manage their finite energy and prevent burnout in daily activities. Meet our team below.</p>
+                <p className="text-body py-4 px-[11px]">Inspired by Cherry on Tech lab&apos;s challenge, our team of product managers, designers, and developers launched SpoonFull to help individuals manage their finite energy and prevent burnout in daily activities. Meet our team below.</p>
                 <img src={aboutUsImg} className="hidden md:block md:w-[266px] xl:w-[300px]"/>
             </div>
             <div>
