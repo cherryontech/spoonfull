@@ -6,6 +6,7 @@ import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
 import TutorialPage from './components/TutorialPage/TutorialPage';
 import ShareSpoonfull from './pages/ShareSpoonfull/ShareSpoonfull';
 import Navbar from './components/Navbar/Navbar';
+import SignUpPage from './pages/SignUpPage/SignUpPage';
 import "@fontsource/lato";
 import "@fontsource/lato/400.css";
 import "@fontsource/lato/700.css";
@@ -112,6 +113,7 @@ function App() {
         <Route path="/faq" element={<FAQ />} />
         <Route path="/aboutus" element={<AboutUsPage />} />
         <Route path="/sharespoonfull" element={<ShareSpoonfull />} />
+        <Route path="/signup" element={<SignUpPage />} />
       </Routes>
     </BrowserRouter>
   )
