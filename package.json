@@ -25,6 +25,7 @@
     "react-chartjs-2": "^5.2.0",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.51.1",
     "react-router": "^6.17.0",
     "react-router-dom": "^6.17.0",
     "react-swipeable-list": "^1.9.3",
