@@ -37,11 +37,32 @@ const SignUpPage = () => {
         </div>
         <button className="btn-filled w-full my-4">SIGN UP</button>
       </form>
-      <div className="bg-text3 w-full h-[1px] relative my-8">
-        <h4 className="border rounded border-text3 text-text2 text-bold-body text-center w-10 h-9 block pt-1 absolute left-[45%] bottom-[-17px] bg-white">
+      <div className="border border-[0.5px] border-text3 w-full relative my-8">
+        <h4 className="border rounded border-text3 text-text2 text-bold-body text-center w-10 h-9 block pt-1 absolute left-[50%] bottom-[-17px] ml-[-17px] bg-white">
           OR
         </h4>
       </div>
+      <div className="flex justify-between w-[156px] m-4">
+        <img
+          src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/google/google-original.svg"
+          className="w-[24px]"
+        />
+        <img
+          src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg"
+          className="w-[24px]"
+        />
+        <img
+          src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/facebook/facebook-original.svg"
+          className="w-[24px]"
+        />
+      </div>
+      <p className="text-caption mt-4">
+        Already a user?{" "}
+        <a href="/login" className="text-primary">
+          {" "}
+          Login
+        </a>
+      </p>
     </div>
   );
 };
