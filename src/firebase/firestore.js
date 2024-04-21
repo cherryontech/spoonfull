@@ -31,3 +31,9 @@ export const getAboutUs = async () => {
     })
     return(bios)
 };
+
+ui.start('#firebaseui-auth-container', {
+    signInOptions: [
+      firebase.auth.EmailAuthProvider.PROVIDER_ID
+    ],
+  });
