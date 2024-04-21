@@ -20,7 +20,7 @@
     "@mui/icons-material": "^5.14.19",
     "@mui/material": "^5.14.19",
     "chart.js": "^4.4.0",
-    "firebase": "^10.8.0",
+    "firebase": "^10.11.0",
     "firebaseui": "^6.1.0",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
