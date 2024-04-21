@@ -11,7 +11,8 @@ import "@fontsource/lato/400.css";
 import "@fontsource/lato/700.css";
 
 function App() {
-
+  var firebase = require('firebase');
+  var firebaseui = require('firebaseui');
   const maxSpoons = 12
   const [showSpoonsModal, setShowSpoonsModal] = useState(false);
   const [remainingSpoons, setRemainingSpoons] = useState(maxSpoons);
