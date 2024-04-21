@@ -3,6 +3,9 @@ import { app } from "./firebase";
 
 const db = getFirestore(app)
 
+var firebase = require('firebase');
+var firebaseui = require('firebaseui');
+var ui = new firebaseui.auth.AuthUI(firebase.auth());
 // faq collection
 const colRefFaq = collection(db, 'faq');
 export const getFaq = async () => {
