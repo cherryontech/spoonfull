@@ -82,6 +82,6 @@ Feel free to watch our team presentation video on SpoonFull by clicking on the i
 
 ## About the Team
 
-SpoonFull was created by the Kiwi Kick tech squad under the Cherry on Tech program. Read more about us [here](https://spoonfull-kiwi-kick.netlify.app/aboutus_) on our site and feel free to leave us any comments, questions, or feedback at kiwi.kick.project@gmail.com.
+SpoonFull was created by the Kiwi Kick tech squad under the CherryOnTech program. Read more about us [here](https://spoonfull-kiwi-kick.netlify.app/aboutus_) on our site and feel free to leave us any comments, questions, or feedback at kiwi.kick.project@gmail.com.
 
  Thank you for checking out SpoonFull!   
