@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import InputField from "../InputField/InputField";
 import { useState } from "react";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 
-const PasswordInputField = () => {
+const PasswordInputField = ({ register }) => {
   const [visiblePassword, setVisiblePassword] = useState("password");
   const handleVisiblePassword = (e) => {
     e.preventDefault();
@@ -16,6 +17,7 @@ const PasswordInputField = () => {
         label="Password"
         type={visiblePassword}
         className="relative"
+        register={register}
       />
       <button
         className="absolute bottom-3 right-2"
