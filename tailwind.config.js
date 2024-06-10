@@ -14,6 +14,7 @@ export default {
       accent2: "rgba(247, 85, 158, 0.50)",
       accent3: "rgba(247, 85, 158, 0.25)",
       "accent-text": "#E50B6D",
+      lightAccent: "rgba(247, 85, 158, 0.07)",
       text: "#001111",
       text1: "rgba(0, 17, 17, 0.75)",
       text2: "rgba(0, 17, 17, 0.50)",

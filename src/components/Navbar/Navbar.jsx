@@ -41,6 +41,7 @@ const Navbar = ({
   setPlannedSpoons,
   showWelcomePage,
   showTutorialPage,
+  isLoggedIn,
 }) => {
   const [open, setOpen] = useState(false);
   const theme = useTheme();
@@ -132,7 +133,9 @@ const Navbar = ({
   return (
     <div
       className={
-        showWelcomePage || showTutorialPage || noNavbarLocation ? "hidden" : ""
+        showWelcomePage || showTutorialPage || noNavbarLocation || !isLoggedIn
+          ? "hidden"
+          : ""
       }
     >
       <Box sx={{ flexGrow: 1 }}>

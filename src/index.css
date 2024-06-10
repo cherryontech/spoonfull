@@ -29,3 +29,9 @@
     -moz-appearance: textfield !important;
   }
 }
+
+@layer utilities {
+  .clip-custom {
+    clip-path: polygon(0 85%, 35% 95%, 65% 85%, 100% 95%, 100% 0, 0 0);
+  }
+}
