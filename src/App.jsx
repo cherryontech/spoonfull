@@ -64,7 +64,7 @@ function App() {
     setShowWelcomePage(tutorial);
   }, []);
 
-  const isLoggedIn = useLocalStorage("isLoggenIn").getItem();
+  const isLoggedIn = useLocalStorage("isLoggedIn").getItem();
 
   return (
     <BrowserRouter>
